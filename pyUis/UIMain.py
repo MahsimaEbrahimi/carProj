@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from Recovery import Ui_RecoveryWindow
 
 
 class Ui_MainWindow(object):
@@ -273,7 +274,7 @@ class Ui_MainWindow(object):
         self.SaveBtn = QtWidgets.QPushButton(self.centralwidget)
         self.SaveBtn.setGeometry(QtCore.QRect(570, 30, 93, 28))
         self.SaveBtn.setObjectName("SaveBtn")
-        self.RecoveryBtn = QtWidgets.QPushButton(self.centralwidget)
+        self.RecoveryBtn = QtWidgets.QPushButton(self.centralwidget, clicked=lambda:self.OpenWindow())
         self.RecoveryBtn.setGeometry(QtCore.QRect(470, 30, 93, 28))
         self.RecoveryBtn.setObjectName("RecoveryBtn")
         self.PrintBtn = QtWidgets.QPushButton(self.centralwidget)
