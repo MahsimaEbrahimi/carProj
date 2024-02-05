@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from RecoveryUI import Ui_RecoveryWindow
+
 
 class Ui_MainWindow(object):
     
@@ -276,6 +276,9 @@ class Ui_MainWindow(object):
         self.RecoveryBtn = QtWidgets.QPushButton(self.centralwidget)
         self.RecoveryBtn.setGeometry(QtCore.QRect(470, 30, 93, 28))
         self.RecoveryBtn.setObjectName("RecoveryBtn")
+        self.PrintBtn = QtWidgets.QPushButton(self.centralwidget)
+        self.PrintBtn.setGeometry(QtCore.QRect(370, 30, 93, 28))
+        self.PrintBtn.setObjectName("PrintBtn")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -381,6 +384,7 @@ class Ui_MainWindow(object):
         self.AddBtn.setText(_translate("MainWindow", "جديد"))
         self.SaveBtn.setText(_translate("MainWindow", "ذخيره"))
         self.RecoveryBtn.setText(_translate("MainWindow", "بازيابي"))
+        self.PrintBtn.setText(_translate("MainWindow", "چاپ"))
 
 
 if __name__ == "__main__":
