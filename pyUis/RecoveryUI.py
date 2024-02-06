@@ -15,12 +15,18 @@ class Ui_RecoveryWindow(object):
     def setupUi(self, RecoveryWindow):
         RecoveryWindow.setObjectName("RecoveryWindow")
         RecoveryWindow.resize(709, 345)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        RecoveryWindow.setFont(font)
         self.centralwidget = QtWidgets.QWidget(RecoveryWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.formLayout = QtWidgets.QFormLayout(self.centralwidget)
         self.formLayout.setObjectName("formLayout")
         self.RecoveryFrame = QtWidgets.QFrame(self.centralwidget)
         self.RecoveryFrame.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.RecoveryFrame.setFont(font)
         self.RecoveryFrame.setStyleSheet("")
         self.RecoveryFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.RecoveryFrame.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -55,7 +61,7 @@ class Ui_RecoveryWindow(object):
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
         self.CarOwnerTxt.setPalette(palette)
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.CarOwnerTxt.setFont(font)
         self.CarOwnerTxt.setObjectName("CarOwnerTxt")
         self.gridLayout.addWidget(self.CarOwnerTxt, 2, 0, 1, 1)
@@ -80,7 +86,7 @@ class Ui_RecoveryWindow(object):
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
         self.CarIdTxt.setPalette(palette)
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.CarIdTxt.setFont(font)
         self.CarIdTxt.setObjectName("CarIdTxt")
         self.gridLayout.addWidget(self.CarIdTxt, 1, 0, 1, 1)
@@ -99,7 +105,7 @@ class Ui_RecoveryWindow(object):
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
         self.ShasiTxt.setPalette(palette)
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.ShasiTxt.setFont(font)
         self.ShasiTxt.setObjectName("ShasiTxt")
         self.gridLayout.addWidget(self.ShasiTxt, 0, 0, 1, 1)
@@ -112,19 +118,8 @@ class Ui_RecoveryWindow(object):
         self.PhoneTxt = QtWidgets.QTextEdit(self.RecoveryFrame)
         self.PhoneTxt.setMinimumSize(QtCore.QSize(0, 20))
         self.PhoneTxt.setMaximumSize(QtCore.QSize(16777215, 50))
-        palette = QtGui.QPalette()
-        brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
-        self.PhoneTxt.setPalette(palette)
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.PhoneTxt.setFont(font)
         self.PhoneTxt.setObjectName("PhoneTxt")
         self.gridLayout.addWidget(self.PhoneTxt, 3, 0, 1, 1)
@@ -133,6 +128,9 @@ class Ui_RecoveryWindow(object):
         self.SearchBtn.setMaximumSize(QtCore.QSize(16777215, 50))
         self.SearchBtn.setSizeIncrement(QtCore.QSize(0, 0))
         self.SearchBtn.setBaseSize(QtCore.QSize(0, 0))
+        font = QtGui.QFont()
+        font.setPointSize(8)
+        self.SearchBtn.setFont(font)
         self.SearchBtn.setObjectName("SearchBtn")
         self.gridLayout.addWidget(self.SearchBtn, 4, 0, 1, 1)
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.RecoveryFrame)
@@ -154,25 +152,25 @@ class Ui_RecoveryWindow(object):
         self.CarOwnerTxt.setHtml(_translate("RecoveryWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.label_4.setText(_translate("RecoveryWindow", "مالك خودرو:"))
         self.CarIdTxt.setHtml(_translate("RecoveryWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.ShasiTxt.setHtml(_translate("RecoveryWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.label.setText(_translate("RecoveryWindow", "شماره شاسی: "))
         self.PhoneTxt.setHtml(_translate("RecoveryWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.SearchBtn.setText(_translate("RecoveryWindow", "جستجو"))
 
 
