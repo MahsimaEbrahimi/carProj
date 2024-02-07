@@ -575,9 +575,12 @@ class Ui_MainWindow(object):
 
 if __name__ == "__main__":
     import sys
+    from FormsMethod import FormMethod
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
+    ui.setupUi(MainWindow)    
+    frmMethod=FormMethod(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
