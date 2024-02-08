@@ -1,15 +1,18 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from RecoveryUI import Ui_RecoveryWindow
+from FormsMethod import FormMethod
+
 
 class Ui_MainWindow(object):
+    
     def OpenWindow(self):
         self.Window=QtWidgets.QMainWindow()
         self.ui= Ui_RecoveryWindow()
         self.ui.setupUi(self.Window)
         self.Window.show()
         
-    def setupUi(self, MainWindow):
+    def setupUi(self, MainWindow,FromsMethodInstance):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(704, 802)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -44,7 +47,7 @@ class Ui_MainWindow(object):
         self.RecoveryBtn.setFont(font)
         self.RecoveryBtn.setObjectName("RecoveryBtn")
         self.horizontalLayout.addWidget(self.RecoveryBtn)
-        self.SaveBtn = QtWidgets.QPushButton(self.frame_3)
+        self.SaveBtn = QtWidgets.QPushButton(self.frame_3,clicked=lambda:FromsMethodInstance.SaveMethod())
         font = QtGui.QFont()
         font.setPointSize(10)
         self.SaveBtn.setFont(font)
@@ -558,7 +561,7 @@ class Ui_MainWindow(object):
         self.GirboxCondTxt.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:norml;\">\n"
 "<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">موتور و گیربکس پلمپ میباشد</p></body></html>"))
         self.label_15.setText(_translate("MainWindow", "وضعيت آپشن ها:"))
         self.RemoveInfBtn.setText(_translate("MainWindow", "پاك كردن"))
@@ -575,12 +578,12 @@ class Ui_MainWindow(object):
 
 if __name__ == "__main__":
     import sys
-    from FormsMethod import FormMethod
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)    
-    frmMethod=FormMethod(MainWindow)
-    MainWindow.show()
+    ui = Ui_MainWindow()    
+    frmMethod=FormMethod(ui)
+    ui.setupUi(MainWindow,frmMethod)    
+    MainWindow.show()   
+#     print(ui.ShasiCondTxt.toPlainText())
     sys.exit(app.exec_())

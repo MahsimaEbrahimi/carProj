@@ -5,9 +5,8 @@ from sqlalchemy import create_engine
 
 import sys
 class Connection:
-    def __init__(self,DRIVER_NAME,SERVER_NAME,DATABASE_NAME) -> None:
+    def __init__(self,DRIVER_NAME,DATABASE_NAME) -> None:
            self.DRIVER_NAME=DRIVER_NAME
-           self.SERVER_NAME=SERVER_NAME
            self.DATABASE_NAME=DATABASE_NAME
         
     def Connection_maker(self):
@@ -21,5 +20,3 @@ class Connection:
              print("task is terminated")
              sys.exit()
 
-kir=Connection("SQL SERVER","MSI","CarProj")
-kir.Connection_maker()

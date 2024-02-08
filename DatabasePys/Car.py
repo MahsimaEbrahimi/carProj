@@ -1,4 +1,3 @@
-import CarModel
 class CarClass:
     def __init__(self,session) -> None:
         self.session=session

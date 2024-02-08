@@ -8,7 +8,7 @@ class CarModel(Base):
         CarId=Column(String(20),nullable=False)
         CarType=Column(String(50),nullable=False)
         CarColor=Column(String(50),nullable=False)
-        BadanehCond=Column(String,nullable=False)
+        model=Column(String(50),nullable=False)
         ShasiCond=Column(String,nullable=False)
         OptionCond=Column(String,nullable=False)
         MotorGirboxCond=Column(String,nullable=False)
