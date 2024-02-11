@@ -1,4 +1,0 @@
-class validation:
-    pass
-
-

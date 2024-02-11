@@ -585,5 +585,4 @@ if __name__ == "__main__":
     frmMethod=FormMethod(ui)
     ui.setupUi(MainWindow,frmMethod)    
     MainWindow.show()   
-#     print(ui.ShasiCondTxt.toPlainText())
     sys.exit(app.exec_())
