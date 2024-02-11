@@ -5,4 +5,5 @@ class CarClass:
     def add(self,carModel):
        self.session.add(carModel)
        if(self.session.commit()==None):
-          messagebox.showinfo(title="Add",message="اطلاعات با موفقیت اضافه گردید")
+        #   messagebox.showinfo(title="Add",message="اطلاعات با موفقیت اضافه گردید")
+           return True

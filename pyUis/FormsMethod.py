@@ -4,6 +4,8 @@ from Connections import Connection
 from CarModel import CarModel
 from Car import CarClass
 from FormsMethodCar import FormsMethodCarclass
+from ownerModel import OwnerModelclass
+from Owner import OwnerClass
 from functools import wraps
 
 class FormMethod:
@@ -29,5 +31,12 @@ class FormMethod:
                                 #  information =self.Mainobj.InfTxt.toPlainText(),
                                 #   Useage=self.Mainobj.UseTxt.toPlainText(),
                                   )
-        CarClassObj=CarClass(self.Stable_connection())
+        ownerModelInstance=OwnerModelclass(
+            nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
+            phone=self.Mainobj.PhoneTxt.toPlainText())
+        
+        res=self.Stable_connection()
+        CarClassObj=CarClass(res)
         FormsMethodCarclassO_bj.sendToCar(CarModelInstance,CarClassObj)
+        OwnerClassObj=OwnerClass(res)
+        
