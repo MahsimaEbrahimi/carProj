@@ -12,19 +12,27 @@ class FormsMethodCarclass:
             my_list=[]
             inspectRet=inspect(TheModelInstance)
             keyList=inspectRet.mapper.primary_key
+            print(inspectRet)
+            
             for i in keyList:
-                 if inspectRet.dict[i.name].strip()!="":  
-                     my_list.append(1)          
+                if (i.autoincrement!=True):
+                    if inspectRet.dict[i.name].strip()!="":  
+                        my_list.append(1)          
 
-                     if(len(keyList)==len(my_list)):
-                           value=func(self, TheModelInstance,TheClassObj) 
-                           return value
-                 else:
-                      messagebox.showinfo(title="Error",message="مقادیر پلاک و شماره شاسی را درست وارد کنید")
+                        if(len(keyList)==len(my_list)):
+                            value=func(self, TheModelInstance,TheClassObj) 
+                            return value
+                     
+                    else:
+                      messagebox.showinfo(title="Error",message="اشتباه در مقادیر")
                       return
+                else:
+                    value=func(self, TheModelInstance,TheClassObj) 
+                    return value
+
         return PrimaryKeyChkWrap
     
     @PrimaryKeyChk
-    def sendToCar(self, TheModelInstance,TheClassObj):
+    def sendToClass(self, TheModelInstance,TheClassObj):
             TheClassObj.add(TheModelInstance)
             

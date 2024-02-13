@@ -18,7 +18,7 @@ class FormMethod:
         return session
 
     def SaveMethod(self):
-        FormsMethodCarclassO_bj=FormsMethodCarclass()
+        FormsMethodCarclass_Obj=FormsMethodCarclass()
         CarModelInstance=CarModel(ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
                                   CarId=self.Mainobj.CarIdTxt.toPlainText(),
                                   CarType=self.Mainobj.CarTypeComb.currentText(),
@@ -37,6 +37,8 @@ class FormMethod:
         
         res=self.Stable_connection()
         CarClassObj=CarClass(res)
-        FormsMethodCarclassO_bj.sendToCar(CarModelInstance,CarClassObj)
+        FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)
         OwnerClassObj=OwnerClass(res)
+        FormsMethodCarclass_Obj.sendToClass(ownerModelInstance,OwnerClassObj)
+
         
