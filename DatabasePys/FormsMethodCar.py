@@ -11,9 +11,7 @@ class FormsMethodCarclass:
         def PrimaryKeyChkWrap(self,TheModelInstance,TheClassObj):
             my_list=[]
             inspectRet=inspect(TheModelInstance)
-            keyList=inspectRet.mapper.primary_key
-            print(inspectRet)
-            
+            keyList=inspectRet.mapper.primary_key            
             for i in keyList:
                 if (i.autoincrement!=True):
                     if inspectRet.dict[i.name].strip()!="":  

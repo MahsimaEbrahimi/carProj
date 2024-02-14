@@ -581,7 +581,8 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()    
+    ui = Ui_MainWindow() 
+#     ui.DateTxt.setDate   
     frmMethod=FormMethod(ui)
     ui.setupUi(MainWindow,frmMethod)    
     MainWindow.show()   

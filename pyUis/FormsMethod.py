@@ -6,6 +6,10 @@ from Car import CarClass
 from FormsMethodCar import FormsMethodCarclass
 from ownerModel import OwnerModelclass
 from Owner import OwnerClass
+from CarinfoModel import CarinfoModel
+from Carinfo import CarinfoClass
+from CarOwnerInterfaceModel import CarOwnerInterfaceModel
+from CarOwnerInterfaceClass import CarOwnerInterface
 from functools import wraps
 
 class FormMethod:
@@ -22,23 +26,37 @@ class FormMethod:
         CarModelInstance=CarModel(ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
                                   CarId=self.Mainobj.CarIdTxt.toPlainText(),
                                   CarType=self.Mainobj.CarTypeComb.currentText(),
-                                #   CarColor=self.Mainobj.comboBox_2.currentText(),
-                                  model=self.Mainobj.TypeTxt.toPlainText(),
-                                #   ShasiCond=self.Mainobj.ShasiCondTxt.toPlainText(),                                 
-                                #   OptionCond=self.Mainobj.OptionTxt.toPlainText(),                                 
-                                #   MotorGirboxCond=self.Mainobj.GirboxCondTxt.toPlainText(),
-                                #   ColorCond=self.Mainobj.CarColorCondTxt.toPlainText(),
-                                #  information =self.Mainobj.InfTxt.toPlainText(),
-                                #   Useage=self.Mainobj.UseTxt.toPlainText(),
+                                  model=self.Mainobj.TypeTxt.toPlainText()
                                   )
+        CarInfoModelInstance=CarinfoModel(            
+            CarColor=self.Mainobj.comboBox_2.currentText(),
+            ShasiCond=self.Mainobj.ShasiCondTxt.toPlainText(),
+            OptionCond=self.Mainobj.OptionTxt.toPlainText(),
+            MotorGirboxCond=self.Mainobj.GirboxCondTxt.toPlainText(),
+             ColorCond=self.Mainobj.CarColorCondTxt.toPlainText(),
+              information =self.Mainobj.InfTxt.toPlainText(),
+               Useage=self.Mainobj.UseTxt.toPlainText() 
+               )
+
+        
         ownerModelInstance=OwnerModelclass(
             nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
             phone=self.Mainobj.PhoneTxt.toPlainText())
         
+
+        CarOwnerInterfaceModelInstance=CarOwnerInterfaceModel(
+            # Thekey=self
+            ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
+            CarId=self.Mainobj.CarIdTxt.toPlainText(),
+            PayType=self.Mainobj.PayTypeComb.currentText(), 
+            Time=self.Mainobj.TimeTxt.toPlainText(),
+            
+            )
+
         res=self.Stable_connection()
         CarClassObj=CarClass(res)
         FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)
         OwnerClassObj=OwnerClass(res)
         FormsMethodCarclass_Obj.sendToClass(ownerModelInstance,OwnerClassObj)
-
-        
+        CarinfoClassInstance=CarinfoClass(res)
+        FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
