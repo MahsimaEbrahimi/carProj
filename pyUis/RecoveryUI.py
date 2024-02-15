@@ -1,6 +1,5 @@
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from SearchMethods import searchMethodsClass
 
 class Ui_RecoveryWindow(object):
     def setupUi(self, RecoveryWindow):
@@ -170,6 +169,9 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     RecoveryWindow = QtWidgets.QMainWindow()
     ui = Ui_RecoveryWindow()
-    ui.setupUi(RecoveryWindow)
+    searchMethodsClassINSTANCE=searchMethodsClass(ui)
+    ui.setupUi(RecoveryWindow)    
+    searchMethodsClassINSTANCE.senTonull()
+
     RecoveryWindow.show()
     sys.exit(app.exec_())

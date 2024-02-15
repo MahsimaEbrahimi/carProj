@@ -4,7 +4,14 @@ from ChkNullDescriptor import Descriptor
 from ChkNullDescriptorClass import ChkNullDescriptorClass
 
 class searchMethodsClass:
-    ChkNullDescriptorINSTANCE=ChkNullDescriptorClass(shasinum="  ",carId="sdf",carOwner="dsfsd",phone="eee")
-    print(ChkNullDescriptorINSTANCE.__dict__)
+    def __init__(self,searchObj) -> None:
+         self.searchObj=searchObj
+    
+    def senTonull(self):
+         ChkNullDescriptorINSTANCE=ChkNullDescriptorClass(shasinum=self.searchObj.ShasiTxt.toPlainText(),
+                                                          carId=self.searchObj.CarIdTxt.toPlainText(),
+                                                          carOwner=self.searchObj.CarOwnerTxt.toPlainText(),
+                                                          phone=self.searchObj.PhoneTxt.toPlainText())
+         
 
-hi=searchMethodsClass()
+
