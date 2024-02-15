@@ -2,6 +2,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from RecoveryUI import Ui_RecoveryWindow
 from FormsMethod import FormMethod
+from TimeandDate import dateSet
 
 
 class Ui_MainWindow(object):
@@ -581,9 +582,13 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow() 
-#     ui.DateTxt.setDate   
-    frmMethod=FormMethod(ui)
-    ui.setupUi(MainWindow,frmMethod)    
+    ui = Ui_MainWindow()    
+
+    frmMethod=FormMethod(ui)    
+
+    ui.setupUi(MainWindow,frmMethod)     
+    dateSetObj=dateSet(ui.DateTxt)
+    dateSetObj.DateSetter()
+  
     MainWindow.show()   
     sys.exit(app.exec_())

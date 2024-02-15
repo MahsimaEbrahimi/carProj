@@ -1,7 +1,8 @@
 from sqlalchemy import ForeignKey,String,Integer,Column
 from sqlalchemy.ext.declarative import declarative_base
+from Base import Base
 
-Base=declarative_base()
+# Base=declarative_base()
 class CarinfoModel(Base):
         __tablename__='CarInf'      
         Thekey=Column(Integer,primary_key=True,nullable=False,autoincrement=True)
