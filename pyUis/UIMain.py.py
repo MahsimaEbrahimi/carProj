@@ -587,8 +587,9 @@ if __name__ == "__main__":
     frmMethod=FormMethod(ui)    
 
     ui.setupUi(MainWindow,frmMethod)     
-    dateSetObj=dateSet(ui.DateTxt)
+    dateSetObj=dateSet(ui.DateTxt,ui.TimeTxt)
     dateSetObj.DateSetter()
+    dateSetObj.timesetter()
   
     MainWindow.show()   
     sys.exit(app.exec_())

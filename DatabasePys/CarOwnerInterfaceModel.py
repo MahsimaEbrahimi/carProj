@@ -3,8 +3,6 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from Base import Base
 
-
-# Base=declarative_base()
 class CarOwnerInterfaceModel(Base):
         __tablename__='ROwnerCar'    
         RownercarKey=Column(Integer,primary_key=True,nullable=False,autoincrement=True)
