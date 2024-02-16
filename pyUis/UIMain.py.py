@@ -12,7 +12,7 @@ class Ui_MainWindow(object):
     def OpenWindow(self):
         self.Window=QtWidgets.QMainWindow()
         self.ui= Ui_RecoveryWindow()
-        self.ui.setupUi(self.Window)
+        self.ui.setupUi(self.Window,FromsMethodInstance)
         self.Window.show()
         
     def setupUi(self, MainWindow,FromsMethodInstance):
