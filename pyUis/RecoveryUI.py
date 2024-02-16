@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from SearchMethods import searchMethodsClass
 
 class Ui_RecoveryWindow(object):
+
     def setupUi(self, RecoveryWindow):
         RecoveryWindow.setObjectName("RecoveryWindow")
         RecoveryWindow.resize(709, 345)

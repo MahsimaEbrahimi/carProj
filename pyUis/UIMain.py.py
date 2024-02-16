@@ -588,8 +588,8 @@ if __name__ == "__main__":
 
     ui.setupUi(MainWindow,frmMethod)     
     dateSetObj=dateSet(ui.DateTxt,ui.TimeTxt)
-    dateSetObj.DateSetter()
-    dateSetObj.timesetter()
+#     dateSetObj.DateSetter()
+#     dateSetObj.timesetter()
   
     MainWindow.show()   
     sys.exit(app.exec_())

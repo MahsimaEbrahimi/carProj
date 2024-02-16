@@ -8,11 +8,11 @@ class dateSet:
     self.QtwidgetDate=QtwidgetDate
     self.QtwidgetTime=QtwidgetTime
 
-  def DateSetter(self):
-        TheDate=JalaliDateTime.now().strftime("yyyy/mm/dd")
-        year=JalaliDateTime.now().year
-        month=JalaliDateTime.now().month
-        day=JalaliDateTime.now().day
+  # def DateSetter(self):
+  #       TheDate=JalaliDateTime.now().strftime("yyyy/mm/dd")
+  #       year=JalaliDateTime.now().year
+  #       month=JalaliDateTime.now().month
+  #       day=JalaliDateTime.now().day
         
         #    self.Qtwidget.setDisplayFormat("yyyy/mm/dd")   
 
@@ -27,12 +27,12 @@ class dateSet:
 
 #   def timeSetter(self):
   
-  def timesetter(self):
-        Tehran = pytz.timezone("Asia/Tehran") 
-        timeInNewYork = datetime.now(Tehran)
-        currentTimeInNewYork = timeInNewYork.strftime("%H:%M:%S")
-        print(currentTimeInNewYork)
-        self.QtwidgetTime.setTime(currentTimeInNewYork)
+  # def timesetter(self):
+  #       Tehran = pytz.timezone("Asia/Tehran") 
+  #       timeInNewYork = datetime.now(Tehran)
+  #       currentTimeInNewYork = timeInNewYork.strftime("%H:%M:%S")
+  #       print(currentTimeInNewYork)
+  #       self.QtwidgetTime.setTime(currentTimeInNewYork)
      
      
 

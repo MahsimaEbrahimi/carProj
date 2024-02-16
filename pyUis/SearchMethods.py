@@ -12,6 +12,9 @@ class searchMethodsClass:
                                                           carId=self.searchObj.CarIdTxt.toPlainText(),
                                                           carOwner=self.searchObj.CarOwnerTxt.toPlainText(),
                                                           phone=self.searchObj.PhoneTxt.toPlainText())
+     
+    def Onclick(self):
+         pass
          
 
 

@@ -58,12 +58,12 @@ class FormMethod:
             Thekey = CarInfoModelInstance.Thekey,
             ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
             CarId=self.Mainobj.CarIdTxt.toPlainText(),     
-            Date=self.Mainobj.DateTxt.date().toString(),
+            Date="",
             Time="",
             OwnerId=ownerModelInstance.OwnerId,
             PayType=self.Mainobj.PayTypeComb.currentText(), 
             )
-        print(self.Mainobj.DateTxt.date().toString())
+        # print(self.Mainobj.DateTxt.date().toString())
         
         CarOwnerInterfaceClassInstance=CarOwnerInterface(res)
         FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
