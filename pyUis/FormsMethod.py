@@ -1,6 +1,6 @@
 import sys, os
 sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DatabasePys'))
-from Connections import Connection
+from connection_Maker import connectionMaker
 from CarModel import CarModel
 from Car import CarClass
 from FormsMethodCar import FormsMethodCarclass
@@ -16,10 +16,10 @@ class FormMethod:
     def __init__(self,Mainobj) -> None:
         self.Mainobj=Mainobj
 
-    def Stable_connection(self):    
-        ConnectionObj=Connection("MSI","CarProj")
-        session=ConnectionObj.Connection_maker()
-        return session
+    # def Stable_connection(self):    
+    #     ConnectionObj=Connection("MSI","CarProj")
+    #     session=ConnectionObj.Connection_maker()
+    #     return session
 
     def SaveMethod(self):
         FormsMethodCarclass_Obj=FormsMethodCarclass()
@@ -45,10 +45,13 @@ class FormMethod:
         
 
 
-        res=self.Stable_connection()
+        res=connectionMaker.Stable_connection()
+
         CarClassObj=CarClass(res)
         FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)
+
         OwnerClassObj=OwnerClass(res)
+
         FormsMethodCarclass_Obj.sendToClass(ownerModelInstance,OwnerClassObj)
         CarinfoClassInstance=CarinfoClass(res)
         FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
@@ -63,7 +66,6 @@ class FormMethod:
             OwnerId=ownerModelInstance.OwnerId,
             PayType=self.Mainobj.PayTypeComb.currentText(), 
             )
-        # print(self.Mainobj.DateTxt.date().toString())
         
         CarOwnerInterfaceClassInstance=CarOwnerInterface(res)
         FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)

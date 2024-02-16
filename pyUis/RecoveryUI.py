@@ -3,7 +3,7 @@ from SearchMethods import searchMethodsClass
 
 class Ui_RecoveryWindow(object):
 
-    def setupUi(self, RecoveryWindow):
+    def setupUi(self, RecoveryWindow,searchMethodsClassINSTANCE):
         RecoveryWindow.setObjectName("RecoveryWindow")
         RecoveryWindow.resize(709, 345)
         font = QtGui.QFont()
@@ -114,7 +114,7 @@ class Ui_RecoveryWindow(object):
         self.PhoneTxt.setFont(font)
         self.PhoneTxt.setObjectName("PhoneTxt")
         self.gridLayout.addWidget(self.PhoneTxt, 3, 0, 1, 1)
-        self.SearchBtn = QtWidgets.QPushButton(self.RecoveryFrame)
+        self.SearchBtn = QtWidgets.QPushButton(self.RecoveryFrame,clicked=lambda:searchMethodsClassINSTANCE.senTonull())
         self.SearchBtn.setMinimumSize(QtCore.QSize(0, 50))
         self.SearchBtn.setMaximumSize(QtCore.QSize(16777215, 50))
         self.SearchBtn.setSizeIncrement(QtCore.QSize(0, 0))
@@ -171,8 +171,7 @@ if __name__ == "__main__":
     RecoveryWindow = QtWidgets.QMainWindow()
     ui = Ui_RecoveryWindow()
     searchMethodsClassINSTANCE=searchMethodsClass(ui)
-    ui.setupUi(RecoveryWindow)    
-    searchMethodsClassINSTANCE.senTonull()
+    ui.setupUi(RecoveryWindow,searchMethodsClassINSTANCE)    
 
     RecoveryWindow.show()
     sys.exit(app.exec_())

@@ -2,8 +2,10 @@ import sys, os
 sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DatabasePys'))
 from ChkNullDescriptor import Descriptor
 from ChkNullDescriptorClass import ChkNullDescriptorClass
+from Owner import OwnerClass
 
 class searchMethodsClass:
+    
     def __init__(self,searchObj) -> None:
          self.searchObj=searchObj
     
@@ -12,9 +14,9 @@ class searchMethodsClass:
                                                           carId=self.searchObj.CarIdTxt.toPlainText(),
                                                           carOwner=self.searchObj.CarOwnerTxt.toPlainText(),
                                                           phone=self.searchObj.PhoneTxt.toPlainText())
-     
-    def Onclick(self):
-         pass
-         
+         print(ChkNullDescriptorINSTANCE.__dict__)
 
-
+         for i in ChkNullDescriptorINSTANCE.__dict__.keys():
+              if i=="phone":
+                   
+    
