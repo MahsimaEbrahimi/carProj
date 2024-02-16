@@ -45,7 +45,7 @@ class FormMethod:
         
 
 
-        res=connectionMaker.Stable_connection()
+        res=connectionMaker.classConnection
 
         CarClassObj=CarClass(res)
         FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)

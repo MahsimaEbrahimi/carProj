@@ -3,6 +3,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from RecoveryUI import Ui_RecoveryWindow
 from FormsMethod import FormMethod
 from TimeandDate import dateSet
+from connection_Maker import connectionMaker
+
 
 
 class Ui_MainWindow(object):
@@ -590,6 +592,7 @@ if __name__ == "__main__":
 #     dateSetObj=dateSet(ui.DateTxt,ui.TimeTxt)
 #     dateSetObj.DateSetter()
 #     dateSetObj.timesetter()
+    connectionMaker.Stable_connection()
   
     MainWindow.show()   
     sys.exit(app.exec_())

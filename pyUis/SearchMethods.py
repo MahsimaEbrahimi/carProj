@@ -3,6 +3,8 @@ sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DatabasePys'))
 from ChkNullDescriptor import Descriptor
 from ChkNullDescriptorClass import ChkNullDescriptorClass
 from Owner import OwnerClass
+from connection_Maker import connectionMaker
+
 
 class searchMethodsClass:
     
@@ -18,5 +20,8 @@ class searchMethodsClass:
 
          for i in ChkNullDescriptorINSTANCE.__dict__.keys():
               if i=="phone":
+                   Owner_instance=OwnerClass(connectionMaker.classConnection)
+                   Owner_instance.search(ChkNullDescriptorINSTANCE.phone)
+                   
                    
     
