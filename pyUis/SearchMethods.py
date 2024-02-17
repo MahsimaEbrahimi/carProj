@@ -16,13 +16,13 @@ class RecoveryMethodsClass:
                                                           carId=self.recoveryObj.CarIdTxt.toPlainText(),
                                                           carOwner=self.recoveryObj.CarOwnerTxt.toPlainText(),
                                                           phone=self.recoveryObj.PhoneTxt.toPlainText())
-         print(ChkNullDescriptorINSTANCE.__dict__)
+     #     print(ChkNullDescriptorINSTANCE.__dict__)
 
          for i in ChkNullDescriptorINSTANCE.__dict__.keys():
               if i=="phone":
                    Owner_instance=OwnerClass(connectionMaker.classConnection)
                    Owner_instance.search(ChkNullDescriptorINSTANCE.__dict__["phone"])
-                   print(ChkNullDescriptorINSTANCE.__dict__["phone"])
+               #     print(ChkNullDescriptorINSTANCE.__dict__["phone"])
 
                    
     

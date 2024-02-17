@@ -170,7 +170,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     RecoveryWindow = QtWidgets.QMainWindow()
     ui = Ui_RecoveryWindow()
-    searchMethodsClassINSTANCE=searchMethodsClass(ui)
+    searchMethodsClassINSTANCE=RecoveryMethodsClass(ui)
     ui.setupUi(RecoveryWindow,searchMethodsClassINSTANCE)    
 
     RecoveryWindow.show()

@@ -8,5 +8,5 @@ class Descriptor:
     def __set__(self,instance,value):
         if value.strip()!="":
           instance.__dict__[self.variable] = value
-        else:
-            print("nooooo")
+        # else:
+        #     print("nooooo")
