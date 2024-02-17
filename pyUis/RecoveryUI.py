@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from SearchMethods import searchMethodsClass
+from SearchMethods import RecoveryMethodsClass
 
 class Ui_RecoveryWindow(object):
 

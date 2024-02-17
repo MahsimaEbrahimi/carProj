@@ -1,7 +1,7 @@
 from Connections import Connection
 
 class connectionMaker:
-    classConnection=0
+    classConnection=None
 
     @classmethod
     def Stable_connection(cls):    

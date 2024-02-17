@@ -6,16 +6,16 @@ from Owner import OwnerClass
 from connection_Maker import connectionMaker
 
 
-class searchMethodsClass:
+class RecoveryMethodsClass:
     
-    def __init__(self,searchObj) -> None:
-         self.searchObj=searchObj
+    def __init__(self,recoveryObj) -> None:
+         self.recoveryObj=recoveryObj
     
     def senTonull(self):
-         ChkNullDescriptorINSTANCE=ChkNullDescriptorClass(shasinum=self.searchObj.ShasiTxt.toPlainText(),
-                                                          carId=self.searchObj.CarIdTxt.toPlainText(),
-                                                          carOwner=self.searchObj.CarOwnerTxt.toPlainText(),
-                                                          phone=self.searchObj.PhoneTxt.toPlainText())
+         ChkNullDescriptorINSTANCE=ChkNullDescriptorClass(shasinum=self.recoveryObj.ShasiTxt.toPlainText(),
+                                                          carId=self.recoveryObj.CarIdTxt.toPlainText(),
+                                                          carOwner=self.recoveryObj.CarOwnerTxt.toPlainText(),
+                                                          phone=self.recoveryObj.PhoneTxt.toPlainText())
          print(ChkNullDescriptorINSTANCE.__dict__)
 
          for i in ChkNullDescriptorINSTANCE.__dict__.keys():
