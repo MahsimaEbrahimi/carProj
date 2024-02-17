@@ -11,6 +11,7 @@ class OwnerClass:
 
 
     def search(self, phone):
-       res=self.session.execute(select(OwnerModelclass).where(OwnerModelclass.phone == phone))  
+       print(phone)
+       res=(select(OwnerModelclass).where(OwnerModelclass.phone == phone))  
        print(res) 
      

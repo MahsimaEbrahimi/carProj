@@ -4,7 +4,8 @@ from RecoveryUI import Ui_RecoveryWindow
 from FormsMethod import FormMethod
 from TimeandDate import dateSet
 from connection_Maker import connectionMaker
-
+from SearchMethods import searchMethodsClass
+from searchWindow import Ui_resiltTable
 
 
 class Ui_MainWindow(object):
@@ -12,7 +13,10 @@ class Ui_MainWindow(object):
     def OpenWindow(self):
         self.Window=QtWidgets.QMainWindow()
         self.ui= Ui_RecoveryWindow()
-        self.ui.setupUi(self.Window,FromsMethodInstance)
+        TheUi=Ui_resiltTable()
+
+        searchWinndowObj2=searchMethodsClass(Ui_resiltTable)
+        self.ui.setupUi(self.Window,searchWinndowObj2)
         self.Window.show()
         
     def setupUi(self, MainWindow,FromsMethodInstance):

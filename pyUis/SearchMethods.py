@@ -21,7 +21,8 @@ class searchMethodsClass:
          for i in ChkNullDescriptorINSTANCE.__dict__.keys():
               if i=="phone":
                    Owner_instance=OwnerClass(connectionMaker.classConnection)
-                   Owner_instance.search(ChkNullDescriptorINSTANCE.phone)
-                   
+                   Owner_instance.search(ChkNullDescriptorINSTANCE.__dict__["phone"])
+                   print(ChkNullDescriptorINSTANCE.__dict__["phone"])
+
                    
     
