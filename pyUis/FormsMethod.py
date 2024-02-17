@@ -16,11 +16,6 @@ class FormMethod:
     def __init__(self,Mainobj) -> None:
         self.Mainobj=Mainobj
 
-    # def Stable_connection(self):    
-    #     ConnectionObj=Connection("MSI","CarProj")
-    #     session=ConnectionObj.Connection_maker()
-    #     return session
-
     def SaveMethod(self):
         FormsMethodCarclass_Obj=FormsMethodCarclass()
         CarModelInstance=CarModel(ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
@@ -51,7 +46,7 @@ class FormMethod:
         FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)
 
         OwnerClassObj=OwnerClass(res)
-
+        
         FormsMethodCarclass_Obj.sendToClass(ownerModelInstance,OwnerClassObj)
         CarinfoClassInstance=CarinfoClass(res)
         FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
@@ -63,8 +58,9 @@ class FormMethod:
             CarId=self.Mainobj.CarIdTxt.toPlainText(),     
             Date="",
             Time="",
-            OwnerId=ownerModelInstance.OwnerId,
             PayType=self.Mainobj.PayTypeComb.currentText(), 
+            nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
+            phone=self.Mainobj.PhoneTxt.toPlainText(),      
             )
         
         CarOwnerInterfaceClassInstance=CarOwnerInterface(res)

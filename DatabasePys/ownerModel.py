@@ -5,7 +5,6 @@ from Base import Base
 # Base=declarative_base()
 class OwnerModelclass(Base):
         __tablename__='OwnerTable'  
-        OwnerId=Column(Integer,primary_key=True,nullable=False,autoincrement=True)
-        nameLastname=Column(String(50),nullable=False)     
-        phone=Column(String(20),nullable=False)     
+        nameLastname=Column(String(50),nullable=False,primary_key=True)     
+        phone=Column(String(20),nullable=False,primary_key=True)     
                

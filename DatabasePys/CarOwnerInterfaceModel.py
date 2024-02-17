@@ -7,10 +7,11 @@ class CarOwnerInterfaceModel(Base):
         __tablename__='ROwnerCar'    
         RownercarKey=Column(Integer,primary_key=True,nullable=False,autoincrement=True)
         Thekey=Column(Integer,ForeignKey('CarInf.Thekey'),nullable=False)
-        OwnerId=Column(Integer,ForeignKey('OwnerTable.OwnerId'),nullable=False)
         CarId=Column(String(20),ForeignKey('CarTable.CarId'),nullable=False)
         ShasiNum=Column(String(10),ForeignKey('CarTable.ShasiNum'),nullable=False)
-        # CarTable = relationship('CarTable', foreign_keys=[ShasiNum, CarId])
+        nameLastname=Column(String(50),ForeignKey('OwnerTable.nameLastname'),nullable=False)
+        phone=Column(String(20),ForeignKey('OwnerTable.phone'),nullable=False)
+
         Date=Column(String(50),nullable=False)
         Time=Column(String(50),nullable=False)
         PayType=Column(String(50),nullable=False)

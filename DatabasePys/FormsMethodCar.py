@@ -1,3 +1,5 @@
+'''checks whether the primary keys are emoty or not'''
+
 from Car import CarClass
 from sqlalchemy import inspect
 import CarModel
