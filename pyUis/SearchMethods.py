@@ -4,7 +4,7 @@ from ChkNullDescriptor import Descriptor
 from ChkNullDescriptorClass import ChkNullDescriptorClass
 from Owner import OwnerClass
 from connection_Maker import connectionMaker
-
+from CarOwnerInterfaceModel import CarOwnerInterfaceModel
 
 class RecoveryMethodsClass:
     
@@ -17,12 +17,28 @@ class RecoveryMethodsClass:
                                                           carOwner=self.recoveryObj.CarOwnerTxt.toPlainText(),
                                                           phone=self.recoveryObj.PhoneTxt.toPlainText())
      #     print(ChkNullDescriptorINSTANCE.__dict__)
+         
+     #     lst=dict()
+     #     lst['ShasiTxt']=lambda:(CarOwnerInterfaceModel.ShasiNum==self.recoveryObj.ShasiTxt.toPlainText())
+     #     lst['CarIdTxt']=lambda:(CarOwnerInterfaceModel.CarId==self.recoveryObj.CarIdTxt.toPlainText())
+     #     lst['CarOwnerTxt']=lambda:(CarOwnerInterfaceModel.carOwner==self.recoveryObj.CarOwnerTxt.toPlainText())
+     #     lst['PhoneTxt']=lambda:(CarOwnerInterfaceModel.phone==self.recoveryObj.PhoneTxt.toPlainText())
 
+     #     print(lst)
+         condition=[]
          for i in ChkNullDescriptorINSTANCE.__dict__.keys():
               if i=="phone":
-                   Owner_instance=OwnerClass(connectionMaker.classConnection)
-                   Owner_instance.search(ChkNullDescriptorINSTANCE.__dict__["phone"])
+                   condition.append(CarOwnerInterfaceModel.phone==self.recoveryObj.PhoneTxt.toPlainText())
+               #     Owner_instance=OwnerClass(connectionMaker.classConnection)
+               #     Owner_instance.search(ChkNullDescriptorINSTANCE.__dict__["phone"])
                #     print(ChkNullDescriptorINSTANCE.__dict__["phone"])
-
+              if i=="carOwner":
+                   condition.append(CarOwnerInterfaceModel.carOwner==self.recoveryObj.CarOwnerTxt.toPlainText())
+              if i=="carId":
+                   condition.append(CarOwnerInterfaceModel.carId==self.recoveryObj.CarIdTxt.toPlainText())
+              if i=="shasinum":
+                    condition.append(CarOwnerInterfaceModel.shasinum==self.recoveryObj.ShasiTxt.toPlainText())
+          
+                   
                    
     
