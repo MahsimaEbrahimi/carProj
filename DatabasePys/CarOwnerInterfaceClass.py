@@ -8,5 +8,5 @@ class CarOwnerInterface:
            return True
     
     def search(self,*args):
-        query=self.session.query(CarOwnerInterfaceModel).filter(and_(args)).all()
-        
+        query=self.session.query(CarOwnerInterfaceModel).filter(args).all()
+        print(query)

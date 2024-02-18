@@ -2,9 +2,10 @@ import sys, os
 sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'DatabasePys'))
 from ChkNullDescriptor import Descriptor
 from ChkNullDescriptorClass import ChkNullDescriptorClass
-from Owner import OwnerClass
+# from Owner import OwnerClass
 from connection_Maker import connectionMaker
 from CarOwnerInterfaceModel import CarOwnerInterfaceModel
+from CarOwnerInterfaceClass import CarOwnerInterface
 
 class RecoveryMethodsClass:
     
@@ -33,11 +34,15 @@ class RecoveryMethodsClass:
                #     Owner_instance.search(ChkNullDescriptorINSTANCE.__dict__["phone"])
                #     print(ChkNullDescriptorINSTANCE.__dict__["phone"])
               if i=="carOwner":
-                   condition.append(CarOwnerInterfaceModel.carOwner==self.recoveryObj.CarOwnerTxt.toPlainText())
+                   condition.append(lambda:CarOwnerInterfaceModel.carOwner==self.recoveryObj.CarOwnerTxt.toPlainText())
               if i=="carId":
-                   condition.append(CarOwnerInterfaceModel.carId==self.recoveryObj.CarIdTxt.toPlainText())
+                   condition.append(lambda:CarOwnerInterfaceModel.carId==self.recoveryObj.CarIdTxt.toPlainText())
               if i=="shasinum":
-                    condition.append(CarOwnerInterfaceModel.shasinum==self.recoveryObj.ShasiTxt.toPlainText())
+                    condition.append(lambda:CarOwnerInterfaceModel.shasinum==self.recoveryObj.ShasiTxt.toPlainText())
+
+         CarOwnerInterfaceClass_insance=CarOwnerInterface(connectionMaker.classConnection)
+         CarOwnerInterfaceClass_insance.search(condition)
+         condition.clear()
           
                    
                    
