@@ -34,11 +34,11 @@ class RecoveryMethodsClass:
                #     Owner_instance.search(ChkNullDescriptorINSTANCE.__dict__["phone"])
                #     print(ChkNullDescriptorINSTANCE.__dict__["phone"])
               if i=="carOwner":
-                   condition.append(lambda:CarOwnerInterfaceModel.carOwner==self.recoveryObj.CarOwnerTxt.toPlainText())
+                   condition.append(CarOwnerInterfaceModel.nameLastname==self.recoveryObj.CarOwnerTxt.toPlainText())
               if i=="carId":
-                   condition.append(lambda:CarOwnerInterfaceModel.carId==self.recoveryObj.CarIdTxt.toPlainText())
+                   condition.append(CarOwnerInterfaceModel.CarId==self.recoveryObj.CarIdTxt.toPlainText())
               if i=="shasinum":
-                    condition.append(lambda:CarOwnerInterfaceModel.shasinum==self.recoveryObj.ShasiTxt.toPlainText())
+                    condition.append(CarOwnerInterfaceModel.ShasiNum==self.recoveryObj.ShasiTxt.toPlainText())
 
          CarOwnerInterfaceClass_insance=CarOwnerInterface(connectionMaker.classConnection)
          CarOwnerInterfaceClass_insance.search(condition)

@@ -1,4 +1,5 @@
 from CarOwnerInterfaceModel import CarOwnerInterfaceModel
+from sqlalchemy import and_, or_
 class CarOwnerInterface:
     def __init__(self,session) -> None:
         self.session=session
@@ -7,6 +8,6 @@ class CarOwnerInterface:
        if(self.session.commit()==None):
            return True
     
-    def search(self,*args):
-        query=self.session.query(CarOwnerInterfaceModel).filter(args).all()
+    def search(self,sth):
+        query=self.session.query(CarOwnerInterfaceModel).filter(and_(*sth)).all()
         print(query)
