@@ -23,6 +23,7 @@ class FormMethod:
                                   CarType=self.Mainobj.CarTypeComb.currentText(),
                                   model=self.Mainobj.TypeTxt.toPlainText()
                                   )
+        
         CarInfoModelInstance=CarinfoModel(            
             CarColor=self.Mainobj.comboBox_2.currentText(),
             ShasiCond=self.Mainobj.ShasiCondTxt.toPlainText(),
@@ -32,26 +33,11 @@ class FormMethod:
               information =self.Mainobj.InfTxt.toPlainText(),
                Useage=self.Mainobj.UseTxt.toPlainText() 
                )
-
         
         ownerModelInstance=OwnerModelclass(
             nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
             phone=self.Mainobj.PhoneTxt.toPlainText())
         
-
-
-        res=connectionMaker.classConnection
-
-        CarClassObj=CarClass(res)
-        FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)
-
-        OwnerClassObj=OwnerClass(res)
-        
-        FormsMethodCarclass_Obj.sendToClass(ownerModelInstance,OwnerClassObj)
-        CarinfoClassInstance=CarinfoClass(res)
-        FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
-
-
         CarOwnerInterfaceModelInstance=CarOwnerInterfaceModel(            
             Thekey = CarInfoModelInstance.Thekey,
             ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
@@ -60,8 +46,22 @@ class FormMethod:
             Time="",
             PayType=self.Mainobj.PayTypeComb.currentText(), 
             nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
-            phone=self.Mainobj.PhoneTxt.toPlainText(),      
+            Phone=self.Mainobj.PhoneTxt.toPlainText(),      
             )
+        
+        res=connectionMaker.classConnection
+
+        CarClassObj=CarClass(res)
+        FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)
+
+        OwnerClassObj=OwnerClass(res)       
+        FormsMethodCarclass_Obj.sendToClass(ownerModelInstance,OwnerClassObj)
+
+        CarinfoClassInstance=CarinfoClass(res)
+        FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
         
         CarOwnerInterfaceClassInstance=CarOwnerInterface(res)
         FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
+    
+
+

@@ -10,7 +10,7 @@ class CarOwnerInterfaceModel(Base):
         CarId=Column(String(20),ForeignKey('CarTable.CarId'),nullable=False)
         ShasiNum=Column(String(10),ForeignKey('CarTable.ShasiNum'),nullable=False)
         nameLastname=Column(String(50),ForeignKey('OwnerTable.nameLastname'),nullable=False)
-        phone=Column(String(20),ForeignKey('OwnerTable.phone'),nullable=False)
+        Phone=Column(String(20),ForeignKey('OwnerTable.phone'),nullable=False)
 
         Date=Column(String(50),nullable=False)
         Time=Column(String(50),nullable=False)

@@ -6,5 +6,4 @@ from Base import Base
 class OwnerModelclass(Base):
         __tablename__='OwnerTable'  
         nameLastname=Column(String(50),nullable=False,primary_key=True)     
-        phone=Column(String(20),nullable=False,primary_key=True)     
-               
+        phone=Column(String(20),nullable=False,primary_key=True)

@@ -35,4 +35,8 @@ class FormsMethodCarclass:
     @PrimaryKeyChk
     def sendToClass(self, TheModelInstance,TheClassObj):
             TheClassObj.add(TheModelInstance)
+
+    
+    def chk_Row_Exist(self):
+        pass
             
