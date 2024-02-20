@@ -45,25 +45,40 @@ class FormMethod:
                )
         
         CarinfoClassInstance=CarinfoClass(res)
-        if(CarinfoClassInstance.select_query(CarInfoModelInstance)==True):
-            FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
+        res=CarinfoClassInstance.select_query(CarInfoModelInstance)
+        if(res==True):
+            # FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
             CarOwnerInterfaceModelInstance=CarOwnerInterfaceModel(            
-                Thekey = CarInfoModelInstance.Thekey,
-                ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
-                CarId=self.Mainobj.CarIdTxt.toPlainText(),     
-                Date="",
-                Time="",
-                PayType=self.Mainobj.PayTypeComb.currentText(), 
-                nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
-                Phone=self.Mainobj.PhoneTxt.toPlainText(),      
-                )
-            
+            Thekey = res,
+                    ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
+                    CarId=self.Mainobj.CarIdTxt.toPlainText(),     
+                    Date="",
+                    Time="",
+                    PayType=self.Mainobj.PayTypeComb.currentText(), 
+                    nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
+                    Phone=self.Mainobj.PhoneTxt.toPlainText(),      
+                    )
+                
             CarOwnerInterfaceClassInstance=CarOwnerInterface(res)
             FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
 
         else:
-            print("nooooooo")
-        
+            FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)           
+            print( CarInfoModelInstance.Thekey)
+
+            CarOwnerInterfaceModelInstance=CarOwnerInterfaceModel(            
+            Thekey = CarInfoModelInstance.Thekey,
+                    ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
+                    CarId=self.Mainobj.CarIdTxt.toPlainText(),     
+                    Date="",
+                    Time="",
+                    PayType=self.Mainobj.PayTypeComb.currentText(), 
+                    nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
+                    Phone=self.Mainobj.PhoneTxt.toPlainText(),      
+                    )
+                
+            CarOwnerInterfaceClassInstance=CarOwnerInterface(res)
+            FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
 
     
 

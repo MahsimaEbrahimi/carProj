@@ -12,7 +12,7 @@ class CarinfoClass:
            return True
     
     def select_query(self,carInfoModel_instance):
-        stmt = select(CarinfoModel).where(
+        stmt = select(CarinfoModel.Thekey).where(
                 and_(
                     CarinfoModel.CarColor == carInfoModel_instance.CarColor.strip(),
                     CarinfoModel.ShasiCond == carInfoModel_instance.ShasiCond.strip(),
@@ -26,6 +26,6 @@ class CarinfoClass:
         print(stmt)
         if(stmt!=[]):
             print(stmt)
-            return False
-        else:
             return True
+        else:
+            return CarinfoModel.Thekey
