@@ -17,13 +17,23 @@ class FormMethod:
         self.Mainobj=Mainobj
 
     def SaveMethod(self):
+        res=connectionMaker.classConnection
+
         FormsMethodCarclass_Obj=FormsMethodCarclass()
         CarModelInstance=CarModel(ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
                                   CarId=self.Mainobj.CarIdTxt.toPlainText(),
                                   CarType=self.Mainobj.CarTypeComb.currentText(),
                                   model=self.Mainobj.TypeTxt.toPlainText()
                                   )
-        
+        CarClassObj=CarClass(res)
+        FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)        
+
+        ownerModelInstance=OwnerModelclass(
+            nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
+            phone=self.Mainobj.PhoneTxt.toPlainText())
+        OwnerClassObj=OwnerClass(res)       
+        FormsMethodCarclass_Obj.sendToClass(ownerModelInstance,OwnerClassObj)     
+
         CarInfoModelInstance=CarinfoModel(            
             CarColor=self.Mainobj.comboBox_2.currentText(),
             ShasiCond=self.Mainobj.ShasiCondTxt.toPlainText(),
@@ -34,34 +44,27 @@ class FormMethod:
                Useage=self.Mainobj.UseTxt.toPlainText() 
                )
         
-        ownerModelInstance=OwnerModelclass(
-            nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
-            phone=self.Mainobj.PhoneTxt.toPlainText())
-        
-        CarOwnerInterfaceModelInstance=CarOwnerInterfaceModel(            
-            Thekey = CarInfoModelInstance.Thekey,
-            ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
-            CarId=self.Mainobj.CarIdTxt.toPlainText(),     
-            Date="",
-            Time="",
-            PayType=self.Mainobj.PayTypeComb.currentText(), 
-            nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
-            Phone=self.Mainobj.PhoneTxt.toPlainText(),      
-            )
-        
-        res=connectionMaker.classConnection
-
-        CarClassObj=CarClass(res)
-        FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)
-
-        OwnerClassObj=OwnerClass(res)       
-        FormsMethodCarclass_Obj.sendToClass(ownerModelInstance,OwnerClassObj)
-
         CarinfoClassInstance=CarinfoClass(res)
-        FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
+        if(CarinfoClassInstance.select_query(CarInfoModelInstance)==True):
+            FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
+            CarOwnerInterfaceModelInstance=CarOwnerInterfaceModel(            
+                Thekey = CarInfoModelInstance.Thekey,
+                ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
+                CarId=self.Mainobj.CarIdTxt.toPlainText(),     
+                Date="",
+                Time="",
+                PayType=self.Mainobj.PayTypeComb.currentText(), 
+                nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
+                Phone=self.Mainobj.PhoneTxt.toPlainText(),      
+                )
+            
+            CarOwnerInterfaceClassInstance=CarOwnerInterface(res)
+            FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
+
+        else:
+            print("nooooooo")
         
-        CarOwnerInterfaceClassInstance=CarOwnerInterface(res)
-        FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
+
     
 
 
