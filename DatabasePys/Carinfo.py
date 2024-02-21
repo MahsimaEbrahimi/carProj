@@ -22,11 +22,8 @@ class CarinfoClass:
                     CarinfoModel.information == carInfoModel_instance.information.strip(),
                     CarinfoModel.Useage == carInfoModel_instance.Useage.strip()
                     ))
-        stmt=self.session.execute(stmt)
-        print("stmt:   ",stmt)
-        if(stmt!=[]):
-            carInfoModel_instance.Thekey=stmt
-            # print(stmt)
-            return True
+        stmt=self.session.execute(stmt).fetchall()
+        if len(stmt)  == 0:
+            return None
         else:
-            return CarinfoModel.Thekey
+            return stmt[0][0]
