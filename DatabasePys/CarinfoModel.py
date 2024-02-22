@@ -7,6 +7,7 @@ class CarinfoModel(Base):
         __tablename__='CarInf'      
         Thekey=Column(Integer,primary_key=True,nullable=False,autoincrement=True)
         CarColor=Column(String(50),nullable=False)
+        CarColor.description="رنگ ماشین"
         ShasiCond=Column(String,nullable=True)
         OptionCond=Column(String,nullable=True)
         MotorGirboxCond=Column(String,nullable=True)

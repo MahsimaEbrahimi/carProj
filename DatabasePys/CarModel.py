@@ -6,11 +6,15 @@ from Base import Base
 # Base=declarative_base()
 class CarModel(Base):
         __tablename__='CarTable'      
-        ShasiNum=Column(String(10),primary_key=True,nullable=False)        
+        ShasiNum=Column(String(10),primary_key=True,nullable=False)
+        ShasiNum.description="شماره شاسی"      
         CarId=Column(String(20),primary_key=True,nullable=False)
+        CarId.description="شماره پلاک"
         CarType=Column(String(50),nullable=False)
+        CarType.description="نوع خودرو"
         # CarColor=Column(String(50),nullable=False)
         model=Column(String(50),nullable=False)
+        model.description="مدل"
         # ShasiCond=Column(String,nullable=False)
         # OptionCond=Column(String,nullable=False)
         # MotorGirboxCond=Column(String,nullable=False)
