@@ -8,16 +8,16 @@ class CarOwnerInterfaceModel(Base):
         RownercarKey=Column(Integer,primary_key=True,nullable=False,autoincrement=True)
         Thekey=Column(Integer,ForeignKey('CarInf.Thekey'),nullable=False)
         CarId=Column(String(20),ForeignKey('CarTable.CarId'),nullable=False)
-        CarId.description="شماره پلاک"
+        CarId.description=""
         
         ShasiNum=Column(String(10),ForeignKey('CarTable.ShasiNum'),nullable=False)
-        ShasiNum.description="شماره شاسی" 
+        ShasiNum.description="" 
 
         nameLastname=Column(String(50),ForeignKey('OwnerTable.nameLastname'),nullable=False)
-        nameLastname.description="نام و نام خانوادگی"      
+        nameLastname.description=""      
 
         Phone=Column(String(20),ForeignKey('OwnerTable.phone'),nullable=False)
-        Phone.description="تلفن"      
+        Phone.description=""      
 
         Date=Column(String(50),nullable=False)
         Date.description="تاریخ"      
