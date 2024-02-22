@@ -16,10 +16,11 @@ class FormsMethodCarclass:
             culomnLst=TheModelInstance.__table__.columns._all_columns
             print(culomnLst)
             for i in culomnLst:
-                 if i.nullable==True:
+                 if i.nullable==False:
                       print(i.name)
-                      if __dict__[i.name].strip()=="":
+                      if TheModelInstance.__dict__[i.name].strip()=="":
                           messagebox.showinfo(title="Error",message="اشتباه در مقادیر")
+        return PrimaryKeyChkWrap
                            
 
             # culomnLst=inspectRet.mapper.column_attrs            
