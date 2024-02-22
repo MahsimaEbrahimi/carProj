@@ -16,7 +16,7 @@ class FormsMethodCarclass:
             culomnLst=TheModelInstance.__table__.columns._all_columns
             # print(culomnLst)
             for i in culomnLst:
-                 if (i.nullable==False and (i.autoincrement!='auto' or i.autoincrement!=True)) :
+                 if (i.nullable==False and i.autoincrement=='auto') :
                       print(i.name,"---------")
                       if TheModelInstance.__dict__[i.name].strip()=="":
                           messagebox.showinfo(title="Error",message="اشتباه در مقادیر")
