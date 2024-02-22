@@ -21,12 +21,13 @@ class FormsMethodCarclass:
                 
                  if (i.nullable==False and i.autoincrement=='auto') :
                     #   print(i.name,"---------")
-                      my_list.append(i)
+                    #   my_list.append(i)
                       if (str(TheModelInstance.__dict__[i.name]).strip()==""):
                         #   print(i.name,"---------")       
                         #   messagebox.showinfo(title="Error",message="اشتباه در مقادیر")
-                          Error_Message += str(i.description) +", "
-                          runstate=False
+                         if (i.description!=""):
+                            Error_Message += i.description +", "
+                         runstate=False
             
             # for i in my_list:
             if runstate:
