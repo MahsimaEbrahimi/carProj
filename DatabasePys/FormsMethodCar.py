@@ -14,9 +14,9 @@ class FormsMethodCarclass:
             my_list=[]
             # inspectRet=inspect(TheModelInstance.__table__.columns._all_columns)
             culomnLst=TheModelInstance.__table__.columns._all_columns
-            print(culomnLst)
+            # print(culomnLst)
             for i in culomnLst:
-                 if i.nullable==False:
+                 if i.nullable==False and i.autoincrement==False:
                       print(i.name)
                       if TheModelInstance.__dict__[i.name].strip()=="":
                           messagebox.showinfo(title="Error",message="اشتباه در مقادیر")
