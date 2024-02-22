@@ -11,10 +11,12 @@ from Carinfo import CarinfoClass
 from CarOwnerInterfaceModel import CarOwnerInterfaceModel
 from CarOwnerInterfaceClass import CarOwnerInterface
 from functools import wraps
+import messagebox
 
 class FormMethod:
     def __init__(self,Mainobj) -> None:
         self.Mainobj=Mainobj
+        self.error=''
 
     def SaveMethod(self):
         res=connectionMaker.classConnection
@@ -26,13 +28,13 @@ class FormMethod:
                                   model=self.Mainobj.TypeTxt.toPlainText()
                                   )
         CarClassObj=CarClass(res)
-        FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)        
+        self.error+=FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)        
 
         ownerModelInstance=OwnerModelclass(
             nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
             phone=self.Mainobj.PhoneTxt.toPlainText())
         OwnerClassObj=OwnerClass(res)       
-        FormsMethodCarclass_Obj.sendToClass(ownerModelInstance,OwnerClassObj)     
+        self.error+=FormsMethodCarclass_Obj.sendToClass(ownerModelInstance,OwnerClassObj)     
 
         CarInfoModelInstance=CarinfoModel(            
             CarColor=self.Mainobj.comboBox_2.currentText(),
@@ -47,7 +49,7 @@ class FormMethod:
         CarinfoClassInstance=CarinfoClass(res)
         result=CarinfoClassInstance.select_query(CarInfoModelInstance)
         if(result==None):
-            FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
+            self.error+=FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
             result=CarInfoModelInstance.Thekey
 
 
@@ -55,11 +57,19 @@ class FormMethod:
             Thekey=result,
             ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
             CarId=self.Mainobj.CarIdTxt.toPlainText(),     
-            Date="",
-            Time="",
+            Date="222",
+            Time="222",
             PayType=self.Mainobj.PayTypeComb.currentText(), 
             nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
             Phone=self.Mainobj.PhoneTxt.toPlainText(),      
             )
         CarOwnerInterfaceClassInstance=CarOwnerInterface(res)
-        FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
+        self.error+=FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
+       
+       
+        if self.error == "":
+            messagebox.showinfo(title="موفقیت", message="فیلد با موفقیت اضافه گردید")
+        if self.error != "":
+            messagebox.showerror(title="خطا در ورودی", message=self.error)
+            self.error=""
+        

@@ -14,12 +14,31 @@ class FormsMethodCarclass:
             my_list=[]
             # inspectRet=inspect(TheModelInstance.__table__.columns._all_columns)
             culomnLst=TheModelInstance.__table__.columns._all_columns
-            # print(culomnLst)
+            # print(culomnLst) 
+            runstate=True
+            Error_Message = ""
             for i in culomnLst:
+                
                  if (i.nullable==False and i.autoincrement=='auto') :
-                      print(i.name,"---------")
-                      if TheModelInstance.__dict__[i.name].strip()=="":
-                          messagebox.showinfo(title="Error",message="اشتباه در مقادیر")
+                    #   print(i.name,"---------")
+                      my_list.append(i)
+                      if (str(TheModelInstance.__dict__[i.name]).strip()==""):
+                        #   print(i.name,"---------")       
+                        #   messagebox.showinfo(title="Error",message="اشتباه در مقادیر")
+                          Error_Message += str(i) +", "
+                          runstate=False
+            
+            # for i in my_list:
+            if runstate:
+                 value=func(self,TheModelInstance,TheClassObj)
+                 return ""
+                #  print(value)
+            else:
+                    return Error_Message
+
+            #      messagebox.showerror(title="خطا در ورودی", message=Error_Message)
+ 
+            
         return PrimaryKeyChkWrap
                            
 
@@ -55,5 +74,6 @@ class FormsMethodCarclass:
     @PrimaryKeyChk
     def sendToClass(self, TheModelInstance,TheClassObj):
             TheClassObj.add(TheModelInstance)
+            # return "hiii"
 
     # def required_null(self,)
