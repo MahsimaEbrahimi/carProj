@@ -49,7 +49,7 @@ class FormMethod:
                         CarinfoClassInstance=CarinfoClass(res)
                         result=CarinfoClassInstance.select_query(CarInfoModelInstance)
                         if(result==None):
-                            self.error+=FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
+                            FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
                             result=CarInfoModelInstance.Thekey
 
 
@@ -64,7 +64,7 @@ class FormMethod:
                             Phone=self.Mainobj.PhoneTxt.toPlainText(),      
                             )
                         CarOwnerInterfaceClassInstance=CarOwnerInterface(res)
-                        self.error+=FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
+                        FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
                         messagebox.showinfo(title="موفقیت", message="تمام اظلاعات با موفقیت ثبت شد")
 
        

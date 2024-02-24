@@ -8,29 +8,28 @@ import messagebox
 
 class FormsMethodCarclass:
 
-    def PrimaryKeyChk(func):
+    def NullCheker(func):
         @wraps(func)
-        def PrimaryKeyChkWrap(self,TheModelInstance,TheClassObj):
+        def NullChekerWrap(self,TheModelInstance,TheClassObj):
             culomnLst=TheModelInstance.__table__.columns._all_columns
             # print(culomnLst) 
             runstate=True
-            Error_Message = ""
             for i in culomnLst:
-                
-                 if (i.nullable==False and i.autoincrement=='auto') :
-                      if (str(TheModelInstance.__dict__[i.name]).strip()==""):
-                         if (i.description!=""):
-                            Error_Message += i.description +", "
-                         runstate=False
-            
-            if runstate:
-                 func(self,TheModelInstance,TheClassObj)
-                 return True
-            else:
-                    return Error_Message 
-            
-        return PrimaryKeyChkWrap
+                if( i.autoincrement=='auto'):
+                        if(i.type.length<len(TheModelInstance.__dict__[i.name])):
+                            runstate=False
+                        if (i.nullable==False) :
+                                if (str(TheModelInstance.__dict__[i.name]).strip()==""):
+                                    runstate=False
 
-    @PrimaryKeyChk
+            if runstate:
+                    func(self,TheModelInstance,TheClassObj)
+                    return True
+            else:
+                    return False 
+        return NullChekerWrap
+    
+
+    @NullCheker
     def sendToClass(self, TheModelInstance,TheClassObj):
             TheClassObj.add(TheModelInstance)
