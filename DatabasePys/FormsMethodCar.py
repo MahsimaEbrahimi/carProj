@@ -1,7 +1,7 @@
 '''checks whether the primary keys are emoty or not'''
 
 from Car import CarClass
-from sqlalchemy import inspect, String
+from sqlalchemy import inspect, VARCHAR,INTEGER,Integer
 import CarModel
 from functools import wraps
 import messagebox
@@ -15,7 +15,8 @@ class FormsMethodCarclass:
             # print(culomnLst) 
             runstate=True
             for i in culomnLst:
-              if(i.type==String):
+                print(i.type)
+                if (i.type!=INTEGER()):
                     if( i.autoincrement=='auto'and i.type.length!=None):
                             if(i.type.length<len(TheModelInstance.__dict__[i.name])):
 
