@@ -49,29 +49,32 @@ class FormMethod:
                         CarinfoClassInstance=CarinfoClass(res)
                         result=CarinfoClassInstance.select_query(CarInfoModelInstance)
                         if(result==None):
-                            FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
+                            self.error=FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
                             result=CarInfoModelInstance.Thekey
+                            if self.error==True:
+                                CarOwnerInterfaceModelInstance=CarOwnerInterfaceModel(
+                                    Thekey=result,
+                                    ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
+                                    CarId=self.Mainobj.CarIdTxt.toPlainText(),     
+                                    Date="222",
+                                    Time="222",
+                                    PayType=self.Mainobj.PayTypeComb.currentText(), 
+                                    nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
+                                    Phone=self.Mainobj.PhoneTxt.toPlainText(),      
+                                    )
+                                CarOwnerInterfaceClassInstance=CarOwnerInterface(res)
+                                self.error=FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
+                                if self.error==True:
+                                    messagebox.showinfo(title="موفقیت", message="تمام اطلاعات با موفقیت ثبت شد")
+                                else:
+                                    messagebox.showerror(title="خطا در ورودی", message=self.error)
+                            else:
+                                    messagebox.showerror(title="خطا در ورودی", message=self.error)
 
-
-                        CarOwnerInterfaceModelInstance=CarOwnerInterfaceModel(
-                            Thekey=result,
-                            ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
-                            CarId=self.Mainobj.CarIdTxt.toPlainText(),     
-                            Date="222",
-                            Time="222",
-                            PayType=self.Mainobj.PayTypeComb.currentText(), 
-                            nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
-                            Phone=self.Mainobj.PhoneTxt.toPlainText(),      
-                            )
-                        CarOwnerInterfaceClassInstance=CarOwnerInterface(res)
-                        FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
-                        messagebox.showinfo(title="موفقیت", message="تمام اظلاعات با موفقیت ثبت شد")
-
-       
-                    else:  
-                       messagebox.showerror(title="خطا در ورودی", message="خطا در اطلاعات مالک ")
-        else:
-            messagebox.showerror(title="خطا در ورودی", message="خطا در اطلاعات ماشین ")
+                        else:  
+                            messagebox.showerror(title="خطا در ورودی", message=self.error)
+                    else:
+                      messagebox.showerror(title="خطا در ورودی", message=self.error)
               
         # if self.error == "":
         #     messagebox.showinfo(title="موفقیت", message="فیلد با موفقیت اضافه گردید")
