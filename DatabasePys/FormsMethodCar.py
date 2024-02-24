@@ -11,8 +11,6 @@ class FormsMethodCarclass:
     def PrimaryKeyChk(func):
         @wraps(func)
         def PrimaryKeyChkWrap(self,TheModelInstance,TheClassObj):
-            my_list=[]
-            # inspectRet=inspect(TheModelInstance.__table__.columns._all_columns)
             culomnLst=TheModelInstance.__table__.columns._all_columns
             # print(culomnLst) 
             runstate=True
@@ -20,61 +18,19 @@ class FormsMethodCarclass:
             for i in culomnLst:
                 
                  if (i.nullable==False and i.autoincrement=='auto') :
-                    #   print(i.name,"---------")
-                    #   my_list.append(i)
                       if (str(TheModelInstance.__dict__[i.name]).strip()==""):
-                        #   print(i.name,"---------")       
-                        #   messagebox.showinfo(title="Error",message="اشتباه در مقادیر")
                          if (i.description!=""):
                             Error_Message += i.description +", "
                          runstate=False
             
-            # for i in my_list:
             if runstate:
-                 value=func(self,TheModelInstance,TheClassObj)
-                 return ""
-                #  print(value)
+                 func(self,TheModelInstance,TheClassObj)
+                 return True
             else:
-                    return Error_Message
-
-            #      messagebox.showerror(title="خطا در ورودی", message=Error_Message)
- 
+                    return Error_Message 
             
         return PrimaryKeyChkWrap
-                           
 
-            # culomnLst=inspectRet.mapper.column_attrs            
-            # for i in keyList:
-            #     if (i.nullable!=True):
-            #         if inspectRet.dict[i.name].strip()!="":  
-            #             my_list.append(1)          
-
-            #             if(len(keyList)==len(my_list)):
-            #                 value=func(self, TheModelInstance,TheClassObj) 
-            #                 return value
-                     
-            #         else:
-            #           messagebox.showinfo(title="Error",message="اشتباه در مقادیر")
-            #           return
-            #     else:
-            #         value=func(self, TheModelInstance,TheClassObj) 
-            #         return value
-           
-            # for i in culomnLst:
-            #      if i.nullable==False:
-            #         TheModelInstance.__dict__[i.name]
-                    #   culomnLst.remove(i)
-            
-            # for j in culomnLst:
-                 
-
-            
-
-        # return PrimaryKeyChkWrap
-    
     @PrimaryKeyChk
     def sendToClass(self, TheModelInstance,TheClassObj):
             TheClassObj.add(TheModelInstance)
-            # return "hiii"
-
-    # def required_null(self,)
