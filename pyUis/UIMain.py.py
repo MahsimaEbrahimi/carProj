@@ -7,7 +7,10 @@ from connection_Maker import connectionMaker
 from SearchMethods import RecoveryMethodsClass
 
 
-class Ui_MainWindow(object):
+class Ui_MainWindow(object):      
+    component_Lst=[]
+    component_Lst2=[]
+
     
     def OpenWindow(self):
         self.Window=QtWidgets.QMainWindow()
@@ -15,6 +18,23 @@ class Ui_MainWindow(object):
         searchWindowObj2=RecoveryMethodsClass(self.ui)
         self.ui.setupUi(self.Window,searchWindowObj2)
         self.Window.show()
+    def cleaner(self):  
+        for i in Ui_MainWindow.component_Lst: 
+             if isinstance(i,QtWidgets.QComboBox):
+                 i.setCurrentIndex(0)
+                 continue
+ 
+             i.clear()
+             if i==self.ShasiCondTxt:
+                i.setText("شاسی های عقب و جلو سالم است")
+             if i==self.OptionTxt:
+                i.setText("تمام آپشن ها فعال میباشد")
+             if i==self.GirboxCondTxt:
+                i.setText("موتور و گیربکس پلمپ میباشد")
+             if i==self.CarColorCondTxt:
+                i.setText("اتوموبیل فاقد رنگ شدگی میباشد")  
+                            
+         
         
     def setupUi(self, MainWindow,FromsMethodInstance):
         MainWindow.setObjectName("MainWindow")
@@ -57,7 +77,7 @@ class Ui_MainWindow(object):
         self.SaveBtn.setFont(font)
         self.SaveBtn.setObjectName("SaveBtn")
         self.horizontalLayout.addWidget(self.SaveBtn)
-        self.AddBtn = QtWidgets.QPushButton(self.frame_3)
+        self.AddBtn = QtWidgets.QPushButton(self.frame_3,clicked=lambda:self.cleaner())
         font = QtGui.QFont()
         font.setPointSize(10)
         self.AddBtn.setFont(font)
@@ -131,15 +151,15 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem2)
-        self.PayTypeComb = QtWidgets.QComboBox(self.frame_7)
+        # self.PayTypeComb = QtWidgets.QComboBox(self.frame_7)
         font = QtGui.QFont()
         font.setPointSize(10)
-        self.PayTypeComb.setFont(font)
-        self.PayTypeComb.setObjectName("PayTypeComb")
-        self.PayTypeComb.addItem("")
-        self.PayTypeComb.addItem("")
-        self.PayTypeComb.addItem("")
-        self.horizontalLayout_3.addWidget(self.PayTypeComb)
+        # self.PayTypeComb.setFont(font)
+        # self.PayTypeComb.setObjectName("PayTypeComb")
+        # self.PayTypeComb.addItem("")
+        # self.PayTypeComb.addItem("")
+        # self.PayTypeComb.addItem("")
+        # self.horizontalLayout_3.addWidget(self.PayTypeComb)
         self.label_8 = QtWidgets.QLabel(self.frame_7)
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -349,7 +369,7 @@ class Ui_MainWindow(object):
         self.OptionTxt.setFont(font)
         self.OptionTxt.setObjectName("OptionTxt")
         self.gridLayout_2.addWidget(self.OptionTxt, 2, 1, 1, 1)
-        self.RemoveCarColorCondBtn = QtWidgets.QPushButton(self.frame_6)
+        self.RemoveCarColorCondBtn = QtWidgets.QPushButton(self.frame_6,lambda:self.CarColorCondTxt.clear())
         font = QtGui.QFont()
         font.setPointSize(10)
         self.RemoveCarColorCondBtn.setFont(font)
@@ -485,6 +505,21 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+
+        Ui_MainWindow.component_Lst.append(self.ShasiTxt)
+        Ui_MainWindow.component_Lst.append(self.TypeTxt)
+        Ui_MainWindow.component_Lst.append(self.CarIdTxt)
+        Ui_MainWindow.component_Lst.append(self.CarOwnerTxt)
+        Ui_MainWindow.component_Lst.append(self.PhoneTxt)
+        Ui_MainWindow.component_Lst.append(self.InfTxt)
+        Ui_MainWindow.component_Lst.append(self.UseTxt)
+        Ui_MainWindow.component_Lst.append(self.CarColorCondTxt)
+        Ui_MainWindow.component_Lst.append(self.OptionTxt)
+        Ui_MainWindow.component_Lst.append(self.GirboxCondTxt)
+        Ui_MainWindow.component_Lst.append(self.ShasiCondTxt)
+        Ui_MainWindow.component_Lst.append(self.CarTypeComb)
+        Ui_MainWindow.component_Lst.append(self.comboBox_2)
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -500,10 +535,10 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.label.setText(_translate("MainWindow", "شماره شاسی: "))
-        self.PayTypeComb.setItemText(0, _translate("MainWindow", "option1"))
-        self.PayTypeComb.setItemText(1, _translate("MainWindow", "option2"))
-        self.PayTypeComb.setItemText(2, _translate("MainWindow", "option3"))
-        self.label_8.setText(_translate("MainWindow", "نوع پرداخت:"))
+        # self.PayTypeComb.setItemText(0, _translate("MainWindow", "option1"))
+        # self.PayTypeComb.setItemText(1, _translate("MainWindow", "option2"))
+        # self.PayTypeComb.setItemText(2, _translate("MainWindow", "option3"))
+        # self.label_8.setText(_translate("MainWindow", "نوع پرداخت:"))
         self.AddCarTypeBtn.setText(_translate("MainWindow", "+"))
         self.CarTypeComb.setItemText(0, _translate("MainWindow", "option1"))
         self.CarTypeComb.setItemText(1, _translate("MainWindow", "option2"))

@@ -23,6 +23,4 @@ class CarOwnerInterfaceModel(Base):
         Date.description="تاریخ"      
         Time=Column(Unicode(50),nullable=False)
         Time.description="ساعت"      
-
-        PayType=Column(Unicode(50),nullable=False)
-        PayType.description="نوع پرداخت"      
+    
