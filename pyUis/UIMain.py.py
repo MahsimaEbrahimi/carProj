@@ -7,7 +7,10 @@ from connection_Maker import connectionMaker
 from SearchMethods import RecoveryMethodsClass
 
 
-class Ui_MainWindow(object):
+class Ui_MainWindow(object):      
+    component_Lst=[]
+    component_Lst2=[]
+
     
     def OpenWindow(self):
         self.Window=QtWidgets.QMainWindow()
@@ -15,6 +18,23 @@ class Ui_MainWindow(object):
         searchWindowObj2=RecoveryMethodsClass(self.ui)
         self.ui.setupUi(self.Window,searchWindowObj2)
         self.Window.show()
+    def cleaner(self):  
+        for i in Ui_MainWindow.component_Lst: 
+             if isinstance(i,QtWidgets.QComboBox):
+                 i.setCurrentIndex(0)
+                 continue
+ 
+             i.clear()
+             if i==self.ShasiCondTxt:
+                i.setText("شاسی های عقب و جلو سالم است")
+             if i==self.OptionTxt:
+                i.setText("تمام آپشن ها فعال میباشد")
+             if i==self.GirboxCondTxt:
+                i.setText("موتور و گیربکس پلمپ میباشد")
+             if i==self.CarColorCondTxt:
+                i.setText("اتوموبیل فاقد رنگ شدگی میباشد")  
+                            
+         
         
     def setupUi(self, MainWindow,FromsMethodInstance):
         MainWindow.setObjectName("MainWindow")
@@ -57,7 +77,7 @@ class Ui_MainWindow(object):
         self.SaveBtn.setFont(font)
         self.SaveBtn.setObjectName("SaveBtn")
         self.horizontalLayout.addWidget(self.SaveBtn)
-        self.AddBtn = QtWidgets.QPushButton(self.frame_3)
+        self.AddBtn = QtWidgets.QPushButton(self.frame_3,clicked=lambda:self.cleaner())
         font = QtGui.QFont()
         font.setPointSize(10)
         self.AddBtn.setFont(font)
@@ -348,7 +368,7 @@ class Ui_MainWindow(object):
         self.OptionTxt.setFont(font)
         self.OptionTxt.setObjectName("OptionTxt")
         self.gridLayout_2.addWidget(self.OptionTxt, 2, 1, 1, 1)
-        self.RemoveCarColorCondBtn = QtWidgets.QPushButton(self.frame_6)
+        self.RemoveCarColorCondBtn = QtWidgets.QPushButton(self.frame_6,lambda:self.CarColorCondTxt.clear())
         font = QtGui.QFont()
         font.setPointSize(10)
         self.RemoveCarColorCondBtn.setFont(font)
@@ -483,6 +503,21 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+
+        Ui_MainWindow.component_Lst.append(self.ShasiTxt)
+        Ui_MainWindow.component_Lst.append(self.TypeTxt)
+        Ui_MainWindow.component_Lst.append(self.CarIdTxt)
+        Ui_MainWindow.component_Lst.append(self.CarOwnerTxt)
+        Ui_MainWindow.component_Lst.append(self.PhoneTxt)
+        Ui_MainWindow.component_Lst.append(self.InfTxt)
+        Ui_MainWindow.component_Lst.append(self.UseTxt)
+        Ui_MainWindow.component_Lst.append(self.CarColorCondTxt)
+        Ui_MainWindow.component_Lst.append(self.OptionTxt)
+        Ui_MainWindow.component_Lst.append(self.GirboxCondTxt)
+        Ui_MainWindow.component_Lst.append(self.ShasiCondTxt)
+        Ui_MainWindow.component_Lst.append(self.CarTypeComb)
+        Ui_MainWindow.component_Lst.append(self.comboBox_2)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
