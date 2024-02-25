@@ -47,6 +47,7 @@ class Ui_MainWindow(object):
         
     def setupUi(self, MainWindow,FromsMethodInstance):
         scheduler_thread=threading.Thread(target=self.scheduler)
+        scheduler_thread.daemon=True
 
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(704, 802)
