@@ -9,8 +9,21 @@ import time
 import threading
 
 
-class Ui_MainWindow(object):      
+class Ui_MainWindow(QtWidgets.QWidget):
+    def closeEvent(self, event):
+        print("closing w1")
     component_Lst=[]
+    
+    def DateSetter(self):
+         TheDate = JalaliDateTime.now().strftime("%Y/%m/%d") 
+         self.DateTxt.setText(TheDate)
+    def scheduler(self):
+        while not self.exit_event.is_set():
+            self.DateSetter()
+            time.sleep(60)
+
+    scheduler_thread=threading.Thread(target=scheduler)
+    exit_event = threading.Event()
     
     def OpenWindow(self):
         self.Window=QtWidgets.QMainWindow()
@@ -34,20 +47,8 @@ class Ui_MainWindow(object):
              if i==self.CarColorCondTxt:
                 i.setText("اتوموبیل فاقد رنگ شدگی میباشد")  
 
-
-    def DateSetter(self):
-         TheDate = JalaliDateTime.now().strftime("%Y/%m/%d") 
-         self.DateTxt.setText(TheDate)
-    def scheduler(self):
-        while True:
-            self.DateSetter()
-            time.sleep(1)
-                            
-         
         
     def setupUi(self, MainWindow,FromsMethodInstance):
-        scheduler_thread=threading.Thread(target=self.scheduler)
-        scheduler_thread.daemon=True
 
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(704, 802)
@@ -633,7 +634,7 @@ if __name__ == "__main__":
     frmMethod=FormMethod(ui)    
 
     ui.setupUi(MainWindow,frmMethod)     
-    ui.DateSetter()
+#     ui.DateSetter()
     connectionMaker.Stable_connection()
   
     MainWindow.show()   
