@@ -1,4 +1,4 @@
-from sqlalchemy import ForeignKey,String,Integer,Column
+from sqlalchemy import ForeignKey,Column, Unicode
 from sqlalchemy.ext.declarative import declarative_base
 from Base import Base
 
@@ -6,19 +6,19 @@ from Base import Base
 # Base=declarative_base()
 class CarModel(Base):
         __tablename__='CarTable'      
-        ShasiNum=Column(String(10),primary_key=True,nullable=False)
+        ShasiNum=Column(Unicode(10),primary_key=True,nullable=False)
         ShasiNum.description="شماره شاسی"      
-        CarId=Column(String(20),primary_key=True,nullable=False)
+        CarId=Column(Unicode(20),primary_key=True,nullable=False)
         CarId.description="شماره پلاک"
-        CarType=Column(String(50),nullable=False)
+        CarType=Column(Unicode(50),nullable=False)
         CarType.description="نوع خودرو"
-        # CarColor=Column(String(50),nullable=False)
-        model=Column(String(50),nullable=False)
+        # CarColor=Column(Unicode(50),nullable=False)
+        model=Column(Unicode(50),nullable=False)
         model.description="مدل"
-        # ShasiCond=Column(String,nullable=False)
-        # OptionCond=Column(String,nullable=False)
-        # MotorGirboxCond=Column(String,nullable=False)
-        # ColorCond=Column(String,nullable=False)
-        # information=Column(String,nullable=False)
-        # Useage=Column(String(50),nullable=False)
+        # ShasiCond=Column(Unicode,nullable=False)
+        # OptionCond=Column(Unicode,nullable=False)
+        # MotorGirboxCond=Column(Unicode,nullable=False)
+        # ColorCond=Column(Unicode,nullable=False)
+        # information=Column(Unicode,nullable=False)
+        # Useage=Column(Unicode(50),nullable=False)
 

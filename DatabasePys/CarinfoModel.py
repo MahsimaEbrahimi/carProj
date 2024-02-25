@@ -1,4 +1,4 @@
-from sqlalchemy import ForeignKey,String,Integer,Column
+from sqlalchemy import ForeignKey,Unicode,Integer,Column
 from sqlalchemy.ext.declarative import declarative_base
 from Base import Base
 
@@ -6,12 +6,12 @@ from Base import Base
 class CarinfoModel(Base):
         __tablename__='CarInf'      
         Thekey=Column(Integer,primary_key=True,nullable=False,autoincrement=True)
-        CarColor=Column(String(50),nullable=False)
+        CarColor=Column(Unicode(50),nullable=False)
         CarColor.description="رنگ ماشین"
-        ShasiCond=Column(String,nullable=True)
-        OptionCond=Column(String,nullable=True)
-        MotorGirboxCond=Column(String,nullable=True)
-        ColorCond=Column(String,nullable=True)
-        information=Column(String,nullable=True)
-        Useage=Column(String(50),nullable=True)
+        ShasiCond=Column(Unicode,nullable=True)
+        OptionCond=Column(Unicode,nullable=True)
+        MotorGirboxCond=Column(Unicode,nullable=True)
+        ColorCond=Column(Unicode,nullable=True)
+        information=Column(Unicode,nullable=True)
+        Useage=Column(Unicode(50),nullable=True)
 
