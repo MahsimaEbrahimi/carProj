@@ -47,8 +47,7 @@ class Ui_MainWindow(object):
         
     def setupUi(self, MainWindow,FromsMethodInstance):
         scheduler_thread=threading.Thread(target=self.scheduler)
-        scheduler_thread.start()
-        
+
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(704, 802)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -531,6 +530,8 @@ class Ui_MainWindow(object):
         Ui_MainWindow.component_Lst.append(self.ShasiCondTxt)
         Ui_MainWindow.component_Lst.append(self.CarTypeComb)
         Ui_MainWindow.component_Lst.append(self.comboBox_2)
+        scheduler_thread.start()
+       
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
