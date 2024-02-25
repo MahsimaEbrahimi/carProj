@@ -78,9 +78,3 @@ class FormMethod:
         else:
             messagebox.showerror(title="خطا در ورودی", message=self.error)
               
-        # if self.error == "":
-        #     messagebox.showinfo(title="موفقیت", message="فیلد با موفقیت اضافه گردید")
-        # if self.error != "":
-        #     messagebox.showerror(title="خطا در ورودی", message=self.error)
-        #     self.error=""
-        
