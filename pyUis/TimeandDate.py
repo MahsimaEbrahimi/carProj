@@ -3,13 +3,15 @@ from datetime import date
 from datetime import datetime
 import pytz
 
-class dateSet:
-  def __init__(self,QtwidgetDate,QtwidgetTime) -> None:
-    self.QtwidgetDate=QtwidgetDate
-    self.QtwidgetTime=QtwidgetTime
+# class dateSet:
+#   def __init__(self,QtwidgetDate,QtwidgetTime) -> None:
+#     self.QtwidgetDate=QtwidgetDate
+#     self.QtwidgetTime=QtwidgetTime
 
   # def DateSetter(self):
-  #       TheDate=JalaliDateTime.now().strftime("yyyy/mm/dd")
+formatted_date = JalaliDateTime.now().strftime("%Y/%m/%d")  # Example output: 1403-06-26 15:31:59
+print(formatted_date)
+
   #       year=JalaliDateTime.now().year
   #       month=JalaliDateTime.now().month
   #       day=JalaliDateTime.now().day

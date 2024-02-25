@@ -2,15 +2,15 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from RecoveryUI import Ui_RecoveryWindow
 from FormsMethod import FormMethod
-from TimeandDate import dateSet
 from connection_Maker import connectionMaker
 from SearchMethods import RecoveryMethodsClass
+from persiantools.jdatetime import JalaliDateTime
+import time
+import threading
 
 
 class Ui_MainWindow(object):      
     component_Lst=[]
-    component_Lst2=[]
-
     
     def OpenWindow(self):
         self.Window=QtWidgets.QMainWindow()
@@ -33,10 +33,22 @@ class Ui_MainWindow(object):
                 i.setText("موتور و گیربکس پلمپ میباشد")
              if i==self.CarColorCondTxt:
                 i.setText("اتوموبیل فاقد رنگ شدگی میباشد")  
+
+
+    def DateSetter(self):
+         TheDate = JalaliDateTime.now().strftime("%Y/%m/%d") 
+         self.DateTxt.setText(TheDate)
+    def scheduler(self):
+        while True:
+            self.DateSetter()
+            time.sleep(1)
                             
          
         
     def setupUi(self, MainWindow,FromsMethodInstance):
+        scheduler_thread=threading.Thread(target=self.scheduler)
+        scheduler_thread.start()
+        
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(704, 802)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -110,7 +122,7 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.DateTxt.setFont(font)
         self.DateTxt.setObjectName("DateTxt")
-        self.DateTxt.setText('1402/12/1')
+        # self.DateTxt.setText('')
         self.horizontalLayout_2.addWidget(self.DateTxt)
         self.label_7 = QtWidgets.QLabel(self.frame_2)
         font = QtGui.QFont()
@@ -626,9 +638,7 @@ if __name__ == "__main__":
     frmMethod=FormMethod(ui)    
 
     ui.setupUi(MainWindow,frmMethod)     
-#     dateSetObj=dateSet(ui.DateTxt,ui.TimeTxt)
-#     dateSetObj.DateSetter()
-#     dateSetObj.timesetter()
+    ui.DateSetter()
     connectionMaker.Stable_connection()
   
     MainWindow.show()   
