@@ -58,7 +58,6 @@ class FormMethod:
                                     CarId=self.Mainobj.CarIdTxt.toPlainText(),     
                                     Date="222",
                                     Time="222",
-                                    PayType=self.Mainobj.PayTypeComb.currentText(), 
                                     nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
                                     Phone=self.Mainobj.PhoneTxt.toPlainText(),      
                                     )
