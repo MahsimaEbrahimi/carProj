@@ -8,10 +8,17 @@ from persiantools.jdatetime import JalaliDateTime
 import time
 import threading
 
+class MainWindow(QtWidgets.QMainWindow):
+    def closeEvent(self,event):
+        self.exit_event.set()
 
-class Ui_MainWindow(QtWidgets.QWidget):
-    def closeEvent(self, event):
-        print("closing w1")
+    def SaveExitEvent(self, exit_event):
+        self.exit_event = exit_event
+
+class Ui_MainWindow(object):
+    def __init__(self) -> None:
+        self.exit_event = threading.Event()
+
     component_Lst=[]
     
     def DateSetter(self):
@@ -22,15 +29,13 @@ class Ui_MainWindow(QtWidgets.QWidget):
             self.DateSetter()
             time.sleep(60)
 
-    scheduler_thread=threading.Thread(target=scheduler)
-    exit_event = threading.Event()
-    
     def OpenWindow(self):
         self.Window=QtWidgets.QMainWindow()
         self.ui= Ui_RecoveryWindow()
         searchWindowObj2=RecoveryMethodsClass(self.ui)
         self.ui.setupUi(self.Window,searchWindowObj2)
         self.Window.show()
+        
     def cleaner(self):  
         for i in Ui_MainWindow.component_Lst: 
              if isinstance(i,QtWidgets.QComboBox):
@@ -49,6 +54,8 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
         
     def setupUi(self, MainWindow,FromsMethodInstance):
+        scheduler_thread=threading.Thread(target=self.scheduler)
+        mainWindow.SaveExitEvent(self.exit_event)
 
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(704, 802)
@@ -628,14 +635,15 @@ if __name__ == "__main__":
     import sys
 
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
+#     mainWindow = QtWidgets.QMainWindow()
+    mainWindow = MainWindow()
     ui = Ui_MainWindow()    
 
     frmMethod=FormMethod(ui)    
 
-    ui.setupUi(MainWindow,frmMethod)     
+    ui.setupUi(mainWindow,frmMethod)     
 #     ui.DateSetter()
     connectionMaker.Stable_connection()
   
-    MainWindow.show()   
+    mainWindow.show()   
     sys.exit(app.exec_())
