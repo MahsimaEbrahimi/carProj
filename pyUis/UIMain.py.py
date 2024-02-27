@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
         # برای وقتیه که میخوای ببینی ریکوئست بسته شدن زدن برای این ترد یا نه
         while not self.exit_event.is_set():
             self.DateSetter()
-            time.sleep(1)
+            time.sleep(60)
 
     def OpenWindow(self):
         self.Window=QtWidgets.QMainWindow()

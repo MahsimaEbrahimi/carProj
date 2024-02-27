@@ -1,5 +1,6 @@
 from CarOwnerInterfaceModel import CarOwnerInterfaceModel
 from sqlalchemy import and_, or_
+import messagebox
 class CarOwnerInterface:
     def __init__(self,session) -> None:
         self.session=session
@@ -10,4 +11,7 @@ class CarOwnerInterface:
     
     def search(self,sth):
         query=self.session.query(CarOwnerInterfaceModel).filter(and_(*sth)).all()
-        print(query)
+        if (query!=[]):
+            print(query)
+        else:
+            messagebox.showerror(title="خطا", message="اطلاعات مورد نظر شما وجود ندارد")

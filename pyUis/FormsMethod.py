@@ -56,7 +56,7 @@ class FormMethod:
                                     Thekey=result,
                                     ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
                                     CarId=self.Mainobj.CarIdTxt.toPlainText(),     
-                                    Date=(),
+                                    Date=self.Mainobj.scheduler(),
                                     nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
                                     Phone=self.Mainobj.PhoneTxt.toPlainText(),      
                                     )

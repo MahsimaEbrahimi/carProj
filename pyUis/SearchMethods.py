@@ -17,22 +17,10 @@ class RecoveryMethodsClass:
                                                           carId=self.recoveryObj.CarIdTxt.toPlainText(),
                                                           carOwner=self.recoveryObj.CarOwnerTxt.toPlainText(),
                                                           phone=self.recoveryObj.PhoneTxt.toPlainText())
-     #     print(ChkNullDescriptorINSTANCE.__dict__)
-         
-     #     lst=dict()
-     #     lst['ShasiTxt']=lambda:(CarOwnerInterfaceModel.ShasiNum==self.recoveryObj.ShasiTxt.toPlainText())
-     #     lst['CarIdTxt']=lambda:(CarOwnerInterfaceModel.CarId==self.recoveryObj.CarIdTxt.toPlainText())
-     #     lst['CarOwnerTxt']=lambda:(CarOwnerInterfaceModel.carOwner==self.recoveryObj.CarOwnerTxt.toPlainText())
-     #     lst['PhoneTxt']=lambda:(CarOwnerInterfaceModel.phone==self.recoveryObj.PhoneTxt.toPlainText())
-
-     #     print(lst)
          condition=[]
          for i in ChkNullDescriptorINSTANCE.__dict__.keys():
               if i=="phone":
-                   condition.append(CarOwnerInterfaceModel.phone==self.recoveryObj.PhoneTxt.toPlainText())
-               #     Owner_instance=OwnerClass(connectionMaker.classConnection)
-               #     Owner_instance.search(ChkNullDescriptorINSTANCE.__dict__["phone"])
-               #     print(ChkNullDescriptorINSTANCE.__dict__["phone"])
+                   condition.append(CarOwnerInterfaceModel.Phone==self.recoveryObj.PhoneTxt.toPlainText())
               if i=="carOwner":
                    condition.append(CarOwnerInterfaceModel.nameLastname==self.recoveryObj.CarOwnerTxt.toPlainText())
               if i=="carId":
