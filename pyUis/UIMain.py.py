@@ -9,7 +9,9 @@ import time
 import threading
 
 class MainWindow(QtWidgets.QMainWindow):
-    def closeEvent(self,event):
+    #متد colse event اوررایت شده است      
+    def closeEvent(self,func):
+        # اگر ست کنیم ترد بسته میشود پس ما در این تابع ست میکنیم
         self.exit_event.set()
 
     def SaveExitEvent(self, exit_event):
@@ -26,9 +28,11 @@ class Ui_MainWindow(object):
          TheDate=str(TheDate)
          self.DateTxt.setText(TheDate)
     def scheduler(self):
+        # متد isset:
+        # برای وقتیه که میخوای ببینی ریکوئست بسته شدن زدن برای این ترد یا نه
         while not self.exit_event.is_set():
             self.DateSetter()
-            time.sleep(60)
+            time.sleep(1)
 
     def OpenWindow(self):
         self.Window=QtWidgets.QMainWindow()
@@ -56,6 +60,7 @@ class Ui_MainWindow(object):
         
     def setupUi(self, MainWindow,FromsMethodInstance):
         scheduler_thread=threading.Thread(target=self.scheduler)
+        # to send exit_event to mainwindow
         mainWindow.SaveExitEvent(self.exit_event)
 
         MainWindow.setObjectName("MainWindow")

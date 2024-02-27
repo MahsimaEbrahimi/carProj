@@ -56,7 +56,7 @@ class FormMethod:
                                     Thekey=result,
                                     ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
                                     CarId=self.Mainobj.CarIdTxt.toPlainText(),     
-                                    Date='777',
+                                    Date=(),
                                     nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
                                     Phone=self.Mainobj.PhoneTxt.toPlainText(),      
                                     )
@@ -70,7 +70,7 @@ class FormMethod:
                                     messagebox.showerror(title="خطا در ورودی", message=self.error)
 
                         else:  
-                            messagebox.showerror(title="خطا در ورودی", message=self.error)
+                            messagebox.showerror(title="خطا در ورودی", message="اطلاعات مورد نظر شما قبلا ذخیره شده است")
                     else:
                       messagebox.showerror(title="خطا در ورودی", message=self.error)
         else:
