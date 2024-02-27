@@ -22,7 +22,8 @@ class Ui_MainWindow(object):
     component_Lst=[]
     
     def DateSetter(self):
-         TheDate = JalaliDateTime.now().strftime("%Y/%m/%d") 
+         TheDate = JalaliDateTime.now().strftime("%Y/%m/%d")
+         TheDate=str(TheDate)
          self.DateTxt.setText(TheDate)
     def scheduler(self):
         while not self.exit_event.is_set():
