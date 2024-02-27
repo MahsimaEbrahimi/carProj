@@ -21,6 +21,5 @@ class CarOwnerInterfaceModel(Base):
 
         Date=Column(Unicode(50),nullable=False)
         Date.description="تاریخ"      
-        Time=Column(Unicode(50),nullable=False)
-        Time.description="ساعت"      
+
     

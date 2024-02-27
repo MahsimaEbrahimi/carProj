@@ -57,7 +57,6 @@ class FormMethod:
                                     ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
                                     CarId=self.Mainobj.CarIdTxt.toPlainText(),     
                                     Date="222",
-                                    Time="222",
                                     nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
                                     Phone=self.Mainobj.PhoneTxt.toPlainText(),      
                                     )
