@@ -51,26 +51,23 @@ class FormMethod:
                         if(result==None):
                             self.error=FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
                             result=CarInfoModelInstance.Thekey
+                        if self.error==True:
+                            CarOwnerInterfaceModelInstance=CarOwnerInterfaceModel(
+                                Thekey=result,
+                                ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
+                                CarId=self.Mainobj.CarIdTxt.toPlainText(),     
+                                Date=self.Mainobj.DateTxt.text(),
+                                nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
+                                Phone=self.Mainobj.PhoneTxt.toPlainText(),      
+                                )
+                            CarOwnerInterfaceClassInstance=CarOwnerInterface(res)
+                            self.error=FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
                             if self.error==True:
-                                CarOwnerInterfaceModelInstance=CarOwnerInterfaceModel(
-                                    Thekey=result,
-                                    ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
-                                    CarId=self.Mainobj.CarIdTxt.toPlainText(),     
-                                    Date=self.Mainobj.DateTxt.text(),
-                                    nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
-                                    Phone=self.Mainobj.PhoneTxt.toPlainText(),      
-                                    )
-                                CarOwnerInterfaceClassInstance=CarOwnerInterface(res)
-                                self.error=FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
-                                if self.error==True:
-                                    messagebox.showinfo(title="موفقیت", message="تمام اطلاعات با موفقیت ثبت شد")
-                                else:
-                                    messagebox.showerror(title="خطا در ورودی", message=self.error)
+                                messagebox.showinfo(title="موفقیت", message="تمام اطلاعات با موفقیت ثبت شد")
                             else:
-                                    messagebox.showerror(title="خطا در ورودی", message=self.error)
-
-                        else:  
-                            messagebox.showerror(title="خطا در ورودی", message="اطلاعات مورد نظر شما قبلا ذخیره شده است")
+                                messagebox.showerror(title="خطا در ورودی", message=self.error)
+                        else:
+                            messagebox.showerror(title="خطا در ورودی", message=self.error)
                     else:
                       messagebox.showerror(title="خطا در ورودی", message=self.error)
         else:
