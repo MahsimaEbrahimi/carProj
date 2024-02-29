@@ -14,4 +14,4 @@ class CarOwnerInterface:
         if (query!=[]):
             return query
         else:
-            messagebox.showerror(title="خطا", message="اطلاعات مورد نظر شما وجود ندارد")
+            return False

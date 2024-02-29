@@ -1,17 +1,21 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from SearchMethods import RecoveryMethodsClass
 from searchWindowUi import Ui_resiltTable 
+import messagebox
 
 class Ui_RecoveryWindow(object):
     
     def OpenResWindow(self,searchMethodsClassINSTANCE):
          res=searchMethodsClassINSTANCE.SearchResult()
+         if res==False:
+                messagebox.showerror(title="خطا",message="اطلاعاتی برای ماشین مورد نظر شما وجود ندارد")
+         else:
         #  searchMethodsClassINSTANCE=RecoveryMethodsClass(ui)
-         self.Window=QtWidgets.QMainWindow()
-         self.Resultwindow=Ui_resiltTable()
-         self.Resultwindow.setupUi(self.Window)
-         self.Resultwindow.showInfo(self.Resultwindow,res)
-         self.Window.show()
+                self.Window=QtWidgets.QMainWindow()
+                self.Resultwindow=Ui_resiltTable()
+                self.Resultwindow.setupUi(self.Window)
+                self.Resultwindow.showInfo(res)
+                self.Window.show()
        
 
     def setupUi(self, RecoveryWindow,searchMethodsClassINSTANCE):
