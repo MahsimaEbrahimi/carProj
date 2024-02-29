@@ -12,6 +12,6 @@ class CarOwnerInterface:
     def search(self,sth):
         query=self.session.query(CarOwnerInterfaceModel).filter(and_(*sth)).all()
         if (query!=[]):
-            print(query)
+            return query
         else:
             messagebox.showerror(title="خطا", message="اطلاعات مورد نظر شما وجود ندارد")

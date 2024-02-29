@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
         # برای وقتیه که میخوای ببینی ریکوئست بسته شدن زدن برای این ترد یا نه
         while not self.exit_event.is_set():
             self.DateSetter()
-            time.sleep(60)
+            time.sleep(1)
 
     def OpenWindow(self):
         self.Window=QtWidgets.QMainWindow()
@@ -91,12 +91,14 @@ class Ui_MainWindow(object):
         self.PrintBtn.setFont(font)
         self.PrintBtn.setObjectName("PrintBtn")
         self.horizontalLayout.addWidget(self.PrintBtn)
+        
         self.RecoveryBtn = QtWidgets.QPushButton(self.frame_3,clicked=lambda:self.OpenWindow())
         font = QtGui.QFont()
         font.setPointSize(10)
         self.RecoveryBtn.setFont(font)
         self.RecoveryBtn.setObjectName("RecoveryBtn")
         self.horizontalLayout.addWidget(self.RecoveryBtn)
+
         self.SaveBtn = QtWidgets.QPushButton(self.frame_3,clicked=lambda:FromsMethodInstance.SaveMethod())
         font = QtGui.QFont()
         font.setPointSize(10)

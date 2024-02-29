@@ -1,9 +1,19 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from SearchMethods import RecoveryMethodsClass
+from searchWindowUi import Ui_resiltTable 
 
 class Ui_RecoveryWindow(object):
+    
+    def OpenResWindow(self):
+         self.Window=QtWidgets.QMainWindow()
+         self.ResultEindow=Ui_resiltTable()
+         self.ResultEindow.setupUi(self.Window)
+         self.Window.show()
 
-    def setupUi(self, RecoveryWindow,searchMethodsClassINSTANCE):
+
+       
+
+    def setupUi(self, RecoveryWindow):
         RecoveryWindow.setObjectName("RecoveryWindow")
         RecoveryWindow.resize(709, 345)
         font = QtGui.QFont()
@@ -114,7 +124,8 @@ class Ui_RecoveryWindow(object):
         self.PhoneTxt.setFont(font)
         self.PhoneTxt.setObjectName("PhoneTxt")
         self.gridLayout.addWidget(self.PhoneTxt, 3, 0, 1, 1)
-        self.SearchBtn = QtWidgets.QPushButton(self.RecoveryFrame,clicked=lambda:searchMethodsClassINSTANCE.senTonull())
+        self.SearchBtn = QtWidgets.QPushButton(self.RecoveryFrame,clicked=lambda:self.OpenResWindow())
+
         self.SearchBtn.setMinimumSize(QtCore.QSize(0, 50))
         self.SearchBtn.setMaximumSize(QtCore.QSize(16777215, 50))
         self.SearchBtn.setSizeIncrement(QtCore.QSize(0, 0))
@@ -170,8 +181,8 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     RecoveryWindow = QtWidgets.QMainWindow()
     ui = Ui_RecoveryWindow()
-    searchMethodsClassINSTANCE=RecoveryMethodsClass(ui)
-    ui.setupUi(RecoveryWindow,searchMethodsClassINSTANCE)    
+#     searchMethodsClassINSTANCE=RecoveryMethodsClass(ui)
+    ui.setupUi(RecoveryWindow)    
 
     RecoveryWindow.show()
     sys.exit(app.exec_())
