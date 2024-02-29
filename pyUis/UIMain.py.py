@@ -37,8 +37,8 @@ class Ui_MainWindow(object):
     def OpenWindow(self):
         self.Window=QtWidgets.QMainWindow()
         self.ui= Ui_RecoveryWindow()
-        searchWindowObj2=RecoveryMethodsClass(self.ui)
-        self.ui.setupUi(self.Window,searchWindowObj2)
+        # searchWindowObj2=RecoveryMethodsClass(self.ui)
+        self.ui.setupUi(self.Window)
         self.Window.show()
         
     def cleaner(self):  
@@ -91,7 +91,7 @@ class Ui_MainWindow(object):
         self.PrintBtn.setFont(font)
         self.PrintBtn.setObjectName("PrintBtn")
         self.horizontalLayout.addWidget(self.PrintBtn)
-        
+
         self.RecoveryBtn = QtWidgets.QPushButton(self.frame_3,clicked=lambda:self.OpenWindow())
         font = QtGui.QFont()
         font.setPointSize(10)
