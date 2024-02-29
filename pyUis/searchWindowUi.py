@@ -6,8 +6,12 @@ class Ui_resiltTable(object):
         self.tableWidget.setRowCount(0)
         for row_number,row_data in enumerate(res):
             self.tableWidget.insertRow(row_number)
-            for column_number in row_data:
-                self.tableWidget.setItem(row_number,column_number)
+            self.tableWidget.setItem(row_number,0, QtWidgets.QTableWidgetItem(str(row_data.ShasiNum)))
+            self.tableWidget.setItem(row_number,1, QtWidgets.QTableWidgetItem(str(row_data.CarId)))
+            self.tableWidget.setItem(row_number,2, QtWidgets.QTableWidgetItem(str(row_data.nameLastname)))
+            self.tableWidget.setItem(row_number,3, QtWidgets.QTableWidgetItem(str(row_data.Date)))
+            self.tableWidget.setItem(row_number,4, QtWidgets.QTableWidgetItem(str(row_data.Phone)))
+            row_number =+ 1
 
 
 
