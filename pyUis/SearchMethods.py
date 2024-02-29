@@ -29,8 +29,10 @@ class RecoveryMethodsClass:
                     condition.append(CarOwnerInterfaceModel.ShasiNum==self.recoveryObj.ShasiTxt.toPlainText())
 
          CarOwnerInterfaceClass_insance=CarOwnerInterface(connectionMaker.classConnection)
-         CarOwnerInterfaceClass_insance.search(condition)
+         res2=CarOwnerInterfaceClass_insance.search(condition)        
          condition.clear()
+
+         return res2
           
                    
                    
