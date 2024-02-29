@@ -11,8 +11,6 @@ class Ui_RecoveryWindow(object):
          self.ResultEindow=Ui_resiltTable()
          self.ResultEindow.setupUi(self.Window)
          self.Window.show()
-
-
        
 
     def setupUi(self, RecoveryWindow,searchMethodsClassINSTANCE):

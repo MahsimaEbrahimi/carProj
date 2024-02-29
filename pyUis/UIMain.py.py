@@ -37,8 +37,8 @@ class Ui_MainWindow(object):
     def OpenWindow(self):
         self.Window=QtWidgets.QMainWindow()
         self.ui= Ui_RecoveryWindow()
-        # searchWindowObj2=RecoveryMethodsClass(self.ui)
-        self.ui.setupUi(self.Window)
+        searchWindowObj2=RecoveryMethodsClass(self.ui)
+        self.ui.setupUi(self.Window,searchWindowObj2)
         self.Window.show()
         
     def cleaner(self):  

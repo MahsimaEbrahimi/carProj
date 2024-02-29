@@ -2,6 +2,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_resiltTable(object):
+    def showInfo(self,res,gridview):
+        self.tableWidget.setRowCount(0)
+        for row_number,row_data in enumerate(res):
+            self.tableWidget.insertRow(row_number)
+            for column_number,data in enumerate(row_data):
+                self.tableWidget.setItem(row_number,column_number)
     def setupUi(self, resiltTable):
         resiltTable.setObjectName("resiltTable")
         resiltTable.resize(971, 898)
