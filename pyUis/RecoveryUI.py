@@ -5,6 +5,7 @@ from searchWindowUi import Ui_resiltTable
 class Ui_RecoveryWindow(object):
     
     def OpenResWindow(self):
+        #  searchMethodsClassINSTANCE=RecoveryMethodsClass(ui)
          self.Window=QtWidgets.QMainWindow()
          self.ResultEindow=Ui_resiltTable()
          self.ResultEindow.setupUi(self.Window)
@@ -181,7 +182,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     RecoveryWindow = QtWidgets.QMainWindow()
     ui = Ui_RecoveryWindow()
-#     searchMethodsClassINSTANCE=RecoveryMethodsClass(ui)
+    searchMethodsClassINSTANCE=RecoveryMethodsClass(ui)
     ui.setupUi(RecoveryWindow)    
 
     RecoveryWindow.show()
