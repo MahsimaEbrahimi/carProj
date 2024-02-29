@@ -12,7 +12,7 @@ class RecoveryMethodsClass:
     def __init__(self,recoveryObj) -> None:
          self.recoveryObj=recoveryObj
     
-    def senTonull(self):
+    def SearchResult(self):
          ChkNullDescriptorINSTANCE=ChkNullDescriptorClass(shasinum=self.recoveryObj.ShasiTxt.toPlainText(),
                                                           carId=self.recoveryObj.CarIdTxt.toPlainText(),
                                                           carOwner=self.recoveryObj.CarOwnerTxt.toPlainText(),
