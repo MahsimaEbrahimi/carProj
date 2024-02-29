@@ -8,8 +8,9 @@ class Ui_RecoveryWindow(object):
          res=searchMethodsClassINSTANCE.SearchResult()
         #  searchMethodsClassINSTANCE=RecoveryMethodsClass(ui)
          self.Window=QtWidgets.QMainWindow()
-         self.ResultEindow=Ui_resiltTable()
-         self.ResultEindow.setupUi(self.Window)
+         self.Resultwindow=Ui_resiltTable()
+         self.Resultwindow.setupUi(self.Window)
+         self.Resultwindow.showInfo(self.Resultwindow,res)
          self.Window.show()
        
 
