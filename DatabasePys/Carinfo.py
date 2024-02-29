@@ -2,7 +2,6 @@ from sqlalchemy import select
 from CarinfoModel import CarinfoModel
 from sqlalchemy import and_
 
-
 class CarinfoClass:
     def __init__(self,session) -> None:
         self.session=session

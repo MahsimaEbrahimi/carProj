@@ -1,4 +1,4 @@
-'''checks whether the primary keys are emoty or not'''
+'''checks whether the required fields are empty and less than the identified length or not'''
 
 from Car import CarClass
 import CarModel
