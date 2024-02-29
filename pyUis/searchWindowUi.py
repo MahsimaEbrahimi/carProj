@@ -3,11 +3,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_resiltTable(object):
     def showInfo(self,res,gridview):
-        self.tableWidget.setRowCount(0)
+        gridview.setRowCount(0)
         for row_number,row_data in enumerate(res):
-            self.gridview.insertRow(row_number)
+            gridview.insertRow(row_number)
             for column_number,data in enumerate(row_data):
-                self.gridview.setItem(row_number,column_number)
+                gridview.setItem(row_number,column_number)
 
 
 
