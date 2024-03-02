@@ -8,7 +8,6 @@ from CarOwnerInterfaceModel import CarOwnerInterfaceModel
 from CarOwnerInterfaceClass import CarOwnerInterface
 
 class RecoveryMethodsClass:
-    
     def __init__(self,recoveryObj) -> None:
          self.recoveryObj=recoveryObj
     

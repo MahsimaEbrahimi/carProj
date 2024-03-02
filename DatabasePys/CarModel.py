@@ -12,13 +12,5 @@ class CarModel(Base):
         CarId.description="شماره پلاک"
         CarType=Column(Unicode(50),nullable=False)
         CarType.description="نوع خودرو"
-        # CarColor=Column(Unicode(50),nullable=False)
         model=Column(Unicode(50),nullable=False)
         model.description="مدل"
-        # ShasiCond=Column(Unicode,nullable=False)
-        # OptionCond=Column(Unicode,nullable=False)
-        # MotorGirboxCond=Column(Unicode,nullable=False)
-        # ColorCond=Column(Unicode,nullable=False)
-        # information=Column(Unicode,nullable=False)
-        # Useage=Column(Unicode(50),nullable=False)
-

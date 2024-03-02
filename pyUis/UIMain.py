@@ -1,8 +1,7 @@
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from RecoveryUI import Ui_RecoveryWindow
-from FormsMethod import FormMethod
 from connection_Maker import connectionMaker
+from FormsMethod import FormMethod
 from SearchMethods import RecoveryMethodsClass
 from persiantools.jdatetime import JalaliDateTime
 import time
@@ -57,11 +56,11 @@ class Ui_MainWindow(object):
              if i==self.CarColorCondTxt:
                 i.setText("اتوموبیل فاقد رنگ شدگی میباشد")  
 
-        
+
     def setupUi(self, MainWindow,FromsMethodInstance):
         scheduler_thread=threading.Thread(target=self.scheduler)
         # to send exit_event to mainwindow
-        mainWindow.SaveExitEvent(self.exit_event)
+        MainWindow.SaveExitEvent(self.exit_event)
 
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(704, 802)
@@ -176,12 +175,6 @@ class Ui_MainWindow(object):
         # self.PayTypeComb = QtWidgets.QComboBox(self.frame_7)
         font = QtGui.QFont()
         font.setPointSize(10)
-        # self.PayTypeComb.setFont(font)
-        # self.PayTypeComb.setObjectName("PayTypeComb")
-        # self.PayTypeComb.addItem("")
-        # self.PayTypeComb.addItem("")
-        # self.PayTypeComb.addItem("")
-        # self.horizontalLayout_3.addWidget(self.PayTypeComb)
         self.label_8 = QtWidgets.QLabel(self.frame_7)
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -540,7 +533,7 @@ class Ui_MainWindow(object):
         Ui_MainWindow.component_Lst.append(self.ShasiCondTxt)
         Ui_MainWindow.component_Lst.append(self.CarTypeComb)
         Ui_MainWindow.component_Lst.append(self.comboBox_2)
-        scheduler_thread.start()
+        # scheduler_thread.start()
        
 
     def retranslateUi(self, MainWindow):
@@ -550,7 +543,6 @@ class Ui_MainWindow(object):
         self.RecoveryBtn.setText(_translate("MainWindow", "بازيابي"))
         self.SaveBtn.setText(_translate("MainWindow", "ذخيره"))
         self.AddBtn.setText(_translate("MainWindow", "جديد"))
-        # self.label_11.setText(_translate("MainWindow", "ساعت:"))
         self.label_7.setText(_translate("MainWindow", "تاريخ:"))
         self.ShasiTxt.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -558,10 +550,6 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.label.setText(_translate("MainWindow", "شماره شاسی: "))
-        # self.PayTypeComb.setItemText(0, _translate("MainWindow", "option1"))
-        # self.PayTypeComb.setItemText(1, _translate("MainWindow", "option2"))
-        # self.PayTypeComb.setItemText(2, _translate("MainWindow", "option3"))
-        # self.label_8.setText(_translate("MainWindow", "نوع پرداخت:"))
         self.AddCarTypeBtn.setText(_translate("MainWindow", "+"))
         self.CarTypeComb.setItemText(0, _translate("MainWindow", "option1"))
         self.CarTypeComb.setItemText(1, _translate("MainWindow", "option2"))
@@ -637,7 +625,6 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
-
 
 if __name__ == "__main__":
     import sys

@@ -26,3 +26,12 @@ class CarinfoClass:
             return None
         else:
             return stmt[0][0]
+
+    def get(self,Thekey):
+        CarInfoResults=select(CarinfoModel).where(
+            and_(
+                CarinfoModel.Thekey==Thekey,
+            )
+        )
+        CarInfoResults=self.session.execute(CarInfoResults).fetchall()
+        return CarInfoResults[0][0] 
