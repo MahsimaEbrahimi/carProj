@@ -6,6 +6,7 @@ from SearchMethods import RecoveryMethodsClass
 from persiantools.jdatetime import JalaliDateTime
 import time
 import threading
+from fpdf import FPDF
 
 class MainWindow(QtWidgets.QMainWindow):
     #متد colse event اوررایت شده است      
@@ -56,6 +57,14 @@ class Ui_MainWindow(object):
              if i==self.CarColorCondTxt:
                 i.setText("اتوموبیل فاقد رنگ شدگی میباشد")  
 
+    def Printer(self):
+        pdf=FPDF('p','cm','Letter')
+        pdf.add_page()
+        pdf.set_font('times','',16)
+        pdf.cell(5,1,"شماره شاسی")
+        pdf.cell(4,1,self.ShasiTxt.toPlainText())        
+        pdf.output('p.pdf','F')
+
 
     def setupUi(self, MainWindow,FromsMethodInstance, RunDateTask=True):
         self.scheduler_thread=threading.Thread(target=self.scheduler)
@@ -84,7 +93,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
-        self.PrintBtn = QtWidgets.QPushButton(self.frame_3)
+        self.PrintBtn = QtWidgets.QPushButton(self.frame_3,clicked=lambda:self.Printer())
         font = QtGui.QFont()
         font.setPointSize(10)
         self.PrintBtn.setFont(font)
