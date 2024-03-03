@@ -44,9 +44,9 @@ class Ui_resiltTable(object):
         # '''we make a main window here and insert our data which want to be updated into it'''
         from UIMain import Ui_MainWindow,FormMethod,MainWindow
         self.mainWindow = MainWindow()
-        self.ui = Ui_MainWindow()    
-        self.frmMethod=FormMethod(self.ui)    
-        self.ui.setupUi(self.mainWindow,self.frmMethod)
+        self.ui = Ui_MainWindow()
+        self.frmMethod=FormMethod(self.ui) 
+        self.ui.setupUi(self.mainWindow,self.frmMethod, False)
         self.ui.ShasiTxt.setText(sendToForm_Car.ShasiNum)
         self.ui.CarIdTxt.setText(sendToForm_Car.CarId)
         self.ui.TypeTxt.setText(sendToForm_Car.model)

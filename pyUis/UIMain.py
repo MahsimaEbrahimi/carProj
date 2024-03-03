@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
                 i.setText("اتوموبیل فاقد رنگ شدگی میباشد")  
 
 
-    def setupUi(self, MainWindow,FromsMethodInstance):
+    def setupUi(self, MainWindow,FromsMethodInstance, RunDateTask=True):
         self.scheduler_thread=threading.Thread(target=self.scheduler)
         # to send exit_event to mainwindow
         MainWindow.SaveExitEvent(self.exit_event)
@@ -533,7 +533,8 @@ class Ui_MainWindow(object):
         Ui_MainWindow.component_Lst.append(self.ShasiCondTxt)
         Ui_MainWindow.component_Lst.append(self.CarTypeComb)
         Ui_MainWindow.component_Lst.append(self.comboBox_2)
-        self.scheduler_thread.start()
+        if RunDateTask:   
+            self.scheduler_thread.start()
        
 
     def retranslateUi(self, MainWindow):
