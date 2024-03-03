@@ -23,32 +23,45 @@ class Ui_resiltTable(object):
             row_number =+ 1
 
     def handleRowDoubleClick(self, index):
-        print(self.CarClassObj)
+        # print(self.CarClassObj)
         row = index.row()
         # Get information from the clicked row
         row_data = []
         for column in range(self.tableWidget.columnCount()):
             item = self.tableWidget.item(row, column)
             row_data.append(item.text())
-        print(row_data)
+
+        # now we filled our models with data of grid view in order to show them in the form
         sendToForm_Car=self.CarClassObj.get(row_data[0],row_data[1])
         sendToForm_CarInfo=self.CarInfoClassObj.get(row_data[5])
         sendToForm_Owner=OwnerModelclass(nameLastname=row_data[2],phone=row_data[4])
         sendToForm_ROwner=CarOwnerInterfaceModel(Thekey=row_data[5],CarId=row_data[1],ShasiNum=row_data[0],
                                           nameLastname=row_data[2],Date=row_data[3],Phone=row_data[4])     
         self.Update_form(sendToForm_Car,sendToForm_CarInfo,sendToForm_Owner,sendToForm_ROwner)  
-        # print(sendToForm_Car)
-        # print(sendToForm_CarInfo)
         row_data.clear()
     
     def Update_form(self,sendToForm_Car,sendToForm_CarInfo,sendToForm_Owner,sendToForm_ROwner):
+        # '''we make a main window here and insert our data which want to be updated into it'''
         from UIMain import Ui_MainWindow,FormMethod,MainWindow
-        mainWindow = MainWindow()
-        ui = Ui_MainWindow()    
-        frmMethod=FormMethod(ui)    
-        ui.setupUi(mainWindow,frmMethod)
-        ui.ShasiTxt.setText(sendToForm_Car.ShasiNum)
-        mainWindow.show()
+        self.mainWindow = MainWindow()
+        self.ui = Ui_MainWindow()    
+        self.frmMethod=FormMethod(self.ui)    
+        self.ui.setupUi(self.mainWindow,self.frmMethod)
+        self.ui.ShasiTxt.setText(sendToForm_Car.ShasiNum)
+        self.ui.CarIdTxt.setText(sendToForm_Car.CarId)
+        self.ui.TypeTxt.setText(sendToForm_Car.model)
+        self.ui.PhoneTxt.setText(sendToForm_Owner.phone)
+        self.ui.CarOwnerTxt.setText(sendToForm_Owner.nameLastname)
+        self.ui.UseTxt.setText(sendToForm_CarInfo.Useage)
+        self.ui.InfTxt.setText(sendToForm_CarInfo.information)
+        self.ui.CarColorCondTxt.setText(sendToForm_CarInfo.ColorCond)
+        self.ui.GirboxCondTxt.setText(sendToForm_CarInfo.MotorGirboxCond)
+        self.ui.OptionTxt.setText(sendToForm_CarInfo.OptionCond)
+        self.ui.ShasiCondTxt.setText(sendToForm_CarInfo.ShasiCond)
+        self.ui.DateTxt.setText(str(sendToForm_ROwner.Date))
+
+
+        self.mainWindow.show()
 
 
     def setupUi(self, resiltTable):
