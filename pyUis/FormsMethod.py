@@ -11,6 +11,8 @@ from Carinfo import CarinfoClass
 from CarOwnerInterfaceModel import CarOwnerInterfaceModel
 from CarOwnerInterfaceClass import CarOwnerInterface
 from functools import wraps
+from persiantools.jdatetime import JalaliDateTime
+ 
 import messagebox
 
 class FormMethod:
@@ -56,7 +58,7 @@ class FormMethod:
                                 Thekey=result,
                                 ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
                                 CarId=self.Mainobj.CarIdTxt.toPlainText(),     
-                                Date=self.Mainobj.DateTxt.text(),
+                                Date= str(JalaliDateTime.now().strftime("%Y/%m/%d")),
                                 nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
                                 Phone=self.Mainobj.PhoneTxt.toPlainText(),      
                                 )
