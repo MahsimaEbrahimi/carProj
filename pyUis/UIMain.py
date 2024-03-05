@@ -60,7 +60,8 @@ class Ui_MainWindow(object):
     def Printer(self):
         pdf=FPDF('p','cm','Letter')
         pdf.add_page()
-        pdf.set_font('times','',16)
+        pdf.add_font('Dejavu','','',uni=True)
+        pdf.set_font('Dejavu','',16)
         pdf.cell(5,1,"شماره شاسی")
         pdf.cell(4,1,self.ShasiTxt.toPlainText())        
         pdf.output('p.pdf','F')
