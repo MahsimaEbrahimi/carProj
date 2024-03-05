@@ -1,5 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QPageSize, QPdfWriter, QPainter
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QFileDialog
+from PyQt5.QtPrintSupport import QPrinter
 from RecoveryUI import Ui_RecoveryWindow
 from connection_Maker import connectionMaker
 from FormsMethod import FormMethod
@@ -68,13 +70,32 @@ class Ui_MainWindow(object):
         # pdf.cell(4,1,self.ShasiTxt.toPlainText())        
         # pdf.output('p.pdf','F')
         filename, _ = QFileDialog.getSaveFileName(None, "Save PDF", "", "*.pdf")
-        if filename:
-            # Create PDF object using ReportLab
-            pdf = canvas.Canvas(filename)
-            # Add content to your PDF (text, images, etc.)
-            pdf.drawString(100, 100, "This is a sample PDF created with PyQt!")
-            pdf.save()
-            print("PDF created successfully!")        
+        # if filename:
+        #     # Create PDF object using ReportLab
+        #     pdf = canvas.Canvas(filename)
+        #     # Add content to your PDF (text, images, etc.)
+        #     pdf.drawString(100, 100, "This is a sample PDF created with PyQt!")
+        #     pdf.save()
+        #     print("PDF created successfully!")
+
+            # Create a printer object and configure its settings
+        printer = QPrinter(QPrinter.HighResolution)  # Use high resolution for better quality
+        printer.setOutputFormat(QPrinter.PdfFormat)
+        printer.setPaperSize(QPrinter.A4)  # Set paper size to A4
+        printer.setOutputFileName(filename)
+        painter = QPainter(printer)
+        print_rect = printer.pageRect()
+
+        # Calculate the scaling factor to fit the widget within the printable area
+        scale_x = print_rect.width() / self.centralwidget.width()
+        scale_y = print_rect.height() / self.centralwidget.height()
+        scale = min(scale_x, scale_y)
+
+        # Apply scaling transformation
+        painter.translate(print_rect.topLeft())
+        painter.scale(scale, scale)
+        self.centralwidget.render(painter)
+        painter.end()
 
 
     def setupUi(self, MainWindow,FromsMethodInstance, RunDateTask=True):
