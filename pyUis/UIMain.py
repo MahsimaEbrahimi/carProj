@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QFileDialog
 from RecoveryUI import Ui_RecoveryWindow
 from connection_Maker import connectionMaker
 from FormsMethod import FormMethod
@@ -7,6 +8,7 @@ from persiantools.jdatetime import JalaliDateTime
 import time
 import threading
 from fpdf import FPDF
+import reportlab.pdfgen.canvas as canvas
 
 class MainWindow(QtWidgets.QMainWindow):
     #متد colse event اوررایت شده است      
@@ -58,13 +60,21 @@ class Ui_MainWindow(object):
                 i.setText("اتوموبیل فاقد رنگ شدگی میباشد")  
 
     def Printer(self):
-        pdf=FPDF('p','cm','Letter')
-        pdf.add_page()
-        pdf.add_font('Dejavu','','',uni=True)
-        pdf.set_font('Dejavu','',16)
-        pdf.cell(5,1,"شماره شاسی")
-        pdf.cell(4,1,self.ShasiTxt.toPlainText())        
-        pdf.output('p.pdf','F')
+        # pdf=FPDF('p','cm','Letter')
+        # pdf.add_page()
+        # pdf.add_font('Dejavu','','',uni=True)
+        # pdf.set_font('Dejavu','',16)
+        # pdf.cell(5,1,"شماره شاسی")
+        # pdf.cell(4,1,self.ShasiTxt.toPlainText())        
+        # pdf.output('p.pdf','F')
+        filename, _ = QFileDialog.getSaveFileName(None, "Save PDF", "", "*.pdf")
+        if filename:
+            # Create PDF object using ReportLab
+            pdf = canvas.Canvas(filename)
+            # Add content to your PDF (text, images, etc.)
+            pdf.drawString(100, 100, "This is a sample PDF created with PyQt!")
+            pdf.save()
+            print("PDF created successfully!")        
 
 
     def setupUi(self, MainWindow,FromsMethodInstance, RunDateTask=True):
