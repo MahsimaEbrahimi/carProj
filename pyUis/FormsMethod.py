@@ -78,7 +78,7 @@ class FormMethod:
         else:
             messagebox.showerror(title="خطا در ورودی", message=self.error)
 
-    def save_color(self, form):
+    def save_Car_Type(self, form):
          result = form.SendToAddCarType()
          if result != None:
             Color_Model_obj=Color_Model(color=result)
@@ -88,6 +88,14 @@ class FormMethod:
                  messagebox.showinfo(title="موفقیت",message="نوع خودرو مورد نظر با موفقیت اضافه گردید")
             else:
                   messagebox.showerror(title="خطا",message="مقدار مورد نظر قبلا در ديتابيس ثبت گرديده است")
-               
- 
                     
+    def save_color(self,form):
+         result=form.SendToAddCarColor()
+         if result != None:
+            Color_Model_obj=Color_Model(color=result)
+            Color_Class_obj=Color_Class(self.res)
+            if len(Color_Class_obj.Chk_redundancy(result))==0:
+                 Color_Class_obj.add(Color_Model_obj)
+                 messagebox.showinfo(title="موفقیت",message="نوع خودرو مورد نظر با موفقیت اضافه گردید")
+            else:
+                  messagebox.showerror(title="خطا",message="مقدار مورد نظر قبلا در ديتابيس ثبت گرديده است")         

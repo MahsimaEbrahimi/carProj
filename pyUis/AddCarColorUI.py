@@ -1,27 +1,20 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import messagebox
-from Color_Class import Color_Class
 from FormsMethod import FormMethod
 
-class AddCarTypeClass(object):
-    def __init__(self,UiMain) -> None:
-        # self.classType = classType
-        self.UiMain=UiMain
-        # self.Type_Color_Obj=Color_Class()
-    
 
-    def SendToAddCarType(self):
+class AddCarColor(object):
+    def SendToAddCarColor(self):
         res=self.textEdit.toPlainText().strip()
         if res!="":
            self.UiMain.CarTypeComb.addItem(res)
            return res
 
         else:
-           messagebox.showerror(title="خطا",message="مقداری که وارد کرده اید معتبر نیست ")
+           messagebox.showerror(title="خطا",message="مقداری که وارد کرده اید معتبر نیست ")        
 
 
-
-    def setupUi(self, MainWindow, formsMethod):
+    def setupUi(self, MainWindow,frm):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(563, 312)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -57,7 +50,7 @@ class AddCarTypeClass(object):
         self.frame.setObjectName("frame")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.frame)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.pushButton = QtWidgets.QPushButton(self.frame,clicked=lambda:formsMethod.save_Car_Type(self))
+        self.pushButton = QtWidgets.QPushButton(self.frame,clicked=lambda:frm.save_color(self))
         self.pushButton.setMinimumSize(QtCore.QSize(200, 0))
         self.pushButton.setMaximumSize(QtCore.QSize(300, 16777215))
         font = QtGui.QFont()
@@ -77,7 +70,7 @@ class AddCarTypeClass(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "نوع ماشینی که میخواهید اضافه کنید را وارد کنید :"))
+        self.label.setText(_translate("MainWindow", "رنگ ماشینی که میخواهید اضافه کنید را وارد کنید :"))
         self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -90,8 +83,9 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = AddCarTypeClass()
-    frmM = FormMethod(ui)
-    ui.setupUi(MainWindow, frmM)
+    ui = AddCarColor()   
+    frm=FormMethod(ui)
+    ui.setupUi(MainWindow,frm)   
+
     MainWindow.show()
     sys.exit(app.exec_())

@@ -10,6 +10,7 @@ from persiantools.jdatetime import JalaliDateTime
 import time
 import threading
 from AddCarTypeUI import AddCarTypeClass
+from AddCarColorUI import AddCarColor
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -25,6 +26,7 @@ class Ui_MainWindow(object):
     def __init__(self) -> None:
         self.exit_event = threading.Event()
         self.AddCrTypeClass_Obj=AddCarTypeClass(self)
+        self.AddCarColor_obj=AddCarColor()
 
     component_Lst=[]
     
@@ -87,8 +89,15 @@ class Ui_MainWindow(object):
         self.MainWindow = QtWidgets.QMainWindow()
         self.AddCrTypeClass_Obj.setupUi(self.MainWindow, FromsMethodInstance)
         self.MainWindow.show()        
-        # print(AddCarTypeClass.ReciveCarType)
-        # self.CarTypeComb.addItem('reeeeeeeeeeeeeeeeeed')
+
+
+
+    def add_to_Car_Color(self):
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.AddCarColor_obj.setupUi(self.MainWindow)
+        self.MainWindow.show()   
+
+
 
     def setupUi(self, MainWindow,FromsMethodInstance, RunDateTask=True):
         self.scheduler_thread=threading.Thread(target=self.scheduler)
@@ -261,7 +270,7 @@ class Ui_MainWindow(object):
         self.TypeTxt.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.TypeTxt.setObjectName("TypeTxt")
         self.horizontalLayout_4.addWidget(self.TypeTxt)
-        self.pushButton_2 = QtWidgets.QPushButton(self.frame_4)
+        self.pushButton_2 = QtWidgets.QPushButton(self.frame_4,clicked=lambda:self.add_to_Car_Color())
         self.pushButton_2.setMaximumSize(QtCore.QSize(100, 16777215))
         self.pushButton_2.setObjectName("pushButton_2")
         self.horizontalLayout_4.addWidget(self.pushButton_2)
