@@ -87,6 +87,7 @@ class FormMethod:
             Type_Class_obj=Type_Class(self.res)
             if len(Type_Class_obj.Chk_redundancy(result))==0:
                  Type_Class_obj.add(Type_Model_obj)
+                 self.Mainobj.CarTypeComb.addItem(result)
                  messagebox.showinfo(title="موفقیت",message="نوع خودرو مورد نظر با موفقیت اضافه گردید")
             else:
                   messagebox.showerror(title="خطا",message="مقدار مورد نظر قبلا در ديتابيس ثبت گرديده است")
@@ -98,6 +99,7 @@ class FormMethod:
             Color_Class_obj=Color_Class(self.res)
             if len(Color_Class_obj.Chk_redundancy(result))==0:
                  Color_Class_obj.add(Color_Model_obj)
+                 self.Mainobj.CarColorComb.addItem(result)
                  messagebox.showinfo(title="موفقیت",message="نوع خودرو مورد نظر با موفقیت اضافه گردید")
             else:
                   messagebox.showerror(title="خطا",message="مقدار مورد نظر قبلا در ديتابيس ثبت گرديده است")         

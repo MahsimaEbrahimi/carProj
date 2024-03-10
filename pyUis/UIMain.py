@@ -25,8 +25,8 @@ class MainWindow(QtWidgets.QMainWindow):
 class Ui_MainWindow(object):
     def __init__(self) -> None:
         self.exit_event = threading.Event()
-        self.AddCrTypeClass_Obj=AddCarTypeClass(self)
-        self.AddCarColor_obj=AddCarColor(self)
+        self.AddCrTypeClass_Obj=AddCarTypeClass()
+        self.AddCarColor_obj=AddCarColor()
 
     component_Lst=[]
     

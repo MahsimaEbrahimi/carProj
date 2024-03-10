@@ -4,22 +4,12 @@ from Color_Class import Color_Class
 from FormsMethod import FormMethod
 
 class AddCarTypeClass(object):
-    def __init__(self,UiMain) -> None:
-        # self.classType = classType
-        self.UiMain=UiMain
-        # self.Type_Color_Obj=Color_Class()
-    
-
     def SendToAddCarType(self):
         res=self.textEdit.toPlainText().strip()
         if res!="":
-           self.UiMain.CarTypeComb.addItem(res)
            return res
-
         else:
            messagebox.showerror(title="خطا",message="مقداری که وارد کرده اید معتبر نیست ")
-
-
 
     def setupUi(self, MainWindow, formsMethod):
         MainWindow.setObjectName("MainWindow")
