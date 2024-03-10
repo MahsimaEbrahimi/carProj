@@ -9,8 +9,8 @@ from SearchMethods import RecoveryMethodsClass
 from persiantools.jdatetime import JalaliDateTime
 import time
 import threading
-from fpdf import FPDF
-import reportlab.pdfgen.canvas as canvas
+from AddCarType import AddCarTypeClass
+
 
 class MainWindow(QtWidgets.QMainWindow):
     #متد colse event اوررایت شده است      
@@ -24,6 +24,7 @@ class MainWindow(QtWidgets.QMainWindow):
 class Ui_MainWindow(object):
     def __init__(self) -> None:
         self.exit_event = threading.Event()
+        self.AddCrTypeClass_Obj=AddCarTypeClass(self)
 
     component_Lst=[]
     
@@ -62,23 +63,8 @@ class Ui_MainWindow(object):
                 i.setText("اتوموبیل فاقد رنگ شدگی میباشد")  
 
     def Printer(self):
-        # pdf=FPDF('p','cm','Letter')
-        # pdf.add_page()
-        # pdf.add_font('Dejavu','','',uni=True)
-        # pdf.set_font('Dejavu','',16)
-        # pdf.cell(5,1,"شماره شاسی")
-        # pdf.cell(4,1,self.ShasiTxt.toPlainText())        
-        # pdf.output('p.pdf','F')
         filename, _ = QFileDialog.getSaveFileName(None, "Save PDF", "", "*.pdf")
-        # if filename:
-        #     # Create PDF object using ReportLab
-        #     pdf = canvas.Canvas(filename)
-        #     # Add content to your PDF (text, images, etc.)
-        #     pdf.drawString(100, 100, "This is a sample PDF created with PyQt!")
-        #     pdf.save()
-        #     print("PDF created successfully!")
-
-            # Create a printer object and configure its settings
+         # Create a printer object and configure its settings
         printer = QPrinter(QPrinter.HighResolution)  # Use high resolution for better quality
         printer.setOutputFormat(QPrinter.PdfFormat)
         printer.setPaperSize(QPrinter.A4)  # Set paper size to A4
@@ -96,7 +82,13 @@ class Ui_MainWindow(object):
         painter.scale(scale, scale)
         self.centralwidget.render(painter)
         painter.end()
-
+    
+    def add_To_Car_Type(self):
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.AddCrTypeClass_Obj.setupUi(self.MainWindow)
+        self.MainWindow.show()        
+        # print(AddCarTypeClass.ReciveCarType)
+        # self.CarTypeComb.addItem('reeeeeeeeeeeeeeeeeed')
 
     def setupUi(self, MainWindow,FromsMethodInstance, RunDateTask=True):
         self.scheduler_thread=threading.Thread(target=self.scheduler)
@@ -222,7 +214,7 @@ class Ui_MainWindow(object):
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
         self.horizontalLayout_3.addWidget(self.label_8)
-        self.AddCarTypeBtn = QtWidgets.QPushButton(self.frame_7)
+        self.AddCarTypeBtn = QtWidgets.QPushButton(self.frame_7,clicked=lambda:self.add_To_Car_Type())
         self.AddCarTypeBtn.setObjectName("AddCarTypeBtn")
         self.horizontalLayout_3.addWidget(self.AddCarTypeBtn)
         self.CarTypeComb = QtWidgets.QComboBox(self.frame_7)
