@@ -1,7 +1,7 @@
 from Base import Base
 from sqlalchemy import ForeignKey,Column, Unicode,Integer
 
-class TypeModel(Base):
+class Type_Model(Base):
     __tablename__='TypeCar'
-    ind2ex=Column(Integer,primary_key=True,nullable=False,autoincrement=True)
+    index2=Column(Integer,primary_key=True,nullable=False,autoincrement=True)
     carType=Column(Unicode(50),nullable=True)

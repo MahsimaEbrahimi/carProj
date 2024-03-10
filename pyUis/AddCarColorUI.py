@@ -4,10 +4,13 @@ from FormsMethod import FormMethod
 
 
 class AddCarColor(object):
+    def __init__(self,UiMain) -> None:
+        self.UiMain=UiMain
+
     def SendToAddCarColor(self):
         res=self.textEdit.toPlainText().strip()
         if res!="":
-           self.UiMain.CarTypeComb.addItem(res)
+           self.UiMain.CarColorComb.addItem(res)
            return res
 
         else:

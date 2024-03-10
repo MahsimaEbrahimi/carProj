@@ -12,6 +12,8 @@ from CarOwnerInterfaceModel import CarOwnerInterfaceModel
 from CarOwnerInterfaceClass import CarOwnerInterface
 from Color_Model import Color_Model
 from Color_Class import Color_Class
+from Type_Model import Type_Model
+from Type_Class import Type_Class
 from functools import wraps
 from persiantools.jdatetime import JalaliDateTime
  
@@ -81,8 +83,8 @@ class FormMethod:
     def save_Car_Type(self, form):
          result = form.SendToAddCarType()
          if result != None:
-            Color_Model_obj=Color_Model(color=result)
-            Color_Class_obj=Color_Class(self.res)
+            Color_Model_obj=Type_Model(carType=result)
+            Color_Class_obj=Type_Class(self.res)
             if len(Color_Class_obj.Chk_redundancy(result))==0:
                  Color_Class_obj.add(Color_Model_obj)
                  messagebox.showinfo(title="موفقیت",message="نوع خودرو مورد نظر با موفقیت اضافه گردید")

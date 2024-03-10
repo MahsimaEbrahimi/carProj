@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
     def __init__(self) -> None:
         self.exit_event = threading.Event()
         self.AddCrTypeClass_Obj=AddCarTypeClass(self)
-        self.AddCarColor_obj=AddCarColor()
+        self.AddCarColor_obj=AddCarColor(self)
 
     component_Lst=[]
     
@@ -92,9 +92,9 @@ class Ui_MainWindow(object):
 
 
 
-    def add_to_Car_Color(self):
+    def add_to_Car_Color(self, FromsMethodInstance):
         self.MainWindow = QtWidgets.QMainWindow()
-        self.AddCarColor_obj.setupUi(self.MainWindow)
+        self.AddCarColor_obj.setupUi(self.MainWindow, FromsMethodInstance)
         self.MainWindow.show()   
 
 
@@ -270,20 +270,20 @@ class Ui_MainWindow(object):
         self.TypeTxt.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.TypeTxt.setObjectName("TypeTxt")
         self.horizontalLayout_4.addWidget(self.TypeTxt)
-        self.pushButton_2 = QtWidgets.QPushButton(self.frame_4,clicked=lambda:self.add_to_Car_Color())
+        self.pushButton_2 = QtWidgets.QPushButton(self.frame_4,clicked=lambda:self.add_to_Car_Color(FromsMethodInstance))
         self.pushButton_2.setMaximumSize(QtCore.QSize(100, 16777215))
         self.pushButton_2.setObjectName("pushButton_2")
         self.horizontalLayout_4.addWidget(self.pushButton_2)
-        self.comboBox_2 = QtWidgets.QComboBox(self.frame_4)
-        self.comboBox_2.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.CarColorComb = QtWidgets.QComboBox(self.frame_4)
+        self.CarColorComb.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
         font.setPointSize(10)
-        self.comboBox_2.setFont(font)
-        self.comboBox_2.setObjectName("comboBox_2")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.horizontalLayout_4.addWidget(self.comboBox_2)
+        self.CarColorComb.setFont(font)
+        self.CarColorComb.setObjectName("CarColorComb")
+        self.CarColorComb.addItem("")
+        self.CarColorComb.addItem("")
+        self.CarColorComb.addItem("")
+        self.horizontalLayout_4.addWidget(self.CarColorComb)
         self.label_3 = QtWidgets.QLabel(self.frame_4)
         self.label_3.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
@@ -574,7 +574,7 @@ class Ui_MainWindow(object):
         Ui_MainWindow.component_Lst.append(self.GirboxCondTxt)
         Ui_MainWindow.component_Lst.append(self.ShasiCondTxt)
         Ui_MainWindow.component_Lst.append(self.CarTypeComb)
-        Ui_MainWindow.component_Lst.append(self.comboBox_2)
+        Ui_MainWindow.component_Lst.append(self.CarColorComb)
         if RunDateTask:   
             self.scheduler_thread.start()
        
@@ -605,9 +605,9 @@ class Ui_MainWindow(object):
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.TypeTxt.setPlaceholderText(_translate("MainWindow", "مدل"))
         self.pushButton_2.setText(_translate("MainWindow", "+"))
-        self.comboBox_2.setItemText(0, _translate("MainWindow", "option1"))
-        self.comboBox_2.setItemText(1, _translate("MainWindow", "option2"))
-        self.comboBox_2.setItemText(2, _translate("MainWindow", "option3"))
+        self.CarColorComb.setItemText(0, _translate("MainWindow", "option1"))
+        self.CarColorComb.setItemText(1, _translate("MainWindow", "option2"))
+        self.CarColorComb.setItemText(2, _translate("MainWindow", "option3"))
         self.label_3.setText(_translate("MainWindow", "رنگ خودرو:"))
         self.label_6.setText(_translate("MainWindow", "تلفن:"))
         self.CarIdTxt.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

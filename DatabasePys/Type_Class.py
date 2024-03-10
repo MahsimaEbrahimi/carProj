@@ -1,7 +1,7 @@
 from sqlalchemy import and_
 from sqlalchemy import select
-from TypeModel import TypeModel
-class Color_Class:
+from Type_Model import Type_Model
+class Type_Class:
     def __init__(self,session) -> None:
         self.session=session
     
@@ -11,8 +11,8 @@ class Color_Class:
            return True
     
     def Chk_redundancy(self,carType):
-        Results=select(TypeModel).where(
-                TypeModel.carType==carType,
+        Results=select(Type_Model).where(
+                Type_Model.carType==carType,
         )
         Results=self.session.execute(Results).fetchall()
         return Results
