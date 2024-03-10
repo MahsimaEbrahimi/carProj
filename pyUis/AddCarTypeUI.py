@@ -1,22 +1,27 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import messagebox
+from Color_Class import Color_Class
+from FormsMethod import FormMethod
 
 class AddCarTypeClass(object):
     def __init__(self,UiMain) -> None:
+        # self.classType = classType
         self.UiMain=UiMain
+        # self.Type_Color_Obj=Color_Class()
     
 
     def SendToAddCarType(self):
         res=self.textEdit.toPlainText().strip()
         if res!="":
            self.UiMain.CarTypeComb.addItem(res)
-           messagebox.showinfo(title="موفقیت",message="نوع خودرو مورد نظر با موفقیت اضافه گردید")
+           return res
+
         else:
            messagebox.showerror(title="خطا",message="مقداری که وارد کرده اید معتبر نیست ")
 
 
 
-    def setupUi(self, MainWindow):
+    def setupUi(self, MainWindow, formsMethod):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(563, 312)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -52,7 +57,7 @@ class AddCarTypeClass(object):
         self.frame.setObjectName("frame")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.frame)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.pushButton = QtWidgets.QPushButton(self.frame,clicked=lambda:self.SendToAddCarType())
+        self.pushButton = QtWidgets.QPushButton(self.frame,clicked=lambda:formsMethod.save_color(self))
         self.pushButton.setMinimumSize(QtCore.QSize(200, 0))
         self.pushButton.setMaximumSize(QtCore.QSize(300, 16777215))
         font = QtGui.QFont()
@@ -86,6 +91,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = AddCarTypeClass()
-    ui.setupUi(MainWindow)
+    frmM = FormMethod(ui)
+    ui.setupUi(MainWindow, frmM)
     MainWindow.show()
     sys.exit(app.exec_())

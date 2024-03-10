@@ -9,7 +9,7 @@ from SearchMethods import RecoveryMethodsClass
 from persiantools.jdatetime import JalaliDateTime
 import time
 import threading
-from AddCarType import AddCarTypeClass
+from AddCarTypeUI import AddCarTypeClass
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -83,9 +83,9 @@ class Ui_MainWindow(object):
         self.centralwidget.render(painter)
         painter.end()
     
-    def add_To_Car_Type(self):
+    def add_To_Car_Type(self, FromsMethodInstance):
         self.MainWindow = QtWidgets.QMainWindow()
-        self.AddCrTypeClass_Obj.setupUi(self.MainWindow)
+        self.AddCrTypeClass_Obj.setupUi(self.MainWindow, FromsMethodInstance)
         self.MainWindow.show()        
         # print(AddCarTypeClass.ReciveCarType)
         # self.CarTypeComb.addItem('reeeeeeeeeeeeeeeeeed')
@@ -214,7 +214,7 @@ class Ui_MainWindow(object):
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
         self.horizontalLayout_3.addWidget(self.label_8)
-        self.AddCarTypeBtn = QtWidgets.QPushButton(self.frame_7,clicked=lambda:self.add_To_Car_Type())
+        self.AddCarTypeBtn = QtWidgets.QPushButton(self.frame_7,clicked=lambda:self.add_To_Car_Type(FromsMethodInstance))
         self.AddCarTypeBtn.setObjectName("AddCarTypeBtn")
         self.horizontalLayout_3.addWidget(self.AddCarTypeBtn)
         self.CarTypeComb = QtWidgets.QComboBox(self.frame_7)
@@ -667,12 +667,13 @@ if __name__ == "__main__":
 #     mainWindow = QtWidgets.QMainWindow()
     mainWindow = MainWindow()
     ui = Ui_MainWindow()    
+    
+    connectionMaker.Stable_connection()
 
     frmMethod=FormMethod(ui)    
 
     ui.setupUi(mainWindow,frmMethod)     
 #     ui.DateSetter()
-    connectionMaker.Stable_connection()
   
     mainWindow.show()   
     sys.exit(app.exec_())

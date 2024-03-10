@@ -10,6 +10,8 @@ from CarinfoModel import CarinfoModel
 from Carinfo import CarinfoClass
 from CarOwnerInterfaceModel import CarOwnerInterfaceModel
 from CarOwnerInterfaceClass import CarOwnerInterface
+from Color_Model import Color_Model
+from Color_Class import Color_Class
 from functools import wraps
 from persiantools.jdatetime import JalaliDateTime
  
@@ -18,10 +20,11 @@ import messagebox
 class FormMethod:
     def __init__(self,Mainobj) -> None:
         self.Mainobj=Mainobj
-        self.error=''
+        self.error=''        
+        self.res=connectionMaker.classConnection
+
 
     def SaveMethod(self):
-        res=connectionMaker.classConnection
 
         FormsMethodCarclass_Obj=FormsMethodCarclass()
         CarModelInstance=CarModel(ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
@@ -29,13 +32,13 @@ class FormMethod:
                                   CarType=self.Mainobj.CarTypeComb.currentText(),
                                   model=self.Mainobj.TypeTxt.toPlainText()
                                   )
-        CarClassObj=CarClass(res)
+        CarClassObj=CarClass(self.res)
         self.error=FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)  
         if self.error==True:      
                     ownerModelInstance=OwnerModelclass(
                     nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
                     phone=self.Mainobj.PhoneTxt.toPlainText())
-                    OwnerClassObj=OwnerClass(res)       
+                    OwnerClassObj=OwnerClass(self.res)       
                     self.error=FormsMethodCarclass_Obj.sendToClass(ownerModelInstance,OwnerClassObj) 
                     if self.error==True:  
                         CarInfoModelInstance=CarinfoModel(            
@@ -48,7 +51,7 @@ class FormMethod:
                             Useage=self.Mainobj.UseTxt.toPlainText() 
                             )
                         
-                        CarinfoClassInstance=CarinfoClass(res)
+                        CarinfoClassInstance=CarinfoClass(self.res)
                         result=CarinfoClassInstance.select_query(CarInfoModelInstance)
                         if(result==None):
                             self.error=FormsMethodCarclass_Obj.sendToClass(CarInfoModelInstance,CarinfoClassInstance)
@@ -74,4 +77,17 @@ class FormMethod:
                       messagebox.showerror(title="خطا در ورودی", message=self.error)
         else:
             messagebox.showerror(title="خطا در ورودی", message=self.error)
-              
+
+    def save_color(self, form):
+         result = form.SendToAddCarType()
+         if result != None:
+            Color_Model_obj=Color_Model(color=result)
+            Color_Class_obj=Color_Class(self.res)
+            if len(Color_Class_obj.Chk_redundancy(result))==0:
+                 Color_Class_obj.add(Color_Model_obj)
+                 messagebox.showinfo(title="موفقیت",message="نوع خودرو مورد نظر با موفقیت اضافه گردید")
+            else:
+                  messagebox.showerror(title="خطا",message="مقدار مورد نظر قبلا در ديتابيس ثبت گرديده است")
+               
+ 
+                    
