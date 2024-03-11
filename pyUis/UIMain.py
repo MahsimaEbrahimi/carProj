@@ -23,18 +23,6 @@ class MainWindow(QtWidgets.QMainWindow):
     def SaveExitEvent(self, exit_event):
         self.exit_event = exit_event
 
-class DoubleClickComboBox(QComboBox):
-
-    def __init__(self, parent: QWidget, frmmethod) -> None:
-        super().__init__(parent)
-        self.frmMethods=frmmethod
-
-    def mouseDoubleClickEvent(self, event):
-        self.frmMethods.delete_item()
-        # Handle double-click event here
-        messagebox.showerror(title=",",message="")
-
-
 class Ui_MainWindow(object):
     def __init__(self) -> None:
         self.exit_event = threading.Event()
@@ -109,10 +97,14 @@ class Ui_MainWindow(object):
         self.MainWindow.show()   
 
     def remove_From_Car_Color(self, FromsMethodInstance):
-        pass
+        self.CarColorComb.removeItem(self.CarColorComb.currentIndex())
 
-    def remove_From_Car_Type(self, FromsMethodInstance):
-        pass
+    def remove_From_Car_Type(self, FromsMethodInstance):       
+        FromsMethodInstance.delete_item_type(self.CarTypeComb.currentText())
+        index=self.CarTypeComb.currentIndex()
+        self.CarTypeComb.removeItem(index)
+        messagebox.showinfo(title="موفقیت",message="آیتم مورد نظر شما با موفقیت حذف شد")
+
 
     def setupUi(self, MainWindow,FromsMethodInstance, RunDateTask=True):
         self.scheduler_thread=threading.Thread(target=self.scheduler)

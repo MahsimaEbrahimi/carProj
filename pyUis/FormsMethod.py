@@ -27,6 +27,7 @@ class FormMethod:
         self.Mainobj=Mainobj
         self.error=''        
         self.res=connectionMaker.classConnection
+        self.type_instance=Type_Class(self.res)
 
 
     def SaveMethod(self):
@@ -47,7 +48,7 @@ class FormMethod:
                     self.error=FormsMethodCarclass_Obj.sendToClass(ownerModelInstance,OwnerClassObj) 
                     if self.error==True:  
                         CarInfoModelInstance=CarinfoModel(            
-                            CarColor=self.Mainobj.comboBox_2.currentText(),
+                            CarColor=self.Mainobj.CarColorComb.currentText(),
                             ShasiCond=self.Mainobj.ShasiCondTxt.toPlainText(),
                             OptionCond=self.Mainobj.OptionTxt.toPlainText(),
                             MotorGirboxCond=self.Mainobj.GirboxCondTxt.toPlainText(),
@@ -108,21 +109,15 @@ class FormMethod:
                   messagebox.showerror(title="خطا",message="مقدار مورد نظر قبلا در ديتابيس ثبت گرديده است")         
 
     def select_color_type(self):
-          type_instance=Type_Class(self.res)
+        #   type_instance=Type_Class(self.res)
           color_instance=Color_Class(self.res)
-          res_type=type_instance.select_options()
+          res_type=self.type_instance.select_options()
           res_color=color_instance.select_options()
           for i in res_type:
                self.Mainobj.CarTypeComb.addItem(i[0].carType)
           for j in res_color:
                self.Mainobj.CarColorComb.addItem(j[0].color)
                
-    def delete_item(self):
-        #  if index is None:
-        #     return  # Handle empty combobox
-        #  selected_text = self.itemText(index)
-         confirmation = QMessageBox.question(
-            self, "Confirm Delete", f"Delete '", QMessageBox.Ok | QMessageBox.Cancel
-           )
-         if confirmation == QMessageBox.Ok:
-              print("hi")       
+    def delete_item_type(self,item):
+         self.type_instance.delete_item(item)
+           
