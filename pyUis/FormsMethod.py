@@ -117,7 +117,6 @@ class FormMethod:
           for j in res_color:
                self.Mainobj.CarColorComb.addItem(j[0].color)
                
-
     def delete_item(self):
         #  if index is None:
         #     return  # Handle empty combobox

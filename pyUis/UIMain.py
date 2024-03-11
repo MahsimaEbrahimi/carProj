@@ -30,8 +30,9 @@ class DoubleClickComboBox(QComboBox):
         self.frmMethods=frmmethod
 
     def mouseDoubleClickEvent(self, event):
+        self.frmMethods.delete_item()
         # Handle double-click event here
-        # messagebox.showerror(title=",",message="")
+        messagebox.showerror(title=",",message="")
 
 
 class Ui_MainWindow(object):
@@ -107,7 +108,11 @@ class Ui_MainWindow(object):
         self.AddCarColor_obj.setupUi(self.MainWindow, FromsMethodInstance)
         self.MainWindow.show()   
 
+    def remove_From_Car_Color(self, FromsMethodInstance):
+        pass
 
+    def remove_From_Car_Type(self, FromsMethodInstance):
+        pass
 
     def setupUi(self, MainWindow,FromsMethodInstance, RunDateTask=True):
         self.scheduler_thread=threading.Thread(target=self.scheduler)
@@ -236,6 +241,9 @@ class Ui_MainWindow(object):
         self.AddCarTypeBtn = QtWidgets.QPushButton(self.frame_7,clicked=lambda:self.add_To_Car_Type(FromsMethodInstance))
         self.AddCarTypeBtn.setObjectName("AddCarTypeBtn")
         self.horizontalLayout_3.addWidget(self.AddCarTypeBtn)
+        self.RemoveCarTypeBtn = QtWidgets.QPushButton(self.frame_7,clicked=lambda:self.remove_From_Car_Type(FromsMethodInstance))
+        self.RemoveCarTypeBtn.setObjectName("RemoveCarTypeBtn")
+        self.horizontalLayout_3.addWidget(self.RemoveCarTypeBtn)
         self.CarTypeComb = QtWidgets.QComboBox(self.frame_7)
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -280,10 +288,14 @@ class Ui_MainWindow(object):
         self.TypeTxt.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.TypeTxt.setObjectName("TypeTxt")
         self.horizontalLayout_4.addWidget(self.TypeTxt)
-        self.pushButton_2 = QtWidgets.QPushButton(self.frame_4,clicked=lambda:self.add_to_Car_Color(FromsMethodInstance))
-        self.pushButton_2.setMaximumSize(QtCore.QSize(100, 16777215))
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout_4.addWidget(self.pushButton_2)
+        self.AddCarColorBtn = QtWidgets.QPushButton(self.frame_4,clicked=lambda:self.add_to_Car_Color(FromsMethodInstance))
+        self.AddCarColorBtn.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.AddCarColorBtn.setObjectName("AddCarColorBtn")
+        self.horizontalLayout_4.addWidget(self.AddCarColorBtn)
+        self.RemoveCarColorBtn = QtWidgets.QPushButton(self.frame_4,clicked=lambda:self.remove_From_Car_Color(FromsMethodInstance))
+        self.RemoveCarColorBtn.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.RemoveCarColorBtn.setObjectName("RemoveCarColorBtn")
+        self.horizontalLayout_4.addWidget(self.RemoveCarColorBtn)
         self.CarColorComb = QtWidgets.QComboBox(self.frame_4)
         self.CarColorComb.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
@@ -608,6 +620,7 @@ class Ui_MainWindow(object):
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.label.setText(_translate("MainWindow", "شماره شاسی: "))
         self.AddCarTypeBtn.setText(_translate("MainWindow", "+"))
+        self.RemoveCarTypeBtn.setText(_translate("MainWindow", "-"))
         self.CarTypeComb.setItemText(0, _translate("MainWindow", "option1"))
         self.CarTypeComb.setItemText(1, _translate("MainWindow", "option2"))
         self.CarTypeComb.setItemText(2, _translate("MainWindow", "option3"))
@@ -618,7 +631,8 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.TypeTxt.setPlaceholderText(_translate("MainWindow", "مدل"))
-        self.pushButton_2.setText(_translate("MainWindow", "+"))
+        self.AddCarColorBtn.setText(_translate("MainWindow", "+"))
+        self.RemoveCarColorBtn.setText(_translate("MainWindow", "-"))
         self.CarColorComb.setItemText(0, _translate("MainWindow", "option1"))
         self.CarColorComb.setItemText(1, _translate("MainWindow", "option2"))
         self.CarColorComb.setItemText(2, _translate("MainWindow", "option3"))
