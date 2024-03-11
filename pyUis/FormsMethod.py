@@ -119,5 +119,8 @@ class FormMethod:
                self.Mainobj.CarColorComb.addItem(j[0].color)
                
     def delete_item_type(self,item):
-         self.type_instance.delete_item(item)
-           
+         self.type_instance.delete_item_type(item)
+    
+    def delete_item_color(self,item):
+            Color_Class_obj=Color_Class(self.res)
+            Color_Class_obj.delete_item_color(item)

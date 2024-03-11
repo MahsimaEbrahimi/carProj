@@ -1,6 +1,7 @@
 from sqlalchemy import and_
 from sqlalchemy import select,delete
 from Type_Model import Type_Model
+from Color_Model import Color_Model
 class Type_Class:
     def __init__(self,session) -> None:
         self.session=session
@@ -22,8 +23,9 @@ class Type_Class:
         Type_select_res=self.session.execute(Type_select_res).fetchall()
         return Type_select_res
     
-    def delete_item(self,cartype):
+    def delete_item_type(self,cartype):
          dele = delete(Type_Model).where(
              Type_Model.carType==cartype
          )
          self.session.execute(dele)
+         self.session.commit()
