@@ -97,7 +97,7 @@ class Ui_MainWindow(object):
         self.MainWindow.show()   
 
     def remove_From_Car_Color(self, FromsMethodInstance):
-        if(self.CarColorComb.count()>0):
+        if(self.CarColorComb.currentText().strip()!=""):
             FromsMethodInstance.delete_item_color(self.CarColorComb.currentText())
             index=self.CarColorComb.currentIndex()
             self.CarColorComb.removeItem(index)
@@ -107,8 +107,7 @@ class Ui_MainWindow(object):
 
 
     def remove_From_Car_Type(self, FromsMethodInstance): 
-        print(self.CarColorComb.count())
-        if(self.CarColorComb.count()>=0):
+        if(self.CarTypeComb.currentText().strip()!=""):
             FromsMethodInstance.delete_item_type(self.CarTypeComb.currentText())
             index=self.CarTypeComb.currentIndex()
             self.CarTypeComb.removeItem(index)
