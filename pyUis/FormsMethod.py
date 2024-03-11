@@ -16,8 +16,11 @@ from Type_Model import Type_Model
 from Type_Class import Type_Class
 from functools import wraps
 from persiantools.jdatetime import JalaliDateTime
- 
 import messagebox
+from Type_Class import Type_Class
+from Color_Class import Color_Class
+from Type_Model import Type_Model
+from Color_Model import Color_Model
 
 class FormMethod:
     def __init__(self,Mainobj) -> None:
@@ -103,3 +106,15 @@ class FormMethod:
                  messagebox.showinfo(title="موفقیت",message="نوع خودرو مورد نظر با موفقیت اضافه گردید")
             else:
                   messagebox.showerror(title="خطا",message="مقدار مورد نظر قبلا در ديتابيس ثبت گرديده است")         
+
+    def select_color_type(self):
+          type_instance=Type_Class(self.res)
+          color_instance=Color_Class(self.res)
+          res_type=type_instance.select_options()
+          res_color=color_instance.select_options()
+          for i in res_type:
+               self.Mainobj.CarTypeComb.addItem(i[0].carType)
+          for j in res_color:
+               self.Mainobj.CarColorComb.addItem(j[0].color)
+               
+

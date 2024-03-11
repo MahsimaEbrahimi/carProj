@@ -16,3 +16,9 @@ class Type_Class:
         )
         Results=self.session.execute(Results).fetchall()
         return Results
+    
+    def select_options(self):
+        Type_select_res=select(Type_Model)
+        Type_select_res=self.session.execute(Type_select_res).fetchall()
+        return Type_select_res
+        # print(Type_select_res)

@@ -16,3 +16,9 @@ class Color_Class:
         )
         Results=self.session.execute(Results).fetchall()
         return Results
+    
+    def select_options(self):
+        color_select_res=select(Color_Model)
+        color_select_res=self.session.execute(color_select_res).fetchall()
+        # print(color_select_res)
+        return color_select_res

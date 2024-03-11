@@ -575,6 +575,9 @@ class Ui_MainWindow(object):
         Ui_MainWindow.component_Lst.append(self.ShasiCondTxt)
         Ui_MainWindow.component_Lst.append(self.CarTypeComb)
         Ui_MainWindow.component_Lst.append(self.CarColorComb)
+
+        FromsMethodInstance.select_color_type()
+
         if RunDateTask:   
             self.scheduler_thread.start()
        
