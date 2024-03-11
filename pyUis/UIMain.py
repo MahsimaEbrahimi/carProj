@@ -11,7 +11,8 @@ import time
 import threading
 from AddCarTypeUI import AddCarTypeClass
 from AddCarColorUI import AddCarColor
-
+from PyQt5.QtWidgets import QComboBox
+import messagebox
 
 class MainWindow(QtWidgets.QMainWindow):
     #متد colse event اوررایت شده است      
@@ -21,6 +22,17 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def SaveExitEvent(self, exit_event):
         self.exit_event = exit_event
+
+class DoubleClickComboBox(QComboBox):
+
+    def __init__(self, parent: QWidget, frmmethod) -> None:
+        super().__init__(parent)
+        self.frmMethods=frmmethod
+
+    def mouseDoubleClickEvent(self, event):
+        # Handle double-click event here
+        # messagebox.showerror(title=",",message="")
+
 
 class Ui_MainWindow(object):
     def __init__(self) -> None:
@@ -89,8 +101,6 @@ class Ui_MainWindow(object):
         self.MainWindow = QtWidgets.QMainWindow()
         self.AddCrTypeClass_Obj.setupUi(self.MainWindow, FromsMethodInstance)
         self.MainWindow.show()        
-
-
 
     def add_to_Car_Color(self, FromsMethodInstance):
         self.MainWindow = QtWidgets.QMainWindow()
@@ -280,6 +290,7 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.CarColorComb.setFont(font)
         self.CarColorComb.setObjectName("CarColorComb")
+        self.CarColorComb.mouseDoubleClickEvent
         # self.CarColorComb.addItem("")
         # self.CarColorComb.addItem("")
         # self.CarColorComb.addItem("")

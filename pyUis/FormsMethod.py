@@ -21,7 +21,7 @@ from Type_Class import Type_Class
 from Color_Class import Color_Class
 from Type_Model import Type_Model
 from Color_Model import Color_Model
-
+from PyQt5.QtWidgets import QMessageBox
 class FormMethod:
     def __init__(self,Mainobj) -> None:
         self.Mainobj=Mainobj
@@ -118,3 +118,12 @@ class FormMethod:
                self.Mainobj.CarColorComb.addItem(j[0].color)
                
 
+    def delete_item(self):
+        #  if index is None:
+        #     return  # Handle empty combobox
+        #  selected_text = self.itemText(index)
+         confirmation = QMessageBox.question(
+            self, "Confirm Delete", f"Delete '", QMessageBox.Ok | QMessageBox.Cancel
+           )
+         if confirmation == QMessageBox.Ok:
+              print("hi")       
