@@ -29,7 +29,6 @@ class FormMethod:
         self.res=connectionMaker.classConnection
         self.type_instance=Type_Class(self.res)
 
-
     def SaveMethod(self):
 
         FormsMethodCarclass_Obj=FormsMethodCarclass()
@@ -40,7 +39,10 @@ class FormMethod:
                                   )
         CarClassObj=CarClass(self.res)
         self.error=FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)  
-        if self.error==True:      
+        if self.error==True:  
+                phone_res= self.Mainobj.PhoneTxt.toPlainText()
+                if phone_res.isnumeric():
+                            
                     ownerModelInstance=OwnerModelclass(
                     nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
                     phone=self.Mainobj.PhoneTxt.toPlainText())
@@ -81,6 +83,8 @@ class FormMethod:
                             messagebox.showerror(title="خطا در ورودی", message=self.error)
                     else:
                       messagebox.showerror(title="خطا در ورودی", message=self.error)
+                else:
+                     messagebox.showerror(title="خطا در ورودی",message="تلفن را اشتباه وارد کرده اید")
         else:
             messagebox.showerror(title="خطا در ورودی", message=self.error)
 
