@@ -19,6 +19,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def closeEvent(self,func):
         # اگر ست کنیم ترد بسته میشود پس ما در این تابع ست میکنیم
         self.exit_event.set()
+        connectionMaker.classConnection.close()
 
     def SaveExitEvent(self, exit_event):
         self.exit_event = exit_event

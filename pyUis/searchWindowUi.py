@@ -59,12 +59,12 @@ class Ui_resiltTable(object):
         self.ui.OptionTxt.setText(sendToForm_CarInfo.OptionCond)
         self.ui.ShasiCondTxt.setText(sendToForm_CarInfo.ShasiCond)
         self.ui.DateTxt.setText(str(sendToForm_ROwner.Date))
-
-
         self.mainWindow.show()
+        self.currentForm.close()
 
 
     def setupUi(self, resiltTable):
+        self.currentForm=resiltTable
         resiltTable.setObjectName("resiltTable")
         resiltTable.resize(971, 898)
         self.centralwidget = QtWidgets.QWidget(resiltTable)
