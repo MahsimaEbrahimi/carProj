@@ -16,12 +16,12 @@ from Type_Model import Type_Model
 from Type_Class import Type_Class
 from functools import wraps
 from persiantools.jdatetime import JalaliDateTime
-import messagebox
+from messagebox import _win32
 from Type_Class import Type_Class
 from Color_Class import Color_Class
 from Type_Model import Type_Model
 from Color_Model import Color_Model
-from PyQt5.QtWidgets import QMessageBox
+
 class FormMethod:
     def __init__(self,Mainobj) -> None:
         self.Mainobj=Mainobj
@@ -76,17 +76,17 @@ class FormMethod:
                             CarOwnerInterfaceClassInstance=CarOwnerInterface(self.res)
                             self.error=FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
                             if self.error==True:
-                                messagebox.showinfo(title="موفقیت", message="تمام اطلاعات با موفقیت ثبت شد")
+                                _win32.showinfo(title="موفقیت", message="تمام اطلاعات با موفقیت ثبت شد")
                             else:
-                                messagebox.showerror(title="خطا در ورودی", message=self.error)
+                                _win32.showerror(title="خطا در ورودی", message=self.error)
                         else:
-                            messagebox.showerror(title="خطا در ورودی", message=self.error)
+                            _win32.showerror(title="خطا در ورودی", message=self.error)
                     else:
-                      messagebox.showerror(title="خطا در ورودی", message=self.error)
+                      _win32.showerror(title="خطا در ورودی", message=self.error)
                 else:
-                     messagebox.showerror(title="خطا در ورودی",message="تلفن را اشتباه وارد کرده اید")
+                     _win32.showerror(title="خطا در ورودی",message="تلفن را اشتباه وارد کرده اید")
         else:
-            messagebox.showerror(title="خطا در ورودی", message=self.error)
+            _win32.showerror(title="خطا در ورودی", message=self.error)
 
     def save_Car_Type(self, form):
          result = form.SendToAddCarType()
@@ -96,9 +96,9 @@ class FormMethod:
             if len(Type_Class_obj.Chk_redundancy(result))==0:
                  Type_Class_obj.add(Type_Model_obj)
                  self.Mainobj.CarTypeComb.addItem(result)
-                 messagebox.showinfo(title="موفقیت",message="نوع خودرو مورد نظر با موفقیت اضافه گردید")
+                 _win32.showinfo(title="موفقیت",message="نوع خودرو مورد نظر با موفقیت اضافه گردید")
             else:
-                  messagebox.showerror(title="خطا",message="مقدار مورد نظر قبلا در ديتابيس ثبت گرديده است")
+                  _win32.showerror(title="خطا",message="مقدار مورد نظر قبلا در ديتابيس ثبت گرديده است")
                     
     def save_color(self,form):
          result=form.SendToAddCarColor()
@@ -108,9 +108,9 @@ class FormMethod:
             if len(Color_Class_obj.Chk_redundancy(result))==0:
                  Color_Class_obj.add(Color_Model_obj)
                  self.Mainobj.CarColorComb.addItem(result)
-                 messagebox.showinfo(title="موفقیت",message="نوع خودرو مورد نظر با موفقیت اضافه گردید")
+                 _win32.showinfo(title="موفقیت",message="نوع خودرو مورد نظر با موفقیت اضافه گردید")
             else:
-                  messagebox.showerror(title="خطا",message="مقدار مورد نظر قبلا در ديتابيس ثبت گرديده است")         
+                  _win32.showerror(title="خطا",message="مقدار مورد نظر قبلا در ديتابيس ثبت گرديده است")         
 
     def select_color_type(self):
         #   type_instance=Type_Class(self.res)

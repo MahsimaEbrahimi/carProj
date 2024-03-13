@@ -1,6 +1,6 @@
 from CarOwnerInterfaceModel import CarOwnerInterfaceModel
 from sqlalchemy import and_, or_
-import messagebox
+
 class CarOwnerInterface:
     def __init__(self,session) -> None:
         self.session=session

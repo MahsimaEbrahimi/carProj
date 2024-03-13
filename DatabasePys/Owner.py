@@ -1,5 +1,6 @@
 from ownerModel import OwnerModelclass
 from sqlalchemy import select
+
 class OwnerClass:
     def __init__(self,session) -> None:
         self.session=session

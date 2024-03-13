@@ -12,7 +12,7 @@ import threading
 from AddCarTypeUI import AddCarTypeClass
 from AddCarColorUI import AddCarColor
 from PyQt5.QtWidgets import QComboBox
-import messagebox
+from messagebox import _win32
 
 class MainWindow(QtWidgets.QMainWindow):
     #متد colse event اوررایت شده است      
@@ -102,9 +102,9 @@ class Ui_MainWindow(object):
             FromsMethodInstance.delete_item_color(self.CarColorComb.currentText())
             index=self.CarColorComb.currentIndex()
             self.CarColorComb.removeItem(index)
-            messagebox.showinfo(title="موفقیت",message="آیتم مورد نظر شما با موفقیت حذف شد")    
+            _win32.showinfo(title="موفقیت",message="آیتم مورد نظر شما با موفقیت حذف شد")    
         else:
-            messagebox.showerror(title="خطا",message="آیتم مورد نظر شما وجود ندارد")    
+            _win32.showerror(title="خطا",message="آیتم مورد نظر شما وجود ندارد")    
 
 
     def remove_From_Car_Type(self, FromsMethodInstance): 
@@ -112,9 +112,9 @@ class Ui_MainWindow(object):
             FromsMethodInstance.delete_item_type(self.CarTypeComb.currentText())
             index=self.CarTypeComb.currentIndex()
             self.CarTypeComb.removeItem(index)
-            messagebox.showinfo(title="موفقیت",message="آیتم مورد نظر شما با موفقیت حذف شد")
+            _win32.showinfo(title="موفقیت",message="آیتم مورد نظر شما با موفقیت حذف شد")
         else:
-            messagebox.showerror(title="خطا",message="آیتم مورد نظر شما وجود ندارد")    
+            _win32.showerror(title="خطا",message="آیتم مورد نظر شما وجود ندارد")    
 
     def setupUi(self, MainWindow,FromsMethodInstance, RunDateTask=True):
         self.scheduler_thread=threading.Thread(target=self.scheduler)

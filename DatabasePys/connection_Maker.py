@@ -5,6 +5,6 @@ class connectionMaker:
 
     @classmethod
     def Stable_connection(cls):    
-        ConnectionObj=Connection("MSI","CarProj")
+        ConnectionObj=Connection("DESKTOP-PF3K10O\\SQLEXPRESS","CarProj")
         session=ConnectionObj.Connection_maker()
         connectionMaker.classConnection=session

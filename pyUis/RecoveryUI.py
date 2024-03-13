@@ -1,14 +1,14 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from SearchMethods import RecoveryMethodsClass
 from searchWindowUi import Ui_resiltTable 
-import messagebox
+from messagebox import _win32
 
 class Ui_RecoveryWindow(object):
     
     def OpenResWindow(self,searchMethodsClassINSTANCE):
          res=searchMethodsClassINSTANCE.SearchResult()
          if res==False:
-                messagebox.showerror(title="خطا",message="اطلاعاتی برای ماشین مورد نظر شما وجود ندارد")
+                _win32.showerror(title="خطا",message="اطلاعاتی برای ماشین مورد نظر شما وجود ندارد")
          else:
         #  searchMethodsClassINSTANCE=RecoveryMethodsClass(ui)
                 self.Window=QtWidgets.QMainWindow()

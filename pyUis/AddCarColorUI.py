@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-import messagebox
+from messagebox import _win32
 from FormsMethod import FormMethod
 
 
@@ -9,7 +9,7 @@ class AddCarColor(object):
         if res!="":
            return res
         else:
-           messagebox.showerror(title="خطا",message="مقداری که وارد کرده اید معتبر نیست ")     
+           _win32.showerror(title="خطا",message="مقداری که وارد کرده اید معتبر نیست ")     
            return   
 
     def setupUi(self, MainWindow,frm):

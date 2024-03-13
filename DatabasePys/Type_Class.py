@@ -2,6 +2,7 @@ from sqlalchemy import and_
 from sqlalchemy import select,delete
 from Type_Model import Type_Model
 from Color_Model import Color_Model
+
 class Type_Class:
     def __init__(self,session) -> None:
         self.session=session
