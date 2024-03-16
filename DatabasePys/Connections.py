@@ -8,7 +8,8 @@ class Connection:
            self.DATABASE_NAME=DATABASE_NAME
         
     def Connection_maker(self):
-        connection_string=f'mssql+pyodbc://{self.DRIVER_NAME}/{self.DATABASE_NAME}?driver=SQL+Server+Native+Client+11.0'
+     #    connection_string=f'mssql+pyodbc://{self.DRIVER_NAME}/{self.DATABASE_NAME}?driver=SQL+Server+Native+Client+11.0'
+        connection_string = 'sqlite:///CarProj.db'
         try:
              engine=create_engine(connection_string)
              session=sessionmaker(bind=engine)
