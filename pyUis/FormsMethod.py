@@ -34,8 +34,6 @@ class FormMethod:
         FormsMethodCarclass_Obj=FormsMethodCarclass()
         CarModelInstance=CarModel(ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
                                   CarId=self.Mainobj.CarIdTxt.toPlainText(),
-                                  CarType=self.Mainobj.CarTypeComb.currentText(),
-                                  model=self.Mainobj.TypeTxt.toPlainText()
                                   )
         CarClassObj=CarClass(self.res)
         self.error=FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)  
@@ -56,7 +54,9 @@ class FormMethod:
                             MotorGirboxCond=self.Mainobj.GirboxCondTxt.toPlainText(),
                             ColorCond=self.Mainobj.CarColorCondTxt.toPlainText(),
                             information =self.Mainobj.InfTxt.toPlainText(),
-                            Useage=self.Mainobj.UseTxt.toPlainText() 
+                            Useage=self.Mainobj.UseTxt.toPlainText(), 
+                            CarType=self.Mainobj.CarTypeComb.currentText(),
+                            model=self.Mainobj.TypeTxt.toPlainText()                            
                             )
                         
                         CarinfoClassInstance=CarinfoClass(self.res)

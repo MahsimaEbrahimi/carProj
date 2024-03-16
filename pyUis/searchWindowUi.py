@@ -49,7 +49,7 @@ class Ui_resiltTable(object):
         self.ui.setupUi(self.mainWindow,self.frmMethod, False)
         self.ui.ShasiTxt.setText(sendToForm_Car.ShasiNum)
         self.ui.CarIdTxt.setText(sendToForm_Car.CarId)
-        self.ui.TypeTxt.setText(sendToForm_Car.model)
+        self.ui.TypeTxt.setText(sendToForm_CarInfo.model)
         self.ui.PhoneTxt.setText(sendToForm_Owner.phone)
         self.ui.CarOwnerTxt.setText(sendToForm_Owner.nameLastname)
         self.ui.UseTxt.setText(sendToForm_CarInfo.Useage)
@@ -59,6 +59,8 @@ class Ui_resiltTable(object):
         self.ui.OptionTxt.setText(sendToForm_CarInfo.OptionCond)
         self.ui.ShasiCondTxt.setText(sendToForm_CarInfo.ShasiCond)
         self.ui.DateTxt.setText(str(sendToForm_ROwner.Date))
+        self.ui.CarTypeComb.setCurrentText(sendToForm_CarInfo.CarType)
+        self.ui.CarColorComb.setCurrentText(sendToForm_CarInfo.CarColor)      
         self.mainWindow.show()
         self.currentForm.close()
 

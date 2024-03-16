@@ -14,4 +14,8 @@ class CarinfoModel(Base):
         ColorCond=Column(Unicode,nullable=True)
         information=Column(Unicode,nullable=True)
         Useage=Column(Unicode(50),nullable=True)
+        CarType=Column(Unicode(50),nullable=False)
+        CarType.description="نوع خودرو"
+        model=Column(Unicode(50),nullable=False)
+        model.description="مدل"
 
