@@ -19,7 +19,9 @@ class CarinfoClass:
                     CarinfoModel.MotorGirboxCond == carInfoModel_instance.MotorGirboxCond.strip(),
                     CarinfoModel.ColorCond == carInfoModel_instance.ColorCond.strip(),
                     CarinfoModel.information == carInfoModel_instance.information.strip(),
-                    CarinfoModel.Useage == carInfoModel_instance.Useage.strip()
+                    CarinfoModel.Useage == carInfoModel_instance.Useage.strip(),
+                    CarinfoModel.CarType ==carInfoModel_instance.CarType.strip(),
+                    CarinfoModel.CarType==carInfoModel_instance.CarType.strip()
                     ))
         stmt=self.session.execute(stmt).fetchall()
         if len(stmt)  == 0:

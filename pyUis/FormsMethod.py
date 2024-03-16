@@ -57,7 +57,9 @@ class FormMethod:
                             Useage=self.Mainobj.UseTxt.toPlainText(), 
                             CarType=self.Mainobj.CarTypeComb.currentText(),
                             model=self.Mainobj.TypeTxt.toPlainText()                            
-                            )
+                            )                            
+                        
+
                         
                         CarinfoClassInstance=CarinfoClass(self.res)
                         result=CarinfoClassInstance.select_query(CarInfoModelInstance)
