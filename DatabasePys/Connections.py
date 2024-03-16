@@ -9,7 +9,7 @@ class Connection:
         
     def Connection_maker(self):
      #    connection_string=f'mssql+pyodbc://{self.DRIVER_NAME}/{self.DATABASE_NAME}?driver=SQL+Server+Native+Client+11.0'
-        connection_string = 'sqlite:///CarProj.db'
+        connection_string = f'sqlite:///{self.DATABASE_NAME}.db'
         try:
              engine=create_engine(connection_string)
              session=sessionmaker(bind=engine)
