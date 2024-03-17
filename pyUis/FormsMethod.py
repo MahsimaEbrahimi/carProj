@@ -110,7 +110,7 @@ class FormMethod:
             if len(Color_Class_obj.Chk_redundancy(result))==0:
                  Color_Class_obj.add(Color_Model_obj)
                  self.Mainobj.CarColorComb.addItem(result)
-                 _win32.showinfo(title="موفقیت",message="نوع خودرو مورد نظر با موفقیت اضافه گردید")
+                 _win32.showinfo(title="موفقیت",message="رنگ خودرو مورد نظر با موفقیت اضافه گردید")
             else:
                   _win32.showerror(title="خطا",message="مقدار مورد نظر قبلا در ديتابيس ثبت گرديده است")         
 

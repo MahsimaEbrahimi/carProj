@@ -23,7 +23,6 @@ class Ui_resiltTable(object):
             row_number =+ 1
 
     def handleRowDoubleClick(self, index):
-        # print(self.CarClassObj)
         row = index.row()
         # Get information from the clicked row
         row_data = []
@@ -59,8 +58,21 @@ class Ui_resiltTable(object):
         self.ui.OptionTxt.setText(sendToForm_CarInfo.OptionCond)
         self.ui.ShasiCondTxt.setText(sendToForm_CarInfo.ShasiCond)
         self.ui.DateTxt.setText(str(sendToForm_ROwner.Date))
-        self.ui.CarTypeComb.setCurrentText(sendToForm_CarInfo.CarType)
-        self.ui.CarColorComb.setCurrentText(sendToForm_CarInfo.CarColor)      
+        res=self.ui.CarTypeComb.findText(sendToForm_CarInfo.CarType)
+        if res!=-1:
+            self.ui.CarTypeComb.setCurrentText(sendToForm_CarInfo.CarType)
+        else:
+            self.ui.CarTypeComb.addItem(sendToForm_CarInfo.CarType)
+            self.ui.CarTypeComb.setCurrentText(sendToForm_CarInfo.CarType)
+
+        res=self.ui.CarTypeComb.findText(sendToForm_CarInfo.CarColor)
+        if res!=-1:
+           self.ui.CarColorComb.setCurrentText(sendToForm_CarInfo.CarColor)     
+        else:
+            self.ui.CarTypeComb.addItem(sendToForm_CarInfo.CarColor)
+            self.ui.CarTypeComb.setCurrentText(sendToForm_CarInfo.CarColor)         
+
+
         self.mainWindow.show()
         self.currentForm.close()
 
