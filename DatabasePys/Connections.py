@@ -3,12 +3,10 @@ from sqlalchemy import create_engine
 
 import sys
 class Connection:
-    def __init__(self,DRIVER_NAME,DATABASE_NAME) -> None:
-           self.DRIVER_NAME=DRIVER_NAME
+    def __init__(self,DATABASE_NAME) -> None:
            self.DATABASE_NAME=DATABASE_NAME
         
     def Connection_maker(self):
-     #    connection_string=f'mssql+pyodbc://{self.DRIVER_NAME}/{self.DATABASE_NAME}?driver=SQL+Server+Native+Client+11.0'
         connection_string = f'sqlite:///{self.DATABASE_NAME}.db'
         try:
              engine=create_engine(connection_string)
