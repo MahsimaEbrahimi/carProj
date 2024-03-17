@@ -88,7 +88,8 @@ class Ui_MainWindow(object):
             # Apply scaling transformation
             painter.translate(print_rect.topLeft())
             painter.scale(scale, scale)
-            self.centralwidget.render(painter)        
+            self.centralwidget.render(painter)      
+            _win32.showinfo(title="موفقیت",message="پرینت ذخیره گردید")
             painter.end()
                 
                 
