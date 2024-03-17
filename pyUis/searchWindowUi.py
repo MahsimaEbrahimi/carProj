@@ -65,12 +65,13 @@ class Ui_resiltTable(object):
             self.ui.CarTypeComb.addItem(sendToForm_CarInfo.CarType)
             self.ui.CarTypeComb.setCurrentText(sendToForm_CarInfo.CarType)
 
-        res=self.ui.CarTypeComb.findText(sendToForm_CarInfo.CarColor)
-        if res!=-1:
+
+        res2=self.ui.CarTypeComb.findText(sendToForm_CarInfo.CarColor)
+        if res2!=-1:
            self.ui.CarColorComb.setCurrentText(sendToForm_CarInfo.CarColor)     
         else:
-            self.ui.CarTypeComb.addItem(sendToForm_CarInfo.CarColor)
-            self.ui.CarTypeComb.setCurrentText(sendToForm_CarInfo.CarColor)         
+            self.ui.CarColorComb.addItem(sendToForm_CarInfo.CarColor)
+            self.ui.CarColorComb.setCurrentText(sendToForm_CarInfo.CarColor)         
 
 
         self.mainWindow.show()
