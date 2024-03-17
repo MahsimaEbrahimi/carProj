@@ -13,6 +13,8 @@ from AddCarTypeUI import AddCarTypeClass
 from AddCarColorUI import AddCarColor
 from PyQt5.QtWidgets import QComboBox
 from messagebox import _win32
+import sys
+
 
 class MainWindow(QtWidgets.QMainWindow):
     #متد colse event اوررایت شده است      
@@ -24,12 +26,17 @@ class MainWindow(QtWidgets.QMainWindow):
     def SaveExitEvent(self, exit_event):
         self.exit_event = exit_event
 
-class Ui_MainWindow(object):
+class Main_recovery(QtWidgets.QMainWindow):
+    def closeEvent(self, func):
+        Ui_MainWindow.RecoveryOpenState=False
+
+        
+class Ui_MainWindow(object):        
+    RecoveryOpenState=False
     def __init__(self) -> None:
         self.exit_event = threading.Event()
         self.AddCrTypeClass_Obj=AddCarTypeClass()
         self.AddCarColor_obj=AddCarColor()
-
     component_Lst=[]
     
     def DateSetter(self):
@@ -44,11 +51,14 @@ class Ui_MainWindow(object):
             time.sleep(1)
 
     def OpenWindow(self):
-        self.Window=QtWidgets.QMainWindow()
-        self.ui= Ui_RecoveryWindow()
-        searchWindowObj2=RecoveryMethodsClass(self.ui)
-        self.ui.setupUi(self.Window,searchWindowObj2)
-        self.Window.show()
+        if(Ui_MainWindow.RecoveryOpenState==False):
+            app=Ui_RecoveryWindow()
+            self.Window=QtWidgets.QMainWindow()
+            self.ui= Ui_RecoveryWindow()
+            searchWindowObj2=RecoveryMethodsClass(self.ui)
+            self.ui.setupUi(self.Window,searchWindowObj2)
+            self.Window.show()
+            Ui_MainWindow.RecoveryOpenState=True
         
     def cleaner(self):  
         for i in Ui_MainWindow.component_Lst: 
@@ -700,7 +710,6 @@ class Ui_MainWindow(object):
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
 
 if __name__ == "__main__":
-    import sys
 
     app = QtWidgets.QApplication(sys.argv)
 #     mainWindow = QtWidgets.QMainWindow()
