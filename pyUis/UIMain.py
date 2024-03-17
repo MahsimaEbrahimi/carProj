@@ -71,24 +71,27 @@ class Ui_MainWindow(object):
 
     def Printer(self):
         filename, _ = QFileDialog.getSaveFileName(None, "Save PDF", "", "*.pdf")
-         # Create a printer object and configure its settings
-        printer = QPrinter(QPrinter.HighResolution)  # Use high resolution for better quality
-        printer.setOutputFormat(QPrinter.PdfFormat)
-        printer.setPaperSize(QPrinter.A4)  # Set paper size to A4
-        printer.setOutputFileName(filename)
-        painter = QPainter(printer)
-        print_rect = printer.pageRect()
+        if filename != '':
+            # Create a printer object and configure its settings
+            printer = QPrinter(QPrinter.HighResolution)  # Use high resolution for better quality
+            printer.setOutputFormat(QPrinter.PdfFormat)
+            printer.setPaperSize(QPrinter.A4)  # Set paper size to A4
+            printer.setOutputFileName(filename)
+            print_rect = printer.pageRect()
 
-        # Calculate the scaling factor to fit the widget within the printable area
-        scale_x = print_rect.width() / self.centralwidget.width()
-        scale_y = print_rect.height() / self.centralwidget.height()
-        scale = min(scale_x, scale_y)
+            # Calculate the scaling factor to fit the widget within the printable area
+            scale_x = print_rect.width() / self.centralwidget.width()
+            scale_y = print_rect.height() / self.centralwidget.height()
+            scale = min(scale_x, scale_y)
 
-        # Apply scaling transformation
-        painter.translate(print_rect.topLeft())
-        painter.scale(scale, scale)
-        self.centralwidget.render(painter)
-        painter.end()
+            painter = QPainter(printer)
+            # Apply scaling transformation
+            painter.translate(print_rect.topLeft())
+            painter.scale(scale, scale)
+            self.centralwidget.render(painter)        
+            painter.end()
+                
+                
     
     def add_To_Car_Type(self, FromsMethodInstance):
         self.MainWindow = QtWidgets.QMainWindow()
@@ -252,6 +255,7 @@ class Ui_MainWindow(object):
         self.CarTypeComb = QtWidgets.QComboBox(self.frame_7)
         font = QtGui.QFont()
         font.setPointSize(10)
+        self.CarTypeComb.setMinimumSize(QtCore.QSize(100, 10))
         self.CarTypeComb.setFont(font)
         self.CarTypeComb.setObjectName("CarTypeComb")
         # self.CarTypeComb.addItem("")
@@ -298,11 +302,13 @@ class Ui_MainWindow(object):
         self.AddCarColorBtn.setObjectName("AddCarColorBtn")
         self.horizontalLayout_4.addWidget(self.AddCarColorBtn)
         self.RemoveCarColorBtn = QtWidgets.QPushButton(self.frame_4,clicked=lambda:self.remove_From_Car_Color(FromsMethodInstance))
-        self.RemoveCarColorBtn.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.RemoveCarColorBtn.setMaximumSize(QtCore.QSize(300, 16777215))
         self.RemoveCarColorBtn.setObjectName("RemoveCarColorBtn")
         self.horizontalLayout_4.addWidget(self.RemoveCarColorBtn)
         self.CarColorComb = QtWidgets.QComboBox(self.frame_4)
-        self.CarColorComb.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.CarColorComb.setMaximumSize(QtCore.QSize(400, 16777215))
+        self.CarColorComb.setMinimumSize(QtCore.QSize(100, 10))
+
         font = QtGui.QFont()
         font.setPointSize(10)
         self.CarColorComb.setFont(font)
