@@ -66,7 +66,7 @@ class Ui_resiltTable(object):
             self.ui.CarTypeComb.setCurrentText(sendToForm_CarInfo.CarType)
 
 
-        res2=self.ui.CarTypeComb.findText(sendToForm_CarInfo.CarColor)
+        res2=self.ui.CarColorComb.findText(sendToForm_CarInfo.CarColor)
         if res2!=-1:
            self.ui.CarColorComb.setCurrentText(sendToForm_CarInfo.CarColor)     
         else:
