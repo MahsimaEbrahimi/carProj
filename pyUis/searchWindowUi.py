@@ -99,7 +99,7 @@ class Ui_resiltTable(object):
 
     def retranslateUi(self, resiltTable):
         _translate = QtCore.QCoreApplication.translate
-        resiltTable.setWindowTitle(_translate("resiltTable", "MainWindow"))
+        resiltTable.setWindowTitle(_translate("resiltTable", "نتایج"))
 
 
 if __name__ == "__main__":

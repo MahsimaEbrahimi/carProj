@@ -8,8 +8,8 @@ class Main_recovery(QtWidgets.QMainWindow):
     def closeEvent(self, func):
          Ui_RecoveryWindow.RecoveryOpenState=False
     
-#     def showEvent(self, func) -> None:
-#          print("kir babat")
+    def showEvent(self, func) -> None:
+         Ui_RecoveryWindow.RecoveryOpenState=True
 
 class Ui_RecoveryWindow(object):
     RecoveryOpenState=False
@@ -161,7 +161,7 @@ class Ui_RecoveryWindow(object):
 
     def retranslateUi(self, RecoveryWindow):
         _translate = QtCore.QCoreApplication.translate
-        RecoveryWindow.setWindowTitle(_translate("RecoveryWindow", "MainWindow"))
+        RecoveryWindow.setWindowTitle(_translate("RecoveryWindow", "بازیابی"))
         self.label_5.setText(_translate("RecoveryWindow", "شماره پلاك:"))
         self.label_6.setText(_translate("RecoveryWindow", "تلفن:"))
         self.CarOwnerTxt.setHtml(_translate("RecoveryWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

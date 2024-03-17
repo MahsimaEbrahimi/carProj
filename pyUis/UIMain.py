@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QPageSize, QPdfWriter, QPainter
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QFileDialog
 from PyQt5.QtPrintSupport import QPrinter
-from RecoveryUI import Ui_RecoveryWindow
+from RecoveryUI import Ui_RecoveryWindow,Main_recovery
 from connection_Maker import connectionMaker
 from FormsMethod import FormMethod
 from SearchMethods import RecoveryMethodsClass
@@ -47,13 +47,11 @@ class Ui_MainWindow(object):
 
     def OpenWindow(self):
         if(Ui_RecoveryWindow.RecoveryOpenState==False):
-            app=Ui_RecoveryWindow()
-            self.Window=QtWidgets.QMainWindow()
+            self.Window=Main_recovery()
             self.ui= Ui_RecoveryWindow()
             searchWindowObj2=RecoveryMethodsClass(self.ui)
             self.ui.setupUi(self.Window,searchWindowObj2)
             self.Window.show()
-            Ui_MainWindow.RecoveryOpenState=True
         
     def cleaner(self):  
         for i in Ui_MainWindow.component_Lst: 
@@ -614,7 +612,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "صفحه اصلی"))
         self.PrintBtn.setText(_translate("MainWindow", "چاپ"))
         self.RecoveryBtn.setText(_translate("MainWindow", "بازيابي"))
         self.SaveBtn.setText(_translate("MainWindow", "ذخيره"))
