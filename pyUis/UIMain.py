@@ -26,13 +26,8 @@ class MainWindow(QtWidgets.QMainWindow):
     def SaveExitEvent(self, exit_event):
         self.exit_event = exit_event
 
-class Main_recovery(QtWidgets.QMainWindow):
-    def closeEvent(self, func):
-        Ui_MainWindow.RecoveryOpenState=False
-
         
 class Ui_MainWindow(object):        
-    RecoveryOpenState=False
     def __init__(self) -> None:
         self.exit_event = threading.Event()
         self.AddCrTypeClass_Obj=AddCarTypeClass()
@@ -51,7 +46,7 @@ class Ui_MainWindow(object):
             time.sleep(1)
 
     def OpenWindow(self):
-        if(Ui_MainWindow.RecoveryOpenState==False):
+        if(Ui_RecoveryWindow.RecoveryOpenState==False):
             app=Ui_RecoveryWindow()
             self.Window=QtWidgets.QMainWindow()
             self.ui= Ui_RecoveryWindow()

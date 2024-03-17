@@ -3,7 +3,16 @@ from SearchMethods import RecoveryMethodsClass
 from searchWindowUi import Ui_resiltTable 
 from messagebox import _win32
 
+
+class Main_recovery(QtWidgets.QMainWindow):
+    def closeEvent(self, func):
+         Ui_RecoveryWindow.RecoveryOpenState=False
+    
+#     def showEvent(self, func) -> None:
+#          print("kir babat")
+
 class Ui_RecoveryWindow(object):
+    RecoveryOpenState=False
     
     def OpenResWindow(self,searchMethodsClassINSTANCE):
          res=searchMethodsClassINSTANCE.SearchResult()
@@ -17,7 +26,6 @@ class Ui_RecoveryWindow(object):
                 self.Resultwindow.showInfo(res)
                 self.Window.show()
        
-
     def setupUi(self, RecoveryWindow,searchMethodsClassINSTANCE):
         RecoveryWindow.setObjectName("RecoveryWindow")
         RecoveryWindow.resize(709, 345)
