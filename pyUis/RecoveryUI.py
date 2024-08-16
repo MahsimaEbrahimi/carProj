@@ -48,6 +48,51 @@ class Ui_RecoveryWindow(object):
         self.gridLayout = QtWidgets.QGridLayout(self.RecoveryFrame)
         self.gridLayout.setContentsMargins(-1, 11, -1, -1)
         self.gridLayout.setObjectName("gridLayout")
+
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+
+        self.firstPart_search_id = QtWidgets.QTextEdit(self.RecoveryFrame)
+        self.firstPart_search_id.setMinimumSize(QtCore.QSize(0, 20))
+        self.firstPart_search_id.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.firstPart_search_id.setPalette(palette)
+        self.firstPart_search_id.setFont(font)
+        self.firstPart_search_id.setObjectName("firstPart_search_id")
+        self.gridLayout.addWidget(self.firstPart_search_id, 1, 0, 1, 1)
+        
+        self.secoundPart_search_id = QtWidgets.QTextEdit(self.RecoveryFrame)
+        self.secoundPart_search_id.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.secoundPart_search_id.setPalette(palette)
+        self.secoundPart_search_id.setFont(font)
+        self.secoundPart_search_id.setObjectName("secoundPart_search_id")
+        self.gridLayout.addWidget(self.secoundPart_search_id, 1, 1, 1, 1)
+
+        self.ThirdPart_search_id = QtWidgets.QTextEdit(self.RecoveryFrame)
+        self.ThirdPart_search_id.setMinimumSize(QtCore.QSize(0, 20))
+        self.ThirdPart_search_id.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.ThirdPart_search_id.setPalette(palette)
+        self.ThirdPart_search_id.setFont(font)
+        self.ThirdPart_search_id.setObjectName("ThirdPart_search_id")
+        self.gridLayout.addWidget(self.ThirdPart_search_id, 1, 2, 1, 1)
+
+        self.FourthPart_search_id = QtWidgets.QTextEdit(self.RecoveryFrame)
+        self.FourthPart_search_id.setMinimumSize(QtCore.QSize(0, 20))
+        self.FourthPart_search_id.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.FourthPart_search_id.setPalette(palette)
+        self.FourthPart_search_id.setFont(font)
+        self.FourthPart_search_id.setObjectName("FourthPart_search_id")
+        self.gridLayout.addWidget(self.FourthPart_search_id, 1, 3, 1, 1)
+
         self.label_5 = QtWidgets.QLabel(self.RecoveryFrame)
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -85,25 +130,25 @@ class Ui_RecoveryWindow(object):
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.gridLayout.addWidget(self.label_4, 2, 2, 1, 1)
-        self.CarIdTxt = QtWidgets.QTextEdit(self.RecoveryFrame)
-        self.CarIdTxt.setMinimumSize(QtCore.QSize(0, 20))
-        self.CarIdTxt.setMaximumSize(QtCore.QSize(16777215, 50))
-        palette = QtGui.QPalette()
-        brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
-        self.CarIdTxt.setPalette(palette)
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.CarIdTxt.setFont(font)
-        self.CarIdTxt.setObjectName("CarIdTxt")
-        self.gridLayout.addWidget(self.CarIdTxt, 1, 0, 1, 1)
+        # self.CarIdTxt = QtWidgets.QTextEdit(self.RecoveryFrame)
+        # self.CarIdTxt.setMinimumSize(QtCore.QSize(0, 20))
+        # self.CarIdTxt.setMaximumSize(QtCore.QSize(16777215, 50))
+        # palette = QtGui.QPalette()
+        # brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
+        # brush.setStyle(QtCore.Qt.SolidPattern)
+        # palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        # brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
+        # brush.setStyle(QtCore.Qt.SolidPattern)
+        # palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        # brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
+        # brush.setStyle(QtCore.Qt.SolidPattern)
+        # palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        # self.CarIdTxt.setPalette(palette)
+        # font = QtGui.QFont()
+        # font.setPointSize(12)
+        # self.CarIdTxt.setFont(font)
+        # self.CarIdTxt.setObjectName("CarIdTxt")
+        # self.gridLayout.addWidget(self.CarIdTxt, 1, 0, 1, 1)
         self.ShasiTxt = QtWidgets.QTextEdit(self.RecoveryFrame)
         self.ShasiTxt.setMinimumSize(QtCore.QSize(0, 20))
         self.ShasiTxt.setMaximumSize(QtCore.QSize(16777215, 50))
@@ -162,6 +207,26 @@ class Ui_RecoveryWindow(object):
     def retranslateUi(self, RecoveryWindow):
         _translate = QtCore.QCoreApplication.translate
         RecoveryWindow.setWindowTitle(_translate("RecoveryWindow", "بازیابی"))
+        self.firstPart_search_id.setHtml(_translate("RecoveryWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.secoundPart_search_id.setHtml(_translate("RecoveryWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.ThirdPart_search_id.setHtml(_translate("RecoveryWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.FourthPart_search_id.setHtml(_translate("RecoveryWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.label_5.setText(_translate("RecoveryWindow", "شماره پلاك:"))
         self.label_6.setText(_translate("RecoveryWindow", "تلفن:"))
         self.CarOwnerTxt.setHtml(_translate("RecoveryWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -170,11 +235,11 @@ class Ui_RecoveryWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.label_4.setText(_translate("RecoveryWindow", "مالك خودرو:"))
-        self.CarIdTxt.setHtml(_translate("RecoveryWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+#         self.CarIdTxt.setHtml(_translate("RecoveryWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+# "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+# "p, li { white-space: pre-wrap; }\n"
+# "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+# "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.ShasiTxt.setHtml(_translate("RecoveryWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
