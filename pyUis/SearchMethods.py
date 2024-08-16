@@ -13,7 +13,12 @@ class RecoveryMethodsClass:
     
     def SearchResult(self):
          ChkNullDescriptorINSTANCE=ChkNullDescriptorClass(shasinum=self.recoveryObj.ShasiTxt.toPlainText(),
-                                                          carId=self.recoveryObj.CarIdTxt.toPlainText(),
+                                                          carId=(self.Mainobj.ThirdPart_id_2.toPlainText()+
+                                                                 "-"+                                         
+                                                                 self.Mainobj.FourthPart_id.toPlainText()+  
+                              
+                                                                 self.Mainobj.secoundPart_id.toPlainText()+ 
+                                                                 self.Mainobj.firstPart_id.toPlainText()),
                                                           carOwner=self.recoveryObj.CarOwnerTxt.toPlainText(),
                                                           phone=self.recoveryObj.PhoneTxt.toPlainText())
          condition=[]
@@ -23,12 +28,12 @@ class RecoveryMethodsClass:
               if i=="carOwner":
                    condition.append(CarOwnerInterfaceModel.nameLastname==self.recoveryObj.CarOwnerTxt.toPlainText())
               if i=="carId":
-                   condition.append(CarOwnerInterfaceModel.CarId== self.Mainobj.ThirdPart_id_2.toPlainText()+
+                   condition.append(CarOwnerInterfaceModel.CarId== (self.Mainobj.ThirdPart_id_2.toPlainText()+
                                           "-"+                                         
                                          self.Mainobj.FourthPart_id.toPlainText()+  
          
                                          self.Mainobj.secoundPart_id.toPlainText()+ 
-                                         self.Mainobj.firstPart_id.toPlainText())
+                                         self.Mainobj.firstPart_id.toPlainText()))
               if i=="shasinum":
                     condition.append(CarOwnerInterfaceModel.ShasiNum==self.recoveryObj.ShasiTxt.toPlainText())
 
