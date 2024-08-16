@@ -33,7 +33,11 @@ class FormMethod:
 
         FormsMethodCarclass_Obj=FormsMethodCarclass()
         CarModelInstance=CarModel(ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
-                                  CarId=self.Mainobj.CarIdTxt.toPlainText(),
+                                  CarId=(self.Mainobj.firstPart_id.toPlainText()
+                                         +self.Mainobj.secoundPart_id.toPlainText()+
+                                         self.Mainobj.ThirdPart_id_2.toPlainText()+
+                                         self.Mainobj.FourthPart_id.toPlainText()
+                                         ),
                                   )
         CarClassObj=CarClass(self.res)
         self.error=FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)  
