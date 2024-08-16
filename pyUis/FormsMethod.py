@@ -33,11 +33,15 @@ class FormMethod:
 
         FormsMethodCarclass_Obj=FormsMethodCarclass()
         CarModelInstance=CarModel(ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
-                                  CarId=(self.Mainobj.firstPart_id.toPlainText()
-                                         +self.Mainobj.secoundPart_id.toPlainText()+
+                                  CarId=(                                                                            
                                          self.Mainobj.ThirdPart_id_2.toPlainText()+
-                                         self.Mainobj.FourthPart_id.toPlainText()
+                                          "-"+                                         
+                                         self.Mainobj.FourthPart_id.toPlainText()+  
+         
+                                         self.Mainobj.secoundPart_id.toPlainText()+ 
+                                         self.Mainobj.firstPart_id.toPlainText()
                                          ),
+
                                   )
         CarClassObj=CarClass(self.res)
         self.error=FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)  
@@ -74,7 +78,16 @@ class FormMethod:
                             CarOwnerInterfaceModelInstance=CarOwnerInterfaceModel(
                                 Thekey=result,
                                 ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
-                                CarId=self.Mainobj.CarIdTxt.toPlainText(),     
+                                  CarId=(                                                                            
+
+                                         self.Mainobj.ThirdPart_id_2.toPlainText()+
+                                          "-"+                                         
+                                         self.Mainobj.FourthPart_id.toPlainText()+  
+         
+                                         self.Mainobj.secoundPart_id.toPlainText()+ 
+                                         self.Mainobj.firstPart_id.toPlainText()
+                                         ),
+
                                 Date= str(JalaliDateTime.now().strftime("%Y/%m/%d")),
                                 nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
                                 Phone=self.Mainobj.PhoneTxt.toPlainText(),      
