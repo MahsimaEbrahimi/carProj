@@ -441,7 +441,7 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.PhoneTxt.setFont(font)
         self.PhoneTxt.setObjectName("PhoneTxt")
-        self.gridLayout.addWidget(self.PhoneTxt, 2, 3, 1, 1)
+        self.gridLayout.addWidget(self.PhoneTxt, 2, 2, 1, 2)
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem4, 1, 0, 1, 1)
         self.label_4 = QtWidgets.QLabel(self.frame_5)
