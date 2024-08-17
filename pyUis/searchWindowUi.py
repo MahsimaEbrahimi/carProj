@@ -13,6 +13,7 @@ class Ui_resiltTable(object):
         self.tableWidget.setRowCount(0)
         row_number=0
         for row_number,row_data in enumerate(res):
+            print(row_data.CarId)
             self.tableWidget.insertRow(row_number)
             self.tableWidget.setItem(row_number,0, QtWidgets.QTableWidgetItem(str(row_data.ShasiNum)))
             self.tableWidget.setItem(row_number,1, QtWidgets.QTableWidgetItem(str(row_data.CarId)))
