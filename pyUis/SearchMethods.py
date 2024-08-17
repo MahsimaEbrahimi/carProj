@@ -13,13 +13,16 @@ class RecoveryMethodsClass:
     
     def SearchResult(self):
          ChkNullDescriptorINSTANCE=ChkNullDescriptorClass(shasinum=self.recoveryObj.ShasiTxt.toPlainText(),
-                                      CarId=(                                         
+                                      carId=(                                         
                                        self.recoveryObj.firstPart_search_id.toPlainText()+
                                        self.recoveryObj.secoundPart_search_id.toPlainText()+                                                                                                                    
                                          self.recoveryObj.ThirdPart_search_id.toPlainText()+
                                           "-"+                                         
                                          self.recoveryObj.FourthPart_search_id.toPlainText()
-                                         ))
+                                         ),
+                                         carOwner=self.recoveryObj.CarOwnerTxt.toPlainText(),
+                                         phone=self.recoveryObj.PhoneTxt.toPlainText()
+                                         )
          condition=[]
          for i in ChkNullDescriptorINSTANCE.__dict__.keys():
               if i=="phone":
