@@ -13,33 +13,35 @@ class RecoveryMethodsClass:
          self.recoveryObj=recoveryObj
     
     def SearchResult(self):
-         carId = BaseUi.format_car_id(self.recoveryObj.firstPart_search_id.toPlainText()+
-                self.recoveryObj.secoundPart_search_id.toPlainText()+                                                                                                                    
-                self.recoveryObj.ThirdPart_search_id.toPlainText()+
-                "-"+                                         
-                self.recoveryObj.FourthPart_search_id.toPlainText())
+          firstp = self.recoveryObj.firstPart_search_id.toPlainText()
+          secondp = self.recoveryObj.secoundPart_search_id.toPlainText()
+          thirdp = self.recoveryObj.ThirdPart_search_id.toPlainText()
+          fourthp = self.recoveryObj.FourthPart_search_id.toPlainText()
+          if (firstp == '' or secondp == '' or thirdp == '' or fourthp == ''):
+               carId = ''
+          else:
+               carId = BaseUi.format_car_id(firstp+secondp+thirdp+"-"+fourthp)
          
-         ChkNullDescriptorINSTANCE=ChkNullDescriptorClass(shasinum=self.recoveryObj.ShasiTxt.toPlainText(),
-                                      carId=carId,
-                                         carOwner=self.recoveryObj.CarOwnerTxt.toPlainText(),
-                                         phone=self.recoveryObj.PhoneTxt.toPlainText()
-                                         )
-         condition=[]
-         for i in ChkNullDescriptorINSTANCE.__dict__.keys():
+          ChkNullDescriptorINSTANCE=ChkNullDescriptorClass(shasinum=self.recoveryObj.ShasiTxt.toPlainText(),
+                                        carId=carId,
+                                        carOwner=self.recoveryObj.CarOwnerTxt.toPlainText(),
+                                        phone=self.recoveryObj.PhoneTxt.toPlainText())
+          condition=[]
+          for i in ChkNullDescriptorINSTANCE.__dict__.keys():
               if i=="phone":
                    condition.append(CarOwnerInterfaceModel.Phone==self.recoveryObj.PhoneTxt.toPlainText())
               if i=="carOwner":
                    condition.append(CarOwnerInterfaceModel.nameLastname==self.recoveryObj.CarOwnerTxt.toPlainText())
               if i=="carId":
-                   condition.append(CarOwnerInterfaceModel.CarId==  carId)
+                   condition.append(CarOwnerInterfaceModel.CarId==carId)
               if i=="shasinum":
                     condition.append(CarOwnerInterfaceModel.ShasiNum==self.recoveryObj.ShasiTxt.toPlainText())
 
-         CarOwnerInterfaceClass_insance=CarOwnerInterface(connectionMaker.classConnection)
-         res2=CarOwnerInterfaceClass_insance.search(condition)        
-         condition.clear()
+          CarOwnerInterfaceClass_insance=CarOwnerInterface(connectionMaker.classConnection)
+          res2=CarOwnerInterfaceClass_insance.search(condition)        
+          condition.clear()
 
-         return res2
+          return res2
           
                    
                    
