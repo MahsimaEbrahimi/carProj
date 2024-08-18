@@ -6,20 +6,21 @@ from ChkNullDescriptorClass import ChkNullDescriptorClass
 from connection_Maker import connectionMaker
 from CarOwnerInterfaceModel import CarOwnerInterfaceModel
 from CarOwnerInterfaceClass import CarOwnerInterface
+from BaseUi import BaseUi
 
 class RecoveryMethodsClass:
     def __init__(self,recoveryObj) -> None:
          self.recoveryObj=recoveryObj
     
     def SearchResult(self):
+         carId = BaseUi.format_car_id(self.recoveryObj.firstPart_search_id.toPlainText()+
+                self.recoveryObj.secoundPart_search_id.toPlainText()+                                                                                                                    
+                self.recoveryObj.ThirdPart_search_id.toPlainText()+
+                "-"+                                         
+                self.recoveryObj.FourthPart_search_id.toPlainText())
+         
          ChkNullDescriptorINSTANCE=ChkNullDescriptorClass(shasinum=self.recoveryObj.ShasiTxt.toPlainText(),
-                                      carId=(                                         
-                                       self.recoveryObj.firstPart_search_id.toPlainText()+
-                                       self.recoveryObj.secoundPart_search_id.toPlainText()+                                                                                                                    
-                                         self.recoveryObj.ThirdPart_search_id.toPlainText()+
-                                          "-"+                                         
-                                         self.recoveryObj.FourthPart_search_id.toPlainText()
-                                         ),
+                                      carId=carId,
                                          carOwner=self.recoveryObj.CarOwnerTxt.toPlainText(),
                                          phone=self.recoveryObj.PhoneTxt.toPlainText()
                                          )
@@ -30,13 +31,7 @@ class RecoveryMethodsClass:
               if i=="carOwner":
                    condition.append(CarOwnerInterfaceModel.nameLastname==self.recoveryObj.CarOwnerTxt.toPlainText())
               if i=="carId":
-                   condition.append(CarOwnerInterfaceModel.CarId==  self.recoveryObj.firstPart_search_id.toPlainText()+
-                                       self.recoveryObj.secoundPart_search_id.toPlainText()+                                                                                                                    
-                                         self.recoveryObj.ThirdPart_search_id.toPlainText()+
-                                          "-"+                                         
-                                         self.recoveryObj.FourthPart_search_id.toPlainText()
-                                         
-                                         )
+                   condition.append(CarOwnerInterfaceModel.CarId==  carId)
               if i=="shasinum":
                     condition.append(CarOwnerInterfaceModel.ShasiNum==self.recoveryObj.ShasiTxt.toPlainText())
 

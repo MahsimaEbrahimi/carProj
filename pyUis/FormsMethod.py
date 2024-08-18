@@ -21,6 +21,7 @@ from Type_Class import Type_Class
 from Color_Class import Color_Class
 from Type_Model import Type_Model
 from Color_Model import Color_Model
+from BaseUi import BaseUi
 
 class FormMethod:
     def __init__(self,Mainobj) -> None:
@@ -30,18 +31,15 @@ class FormMethod:
         self.type_instance=Type_Class(self.res)
 
     def SaveMethod(self):
-
+        carId = BaseUi.format_car_id(self.Mainobj.firstPart_id.toPlainText()+
+                self.Mainobj.secoundPart_id.toPlainText()+                                                                                                                    
+                self.Mainobj.ThirdPart_id_2.toPlainText()+
+                "-"+                                         
+                self.Mainobj.FourthPart_id.toPlainText())
+        
         FormsMethodCarclass_Obj=FormsMethodCarclass()
         CarModelInstance=CarModel(ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
-                                  CarId=(                                         
-                                       self.Mainobj.firstPart_id.toPlainText()+
-                                       self.Mainobj.secoundPart_id.toPlainText()+                                                                                                                    
-                                         self.Mainobj.ThirdPart_id_2.toPlainText()+
-                                          "-"+                                         
-                                         self.Mainobj.FourthPart_id.toPlainText()
-                                         ),
-
-                                  )
+                                  CarId=carId)
         CarClassObj=CarClass(self.res)
         self.error=FormsMethodCarclass_Obj.sendToClass(CarModelInstance,CarClassObj)  
         if self.error==True:  
@@ -77,13 +75,7 @@ class FormMethod:
                             CarOwnerInterfaceModelInstance=CarOwnerInterfaceModel(
                                 Thekey=result,
                                 ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
-                                  CarId=(                                         
-                                       self.Mainobj.firstPart_id.toPlainText()+
-                                       self.Mainobj.secoundPart_id.toPlainText()+                                                                                                                    
-                                         self.Mainobj.ThirdPart_id_2.toPlainText()+
-                                          "-"+                                         
-                                         self.Mainobj.FourthPart_id.toPlainText()
-                                         ),
+                                  CarId=carId,
 
                                 Date= str(JalaliDateTime.now().strftime("%Y/%m/%d")),
                                 nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
