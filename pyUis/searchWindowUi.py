@@ -4,6 +4,8 @@ from Carinfo import CarinfoClass
 from connection_Maker import connectionMaker
 from ownerModel import OwnerModelclass
 from CarOwnerInterfaceModel import CarOwnerInterfaceModel
+import BaseUi
+
 class Ui_resiltTable(object):
     def __init__(self) -> None:
         self.CarClassObj=CarClass(connectionMaker.classConnection)
@@ -48,10 +50,10 @@ class Ui_resiltTable(object):
         self.frmMethod=FormMethod(self.ui) 
         self.ui.setupUi(self.mainWindow,self.frmMethod, False)
         self.ui.ShasiTxt.setText(sendToForm_Car.ShasiNum)
-        self.ui.firstPart_id.setText(sendToForm_Car.CarId[0:4])
-        self.ui.secoundPart_id.setText(sendToForm_Car.CarId[4:6])
-        self.ui.ThirdPart_id_2.setText(sendToForm_Car.CarId[6:12])      
-        self.ui.FourthPart_id.setText(sendToForm_Car.CarId[-4:])              
+        self.ui.firstPart_id.setText(BaseUi.remove_format_car_id(sendToForm_Car.CarId[0:4]))
+        self.ui.secoundPart_id.setText(BaseUi.remove_format_car_id(sendToForm_Car.CarId[4:6]))
+        self.ui.ThirdPart_id_2.setText(BaseUi.remove_format_car_id(sendToForm_Car.CarId[6:12]))      
+        self.ui.FourthPart_id.setText(BaseUi.remove_format_car_id(sendToForm_Car.CarId[-4:]))
         self.ui.TypeTxt.setText(sendToForm_CarInfo.model)
         self.ui.PhoneTxt.setText(sendToForm_Owner.phone)
         self.ui.CarOwnerTxt.setText(sendToForm_Owner.nameLastname)

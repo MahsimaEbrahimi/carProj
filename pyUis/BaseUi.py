@@ -10,3 +10,6 @@ def format_car_id(car_id):
                 formatted_id += latin_marker + char
 
         return formatted_id
+
+def remove_format_car_id(car_id):
+     return car_id.replace('\u200E', "").replace('\u200F', '')
