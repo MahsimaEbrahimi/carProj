@@ -1,5 +1,4 @@
-class BaseUi:
-    def format_car_id(car_id):
+def format_car_id(car_id):
         persian_marker = "\u200F"  # Right-to-Left Marker
         latin_marker = "\u200E"    # Left-to-Right Marker
 
