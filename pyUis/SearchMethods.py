@@ -6,13 +6,14 @@ from ChkNullDescriptorClass import ChkNullDescriptorClass
 from connection_Maker import connectionMaker
 from CarOwnerInterfaceModel import CarOwnerInterfaceModel
 from CarOwnerInterfaceClass import CarOwnerInterface
+import BaseUi
 
 class RecoveryMethodsClass:
     def __init__(self,recoveryObj) -> None:
          self.recoveryObj=recoveryObj
     
     def SearchResult(self):
-         carId = (self.recoveryObj.firstPart_search_id.toPlainText()+
+         carId = BaseUi.format_car_id(self.recoveryObj.firstPart_search_id.toPlainText()+
                 self.recoveryObj.secoundPart_search_id.toPlainText()+                                                                                                                    
                 self.recoveryObj.ThirdPart_search_id.toPlainText()+
                 "-"+                                         
