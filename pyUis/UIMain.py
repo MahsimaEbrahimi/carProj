@@ -14,7 +14,9 @@ from AddCarColorUI import AddCarColor
 from PyQt5.QtWidgets import QComboBox
 from messagebox import _win32
 import sys
-
+from fpdf import FPDF
+import io
+import CustomePdf
 
 class MainWindow(QtWidgets.QMainWindow):
     #متد colse event اوررایت شده است      
@@ -69,30 +71,47 @@ class Ui_MainWindow(object):
              if i==self.CarColorCondTxt:
                 i.setText("اتوموبیل فاقد رنگ شدگی میباشد")  
 
+    # Function to create the PDF in memory
+    def create_pdf(self):
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.add_font('Vazir', '', 'Vazir.ttf', uni=True)
+        pdf.set_font("Vazir", size=20)
+        pdf.cell(txt=CustomePdf.process_rtl_text('فرم خودرو مشتری'), ln=True, align='L', center=True)
+        pdf.set_font("Vazir", size=15)
+
+        lines = [
+        f'''شماره شاسی: {self.ShasiTxt.toPlainText()} \t
+ اسم خودرو: {self.CarTypeComb.currentText()} \t  
+ رنگ: {self.CarColorComb.currentText()}''',
+                 f'''تاریخ ثبت: {self.DateTxt.text()} \t 
+ مدل: {self.TypeTxt.toPlainText()} \t 
+ کارکرد: {self.UseTxt.toPlainText()}''',
+                 f'''پلاک: {self.ThirdPart_id_2.toPlainText()}{self.FourthPart_id.toPlainText()}{self.secoundPart_id.toPlainText()}{self.firstPart_id.toPlainText()}''',
+                f'''مالک: {self.CarOwnerTxt.toPlainText()} \t 
+ تلفن: {self.PhoneTxt.toPlainText()}''',
+                f'وضعیت رنگ بدنه: {self.CarColorCondTxt.toPlainText()}',
+                f'وضعیت موتور و گیربکس: {self.GirboxCondTxt.toPlainText()}',
+                f'وضعیت آپشن ها: {self.OptionTxt.toPlainText()}',
+                f'وضعیت شاسی: {self.ShasiCondTxt.toPlainText()}',
+                f'توضیحات: {self.InfTxt.toPlainText()}'
+        ]
+
+        # Set the width of the page
+        page_width = pdf.w - 2 * pdf.l_margin
+
+        for line in lines:
+            # Use MultiCell for better RTL handling
+            pdf.multi_cell(page_width, 10, txt=CustomePdf.process_rtl_text(line), align='R', ln=True)
+
+        pdf_output = io.BytesIO()
+        pdf.output(pdf_output)
+        pdf_output.seek(0)
+    
+        return pdf_output
+    
     def Printer(self):
-        filename, _ = QFileDialog.getSaveFileName(None, "Save PDF", "", "*.pdf")
-        if filename != '':
-            # Create a printer object and configure its settings
-            printer = QPrinter(QPrinter.HighResolution)  # Use high resolution for better quality
-            printer.setOutputFormat(QPrinter.PdfFormat)
-            printer.setPaperSize(QPrinter.A4)  # Set paper size to A4
-            printer.setOutputFileName(filename)
-            print_rect = printer.pageRect()
-
-            # Calculate the scaling factor to fit the widget within the printable area
-            scale_x = print_rect.width() / self.centralwidget.width()
-            scale_y = print_rect.height() / self.centralwidget.height()
-            scale = min(scale_x, scale_y)
-
-            painter = QPainter(printer)
-            # Apply scaling transformation
-            painter.translate(print_rect.topLeft())
-            painter.scale(scale, scale)
-            self.centralwidget.render(painter)      
-            _win32.showinfo(title="موفقیت",message="پرینت ذخیره گردید")
-            painter.end()
-                
-                
+        CustomePdf.show_preview(self.create_pdf())
     
     def add_To_Car_Type(self, FromsMethodInstance):
         self.MainWindow = QtWidgets.QMainWindow()
@@ -150,27 +169,26 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
+        # self.PrintBtn = QtWidgets.QPushButton(self.frame_3,clicked=lambda:self.Printer())
         self.PrintBtn = QtWidgets.QPushButton(self.frame_3,clicked=lambda:self.Printer())
         font = QtGui.QFont()
         font.setPointSize(10)
         self.PrintBtn.setFont(font)
         self.PrintBtn.setObjectName("PrintBtn")
         self.horizontalLayout.addWidget(self.PrintBtn)
-
         self.RecoveryBtn = QtWidgets.QPushButton(self.frame_3,clicked=lambda:self.OpenWindow())
         font = QtGui.QFont()
         font.setPointSize(10)
         self.RecoveryBtn.setFont(font)
         self.RecoveryBtn.setObjectName("RecoveryBtn")
         self.horizontalLayout.addWidget(self.RecoveryBtn)
-
-        self.SaveBtn = QtWidgets.QPushButton(self.frame_3,clicked=lambda:FromsMethodInstance.SaveMethod())
+        self.SaveBtn = QtWidgets.QPushButton(self.frame_3, clicked=lambda:FromsMethodInstance.SaveMethod())
         font = QtGui.QFont()
         font.setPointSize(10)
         self.SaveBtn.setFont(font)
         self.SaveBtn.setObjectName("SaveBtn")
         self.horizontalLayout.addWidget(self.SaveBtn)
-        self.AddBtn = QtWidgets.QPushButton(self.frame_3,clicked=lambda:self.cleaner())
+        self.AddBtn = QtWidgets.QPushButton(self.frame_3, clicked=lambda:self.cleaner())
         font = QtGui.QFont()
         font.setPointSize(10)
         self.AddBtn.setFont(font)
@@ -186,18 +204,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem1)
-        self.label_11 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_11.setFont(font)
-        self.label_11.setObjectName("label_11")
-        self.horizontalLayout_2.addWidget(self.label_11)
         self.DateTxt = QtWidgets.QLabel(self.frame_2)
         font = QtGui.QFont()
         font.setPointSize(10)
         self.DateTxt.setFont(font)
         self.DateTxt.setObjectName("DateTxt")
-        # self.DateTxt.setText('')
         self.horizontalLayout_2.addWidget(self.DateTxt)
         self.label_7 = QtWidgets.QLabel(self.frame_2)
         font = QtGui.QFont()
@@ -206,7 +217,7 @@ class Ui_MainWindow(object):
         self.label_7.setObjectName("label_7")
         self.horizontalLayout_2.addWidget(self.label_7)
         self.ShasiTxt = QtWidgets.QTextEdit(self.frame_2)
-        self.ShasiTxt.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.ShasiTxt.setMaximumSize(QtCore.QSize(16777215, 50))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -238,30 +249,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem2)
-        # self.PayTypeComb = QtWidgets.QComboBox(self.frame_7)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_8 = QtWidgets.QLabel(self.frame_7)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_8.setFont(font)
-        self.label_8.setObjectName("label_8")
-        self.horizontalLayout_3.addWidget(self.label_8)
-        self.AddCarTypeBtn = QtWidgets.QPushButton(self.frame_7,clicked=lambda:self.add_To_Car_Type(FromsMethodInstance))
+        self.AddCarTypeBtn = QtWidgets.QPushButton(self.frame_7)
         self.AddCarTypeBtn.setObjectName("AddCarTypeBtn")
         self.horizontalLayout_3.addWidget(self.AddCarTypeBtn)
-        self.RemoveCarTypeBtn = QtWidgets.QPushButton(self.frame_7,clicked=lambda:self.remove_From_Car_Type(FromsMethodInstance))
-        self.RemoveCarTypeBtn.setObjectName("RemoveCarTypeBtn")
-        self.horizontalLayout_3.addWidget(self.RemoveCarTypeBtn)
         self.CarTypeComb = QtWidgets.QComboBox(self.frame_7)
         font = QtGui.QFont()
         font.setPointSize(10)
-        self.CarTypeComb.setMinimumSize(QtCore.QSize(100, 10))
         self.CarTypeComb.setFont(font)
         self.CarTypeComb.setObjectName("CarTypeComb")
-        # self.CarTypeComb.addItem("")
-        # self.CarTypeComb.addItem("")
-        # self.CarTypeComb.addItem("")
         self.horizontalLayout_3.addWidget(self.CarTypeComb)
         self.label_2 = QtWidgets.QLabel(self.frame_7)
         font = QtGui.QFont()
@@ -298,26 +293,16 @@ class Ui_MainWindow(object):
         self.TypeTxt.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.TypeTxt.setObjectName("TypeTxt")
         self.horizontalLayout_4.addWidget(self.TypeTxt)
-        self.AddCarColorBtn = QtWidgets.QPushButton(self.frame_4,clicked=lambda:self.add_to_Car_Color(FromsMethodInstance))
-        self.AddCarColorBtn.setMaximumSize(QtCore.QSize(100, 16777215))
-        self.AddCarColorBtn.setObjectName("AddCarColorBtn")
-        self.horizontalLayout_4.addWidget(self.AddCarColorBtn)
-        self.RemoveCarColorBtn = QtWidgets.QPushButton(self.frame_4,clicked=lambda:self.remove_From_Car_Color(FromsMethodInstance))
-        self.RemoveCarColorBtn.setMaximumSize(QtCore.QSize(300, 16777215))
-        self.RemoveCarColorBtn.setObjectName("RemoveCarColorBtn")
-        self.horizontalLayout_4.addWidget(self.RemoveCarColorBtn)
+        self.pushButton_2 = QtWidgets.QPushButton(self.frame_4)
+        self.pushButton_2.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.horizontalLayout_4.addWidget(self.pushButton_2)
         self.CarColorComb = QtWidgets.QComboBox(self.frame_4)
-        self.CarColorComb.setMaximumSize(QtCore.QSize(400, 16777215))
-        self.CarColorComb.setMinimumSize(QtCore.QSize(100, 10))
-
+        self.CarColorComb.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.CarColorComb.setFont(font)
         self.CarColorComb.setObjectName("CarColorComb")
-        self.CarColorComb.mouseDoubleClickEvent
-        # self.CarColorComb.addItem("")
-        # self.CarColorComb.addItem("")
-        # self.CarColorComb.addItem("")
         self.horizontalLayout_4.addWidget(self.CarColorComb)
         self.label_3 = QtWidgets.QLabel(self.frame_4)
         self.label_3.setMaximumSize(QtCore.QSize(100, 16777215))
@@ -329,7 +314,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.frame_4)
         self.frame_5 = QtWidgets.QFrame(self.frame)
         self.frame_5.setMinimumSize(QtCore.QSize(0, 100))
-        self.frame_5.setStyleSheet("\n""")
+        self.frame_5.setStyleSheet("")
         self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_5.setObjectName("frame_5")
@@ -340,26 +325,8 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
-        self.gridLayout.addWidget(self.label_6, 2, 4, 1, 1)
-        # self.CarIdTxt = QtWidgets.QTextEdit(self.frame_5)
-        # self.CarIdTxt.setMaximumSize(QtCore.QSize(700, 50))
-        # palette = QtGui.QPalette()
-        # brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
-        # brush.setStyle(QtCore.Qt.SolidPattern)
-        # palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
-        # brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
-        # brush.setStyle(QtCore.Qt.SolidPattern)
-        # palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
-        # brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
-        # brush.setStyle(QtCore.Qt.SolidPattern)
-        # palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
-        # self.CarIdTxt.setPalette(palette)
-        # font = QtGui.QFont()
-        # font.setPointSize(12)
-        # self.CarIdTxt.setFont(font)
-        # self.CarIdTxt.setObjectName("CarIdTxt")
-        # self.gridLayout.addWidget(self.CarIdTxt, 0, 2, 1, 1)
-        self.label_5 = QtWidgets.QLabel(self.frame_5)
+        self.gridLayout.addWidget(self.label_6, 2, 6, 1, 1)
+
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -401,13 +368,8 @@ class Ui_MainWindow(object):
         self.FourthPart_id.setObjectName("FourthPart_id")
         self.gridLayout.addWidget(self.FourthPart_id, 0, 3, 1, 1)
 
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_5.setFont(font)
-        self.label_5.setObjectName("label_5")
-        self.gridLayout.addWidget(self.label_5, 0, 3, 1, 2)
         self.CarOwnerTxt = QtWidgets.QTextEdit(self.frame_5)
-        self.CarOwnerTxt.setMaximumSize(QtCore.QSize(700, 50))
+        self.CarOwnerTxt.setMaximumSize(QtCore.QSize(1000, 50))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -441,17 +403,21 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.PhoneTxt.setFont(font)
         self.PhoneTxt.setObjectName("PhoneTxt")
-        self.gridLayout.addWidget(self.PhoneTxt, 2, 2, 1, 2)
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem4, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.PhoneTxt, 2, 3, 1, 1)
         self.label_4 = QtWidgets.QLabel(self.frame_5)
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
-        self.gridLayout.addWidget(self.label_4, 1, 4, 1, 1)
+        self.gridLayout.addWidget(self.label_4, 1, 6, 1, 1)
+        self.label_5 = QtWidgets.QLabel(self.frame_5)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
+        self.gridLayout.addWidget(self.label_5, 0, 5, 1, 2)
         self.UseTxt = QtWidgets.QTextEdit(self.frame_5)
-        self.UseTxt.setMaximumSize(QtCore.QSize(100, 50))
+        self.UseTxt.setMaximumSize(QtCore.QSize(500, 50))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(240, 217, 200))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -468,10 +434,10 @@ class Ui_MainWindow(object):
         self.UseTxt.setFont(font)
         self.UseTxt.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.UseTxt.setObjectName("UseTxt")
-        self.gridLayout.addWidget(self.UseTxt, 1, 0, 1, 2)
+        self.gridLayout.addWidget(self.UseTxt, 1, 1, 1, 1)
         self.verticalLayout.addWidget(self.frame_5)
         self.frame_6 = QtWidgets.QFrame(self.frame)
-        self.frame_6.setMaximumSize(QtCore.QSize(700, 500))
+        self.frame_6.setMaximumSize(QtCore.QSize(16777215, 500))
         self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_6.setObjectName("frame_6")
@@ -501,7 +467,7 @@ class Ui_MainWindow(object):
         self.OptionTxt.setFont(font)
         self.OptionTxt.setObjectName("OptionTxt")
         self.gridLayout_2.addWidget(self.OptionTxt, 2, 1, 1, 1)
-        self.RemoveCarColorCondBtn = QtWidgets.QPushButton(self.frame_6,clicked=lambda:self.CarColorCondTxt.clear())
+        self.RemoveCarColorCondBtn = QtWidgets.QPushButton(self.frame_6)
         font = QtGui.QFont()
         font.setPointSize(10)
         self.RemoveCarColorCondBtn.setFont(font)
@@ -525,13 +491,13 @@ class Ui_MainWindow(object):
         self.ShasiCondTxt.setFont(font)
         self.ShasiCondTxt.setObjectName("ShasiCondTxt")
         self.gridLayout_2.addWidget(self.ShasiCondTxt, 3, 1, 1, 1)
-        self.RemoveOptionBtn = QtWidgets.QPushButton(self.frame_6,clicked=lambda:self.OptionTxt.clear())
+        self.RemoveOptionBtn = QtWidgets.QPushButton(self.frame_6)
         font = QtGui.QFont()
         font.setPointSize(10)
         self.RemoveOptionBtn.setFont(font)
         self.RemoveOptionBtn.setObjectName("RemoveOptionBtn")
         self.gridLayout_2.addWidget(self.RemoveOptionBtn, 2, 0, 1, 1)
-        self.RemoveShasiCondBtn = QtWidgets.QPushButton(self.frame_6,clicked=lambda:self.ShasiCondTxt.clear())
+        self.RemoveShasiCondBtn = QtWidgets.QPushButton(self.frame_6)
         font = QtGui.QFont()
         font.setPointSize(10)
         self.RemoveShasiCondBtn.setFont(font)
@@ -579,13 +545,13 @@ class Ui_MainWindow(object):
         self.label_15.setFont(font)
         self.label_15.setObjectName("label_15")
         self.gridLayout_2.addWidget(self.label_15, 2, 2, 1, 1)
-        self.RemoveInfBtn = QtWidgets.QPushButton(self.frame_6,clicked=lambda:self.InfTxt.clear())
+        self.RemoveInfBtn = QtWidgets.QPushButton(self.frame_6)
         font = QtGui.QFont()
         font.setPointSize(10)
         self.RemoveInfBtn.setFont(font)
         self.RemoveInfBtn.setObjectName("RemoveInfBtn")
         self.gridLayout_2.addWidget(self.RemoveInfBtn, 5, 0, 1, 1)
-        self.RemoveGirboxCondBtn = QtWidgets.QPushButton(self.frame_6,clicked=lambda:self.GirboxCondTxt.clear())
+        self.RemoveGirboxCondBtn = QtWidgets.QPushButton(self.frame_6)
         font = QtGui.QFont()
         font.setPointSize(10)
         self.RemoveGirboxCondBtn.setFont(font)
@@ -660,11 +626,10 @@ class Ui_MainWindow(object):
 
         if RunDateTask:   
             self.scheduler_thread.start()
-       
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "صفحه اصلی"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.PrintBtn.setText(_translate("MainWindow", "چاپ"))
         self.RecoveryBtn.setText(_translate("MainWindow", "بازيابي"))
         self.SaveBtn.setText(_translate("MainWindow", "ذخيره"))
@@ -677,7 +642,6 @@ class Ui_MainWindow(object):
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.label.setText(_translate("MainWindow", "شماره شاسی: "))
         self.AddCarTypeBtn.setText(_translate("MainWindow", "+"))
-        self.RemoveCarTypeBtn.setText(_translate("MainWindow", "-"))
         self.CarTypeComb.setItemText(0, _translate("MainWindow", "option1"))
         self.CarTypeComb.setItemText(1, _translate("MainWindow", "option2"))
         self.CarTypeComb.setItemText(2, _translate("MainWindow", "option3"))
@@ -688,39 +652,12 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.TypeTxt.setPlaceholderText(_translate("MainWindow", "مدل"))
-        self.AddCarColorBtn.setText(_translate("MainWindow", "+"))
-        self.RemoveCarColorBtn.setText(_translate("MainWindow", "-"))
+        self.pushButton_2.setText(_translate("MainWindow", "+"))
         self.CarColorComb.setItemText(0, _translate("MainWindow", "option1"))
         self.CarColorComb.setItemText(1, _translate("MainWindow", "option2"))
         self.CarColorComb.setItemText(2, _translate("MainWindow", "option3"))
         self.label_3.setText(_translate("MainWindow", "رنگ خودرو:"))
         self.label_6.setText(_translate("MainWindow", "تلفن:"))
-#         self.CarIdTxt.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-# "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-# "p, li { white-space: pre-wrap; }\n"
-# "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-# "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
-        self.label_5.setText(_translate("MainWindow", "شماره پلاك:"))
-        self.firstPart_id.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
-        self.secoundPart_id.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
-        self.ThirdPart_id_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
-        self.FourthPart_id.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.CarOwnerTxt.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -732,6 +669,7 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.label_4.setText(_translate("MainWindow", "مالك خودرو:"))
+        self.label_5.setText(_translate("MainWindow", "شماره پلاك:"))
         self.UseTxt.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -760,7 +698,7 @@ class Ui_MainWindow(object):
         self.GirboxCondTxt.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:norml;\">\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">موتور و گیربکس پلمپ میباشد</p></body></html>"))
         self.label_15.setText(_translate("MainWindow", "وضعيت آپشن ها:"))
         self.RemoveInfBtn.setText(_translate("MainWindow", "پاك كردن"))
@@ -773,6 +711,28 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.firstPart_id.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.secoundPart_id.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.ThirdPart_id_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.FourthPart_id.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+
+
 
 if __name__ == "__main__":
 

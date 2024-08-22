@@ -21,7 +21,7 @@ class CarinfoClass:
                     CarinfoModel.information == carInfoModel_instance.information.strip(),
                     CarinfoModel.Useage == carInfoModel_instance.Useage.strip(),
                     CarinfoModel.CarType ==carInfoModel_instance.CarType.strip(),
-                    CarinfoModel.CarType==carInfoModel_instance.CarType.strip()
+                    CarinfoModel.model==carInfoModel_instance.model.strip()
                     ))
         stmt=self.session.execute(stmt).fetchall()
         if len(stmt)  == 0:
