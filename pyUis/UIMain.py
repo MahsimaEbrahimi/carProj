@@ -403,7 +403,7 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.PhoneTxt.setFont(font)
         self.PhoneTxt.setObjectName("PhoneTxt")
-        self.gridLayout.addWidget(self.PhoneTxt, 2, 3, 1, 1)
+        self.gridLayout.addWidget(self.PhoneTxt, 2, 2, 1, 2)
         self.label_4 = QtWidgets.QLabel(self.frame_5)
         font = QtGui.QFont()
         font.setPointSize(10)
