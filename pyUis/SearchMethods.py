@@ -29,13 +29,13 @@ class RecoveryMethodsClass:
           condition=[]
           for i in ChkNullDescriptorINSTANCE.__dict__.keys():
               if i=="phone":
-                   condition.append(CarOwnerInterfaceModel.Phone==self.recoveryObj.PhoneTxt.toPlainText())
+                   condition.append(CarOwnerInterfaceModel.Phone==self.recoveryObj.PhoneTxt.toPlainText().strip())
               if i=="carOwner":
                    condition.append(CarOwnerInterfaceModel.nameLastname==self.recoveryObj.CarOwnerTxt.toPlainText().strip())
               if i=="carId":
                    condition.append(CarOwnerInterfaceModel.CarId==carId)
               if i=="shasinum":
-                    condition.append(CarOwnerInterfaceModel.ShasiNum==self.recoveryObj.ShasiTxt.toPlainText())
+                    condition.append(CarOwnerInterfaceModel.ShasiNum==self.recoveryObj.ShasiTxt.toPlainText().strip())
 
           CarOwnerInterfaceClass_insance=CarOwnerInterface(connectionMaker.classConnection)
           res2=CarOwnerInterfaceClass_insance.search(condition)        

@@ -74,12 +74,12 @@ class FormMethod:
                         if self.error==True:
                             CarOwnerInterfaceModelInstance=CarOwnerInterfaceModel(
                                 Thekey=result,
-                                ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
+                                ShasiNum=self.Mainobj.ShasiTxt.toPlainText().strip(),
                                   CarId=carId,
 
                                 Date= str(JalaliDateTime.now().strftime("%Y/%m/%d")),
                                 nameLastname=self.Mainobj.CarOwnerTxt.toPlainText().strip(),
-                                Phone=self.Mainobj.PhoneTxt.toPlainText(),      
+                                Phone=self.Mainobj.PhoneTxt.toPlainText().strip(),      
                                 )
                             CarOwnerInterfaceClassInstance=CarOwnerInterface(self.res)
                             self.error=FormsMethodCarclass_Obj.sendToClass(CarOwnerInterfaceModelInstance,CarOwnerInterfaceClassInstance)
