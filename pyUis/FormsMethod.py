@@ -78,7 +78,7 @@ class FormMethod:
                                   CarId=carId,
 
                                 Date= str(JalaliDateTime.now().strftime("%Y/%m/%d")),
-                                nameLastname=self.Mainobj.CarOwnerTxt.toPlainText(),
+                                nameLastname=self.Mainobj.CarOwnerTxt.toPlainText().strip(),
                                 Phone=self.Mainobj.PhoneTxt.toPlainText(),      
                                 )
                             CarOwnerInterfaceClassInstance=CarOwnerInterface(self.res)

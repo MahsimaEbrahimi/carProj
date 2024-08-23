@@ -31,7 +31,7 @@ class RecoveryMethodsClass:
               if i=="phone":
                    condition.append(CarOwnerInterfaceModel.Phone==self.recoveryObj.PhoneTxt.toPlainText())
               if i=="carOwner":
-                   condition.append(CarOwnerInterfaceModel.nameLastname==self.recoveryObj.CarOwnerTxt.toPlainText())
+                   condition.append(CarOwnerInterfaceModel.nameLastname==self.recoveryObj.CarOwnerTxt.toPlainText().strip())
               if i=="carId":
                    condition.append(CarOwnerInterfaceModel.CarId==carId)
               if i=="shasinum":
