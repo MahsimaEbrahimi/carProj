@@ -87,7 +87,7 @@ class Ui_MainWindow(object):
                  f'''تاریخ ثبت: {self.DateTxt.text()} \t 
  مدل: {self.TypeTxt.toPlainText()} \t 
  کارکرد: {self.UseTxt.toPlainText()}''',
-                 f'''پلاک: {self.ThirdPart_id_2.toPlainText()}{self.FourthPart_id.toPlainText()}{self.secoundPart_id.toPlainText()}{self.firstPart_id.toPlainText()}''',
+                 f'''پلاک: {self.ThirdPart_id_2.toPlainText()}/{self.FourthPart_id.toPlainText()}{self.secoundPart_id.toPlainText()}{self.firstPart_id.toPlainText()}''',
                 f'''مالک: {self.CarOwnerTxt.toPlainText()} \t 
  تلفن: {self.PhoneTxt.toPlainText()}''',
                 f'وضعیت رنگ بدنه: {self.CarColorCondTxt.toPlainText()}',
