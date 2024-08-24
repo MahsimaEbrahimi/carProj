@@ -77,7 +77,7 @@ class Ui_MainWindow(object):
         pdf.add_page()
         pdf.add_font('Vazir', '', 'Vazir.ttf', uni=True)
         pdf.set_font("Vazir", size=20)
-        pdf.cell(txt=CustomePdf.process_rtl_text('فرم خودرو مشتری'), ln=True, align='L', center=True)
+        pdf.cell(txt=CustomePdf.process_rtl_text('فرم خودرو مشتری'), ln=True, align='R', center=True)
         pdf.set_font("Vazir", size=15)
 
         lines = [
@@ -609,7 +609,6 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
 
         Ui_MainWindow.component_Lst.append(self.ShasiTxt)
         Ui_MainWindow.component_Lst.append(self.TypeTxt)
