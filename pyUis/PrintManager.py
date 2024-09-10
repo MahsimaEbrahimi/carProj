@@ -1,7 +1,7 @@
 import webbrowser
 import os
 
-def Create_html(blueprintPath, outputPath, date, carId, shasiNumber, time, carType, color, name, condition, explaination):
+def Create_html(blueprintPath, outputPath, date, carId, shasiNumber, carType, color, name, condition, explaination):
     html_content = ''
     with open(blueprintPath, 'r', encoding='utf-8') as file:
         html_content = file.read()
@@ -9,7 +9,6 @@ def Create_html(blueprintPath, outputPath, date, carId, shasiNumber, time, carTy
     html_content = html_content.replace("{{date}}", date)
     html_content = html_content.replace("{{carid}}", carId)
     html_content = html_content.replace("{{shasinumber}}", shasiNumber)
-    html_content = html_content.replace("{{time}}", time)
     html_content = html_content.replace("{{cartype}}", carType)
     html_content = html_content.replace("{{color}}", color)
     html_content = html_content.replace("{{name}}", name)

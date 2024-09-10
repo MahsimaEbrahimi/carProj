@@ -115,7 +115,7 @@ class Ui_MainWindow(object):
         # CustomePdf.show_preview(self.create_pdf())
         PrintManager.Create_html('blueprint.html', 'output.html', self.DateTxt.text(), 
                                  f'''{self.ThirdPart_id_2.toPlainText()}/{self.FourthPart_id.toPlainText()}{self.secoundPart_id.toPlainText()}{self.firstPart_id.toPlainText()}''',
-                                 self.ShasiTxt.toPlainText(), '', self.CarTypeComb.currentText(), self.CarColorComb.currentText(),
+                                 self.ShasiTxt.toPlainText(), self.CarTypeComb.currentText(), self.CarColorComb.currentText(),
                                  self.CarOwnerTxt.toPlainText(), 
                                  f'''1-{self.CarColorCondTxt.toPlainText()}
 2-{self.GirboxCondTxt.toPlainText()}
