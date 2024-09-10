@@ -13,10 +13,10 @@ class RecoveryMethodsClass:
          self.recoveryObj=recoveryObj
     
     def SearchResult(self):
-          firstp = self.recoveryObj.firstPart_search_id.toPlainText()
-          secondp = self.recoveryObj.secoundPart_search_id.toPlainText()
-          thirdp = self.recoveryObj.ThirdPart_search_id.toPlainText()
-          fourthp = self.recoveryObj.FourthPart_search_id.toPlainText()
+          firstp = self.recoveryObj.firstPart_search_id.toPlainText().strip()
+          secondp = self.recoveryObj.secoundPart_search_id.toPlainText().strip()
+          thirdp = self.recoveryObj.ThirdPart_search_id.toPlainText().strip()
+          fourthp = self.recoveryObj.FourthPart_search_id.toPlainText().strip()
           if (firstp == '' or secondp == '' or thirdp == '' or fourthp == ''):
                carId = ''
           else:
