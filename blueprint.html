@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فرم</title>
+    <title>نامه کارشناسی خودرو</title>
     <style>
         * {
             margin: 0;
@@ -17,9 +17,12 @@
         }
 
         body {
-            width: 210mm;
-            height: 297mm;
+            width: 205mm;
+            height: 290mm;
+            max-width: 205mm;
+            max-height: 290mm;
             margin: auto;
+            /* overflow: hidden; */
         }
 
         .container {
@@ -30,8 +33,9 @@
         }
 
         .main {
-            padding-top: 4cm;
-            padding-bottom: 3cm;
+            padding-top: 2.5cm;
+            /* padding-bottom: 2.5cm; */
+            border: 1px solid rgb(97, 97, 97);
         }
 
         .seperator {
@@ -56,10 +60,15 @@
             margin-left: 0.5rem;
         }
 
-        input, textarea {
+        input,
+        textarea {
             border: none;
             display: inline-block;
             resize: none;
+        }
+
+        .short-input {
+            width: 8.5rem;
         }
 
         .bold {
@@ -69,11 +78,31 @@
 
         button {
             cursor: pointer;
+            margin: 1rem 0;
+        }
+
+        img {
+            /* display: block; */
+            width: 90%;
+            margin: auto;
         }
 
         @media print {
             button {
                 display: none;
+            }
+
+            .main {
+                border: none;
+            }
+
+            img {
+                margin-right: -4rem;
+                margin-top: 1px;
+            }
+
+            .seperator {
+                margin-left: 5rem;
             }
         }
     </style>
@@ -86,31 +115,31 @@
                 <form>
                     <span>
                         <label name="dateinput" class="bold">تاریخ: </label>
-                        <input for="dateinput" value="{{date}}" readonly />
+                        <input class="short-input" for="dateinput" value="{{date}}" readonly />
                     </span>
                     <span>
                         <label name="caridinput" class="bold">پلاک: </label>
-                        <input for="caridinput" value="{{carid}}" readonly />
+                        <input class="short-input" for="caridinput" value="{{carid}}" readonly />
                     </span>
                     <span>
                         <label name="shasinumberinput" class="bold">شماره شاسی: </label>
-                        <input for="shasinumberinput" value="{{shasinumber}}" readonly />
+                        <input class="short-input" for="shasinumberinput" value="{{shasinumber}}" readonly />
                     </span>
                     <span>
                         <label name="timeinput" class="bold">ساعت: </label>
-                        <input for="timeinput" value="{{time}}" readonly />
+                        <input class="short-input" for="timeinput" value="{{time}}" readonly />
                     </span>
                     <span>
                         <label name="cartypeinput" class="bold">نوع خودرو: </label>
-                        <input for="cartypeinput" value="{{cartype}}" readonly />
+                        <input class="short-input" for="cartypeinput" value="{{cartype}}" readonly />
                     </span>
                     <span>
                         <label name="colorinput" class="bold">رنگ خوودرو: </label>
-                        <input for="colorinput" value="{{color}}" readonly />
+                        <input class="short-input" for="colorinput" value="{{color}}" readonly />
                     </span>
                     <span>
                         <label name="carownerinput" class="bold">خانم / آقای: </label>
-                        <input for="carownerinput" value="{{name}}" readonly />
+                        <input class="short-input" for="carownerinput" value="{{name}}" readonly />
                     </span>
                 </form>
             </div>
@@ -119,7 +148,8 @@
                 <form>
                     <span>
                         <label for="conditioninput" class="bold">شرح: </label>
-                        <textarea id="conditioninput" name="conditioninput" rows="8" cols="95" readonly>{{condition}}</textarea>
+                        <textarea id="conditioninput" name="conditioninput" rows="8" cols="95"
+                            readonly>{{condition}}</textarea>
                     </span>
                 </form>
             </div>
@@ -128,7 +158,8 @@
                 <form>
                     <span>
                         <label for="explainationinput" class="bold">توضیحات: </label>
-                        <textarea id="explainationinput" name="explainationinput" rows="8" cols="92" readonly>{{explaination}}</textarea>
+                        <textarea id="explainationinput" name="explainationinput" rows="4" cols="92"
+                            readonly>{{explaination}}</textarea>
                     </span>
                 </form>
             </div>
@@ -140,6 +171,9 @@
                 </span>
             </div>
             <div class="seperator"></div>
+            <div>
+                <img src="blueprintPic.png" />
+            </div>
         </div>
         <button onclick="window.print()">چاپ صفحه</button>
     </div>
