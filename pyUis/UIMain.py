@@ -16,7 +16,8 @@ from messagebox import _win32
 import sys
 from fpdf import FPDF
 import io
-import CustomePdf
+# import CustomePdf
+import PrintManager
 
 class MainWindow(QtWidgets.QMainWindow):
     #متد colse event اوررایت شده است      
@@ -55,7 +56,7 @@ class Ui_MainWindow(object):
             self.ui.setupUi(self.Window,searchWindowObj2)
             self.Window.show()
         
-    def cleaner(self):  
+    def cleaner(self):
         for i in Ui_MainWindow.component_Lst: 
              if isinstance(i,QtWidgets.QComboBox):
                  i.setCurrentIndex(0)
@@ -72,46 +73,57 @@ class Ui_MainWindow(object):
                 i.setText("اتوموبیل فاقد رنگ شدگی میباشد")  
 
     # Function to create the PDF in memory
-    def create_pdf(self):
-        pdf = FPDF()
-        pdf.add_page()
-        pdf.add_font('Vazir', '', 'Vazir.ttf', uni=True)
-        pdf.set_font("Vazir", size=20)
-        pdf.cell(txt=CustomePdf.process_rtl_text('فرم خودرو مشتری'), ln=True, align='R', center=True)
-        pdf.set_font("Vazir", size=15)
+    # def create_pdf(self):
+    #     pdf = FPDF()
+    #     pdf.add_page()
+    #     pdf.add_font('Vazir', '', 'Vazir.ttf', uni=True)
+    #     pdf.set_font("Vazir", size=20)
+    #     pdf.cell(txt=CustomePdf.process_rtl_text('فرم خودرو مشتری'), ln=True, align='R', center=True)
+    #     pdf.set_font("Vazir", size=15)
 
-        lines = [
-        f'''شماره شاسی: {self.ShasiTxt.toPlainText()} \t
- اسم خودرو: {self.CarTypeComb.currentText()} \t  
- رنگ: {self.CarColorComb.currentText()}''',
-                 f'''تاریخ ثبت: {self.DateTxt.text()} \t 
- مدل: {self.TypeTxt.toPlainText()} \t 
- کارکرد: {self.UseTxt.toPlainText()}''',
-                 f'''پلاک: {self.ThirdPart_id_2.toPlainText()}/{self.FourthPart_id.toPlainText()}{self.secoundPart_id.toPlainText()}{self.firstPart_id.toPlainText()}''',
-                f'''مالک: {self.CarOwnerTxt.toPlainText()} \t 
- تلفن: {self.PhoneTxt.toPlainText()}''',
-                f'وضعیت رنگ بدنه: {self.CarColorCondTxt.toPlainText()}',
-                f'وضعیت موتور و گیربکس: {self.GirboxCondTxt.toPlainText()}',
-                f'وضعیت آپشن ها: {self.OptionTxt.toPlainText()}',
-                f'وضعیت شاسی: {self.ShasiCondTxt.toPlainText()}',
-                f'توضیحات: {self.InfTxt.toPlainText()}'
-        ]
+    #     lines = [
+    #             f'''شماره شاسی: {self.ShasiTxt.toPlainText()} \t
+    #                 اسم خودرو: {self.CarTypeComb.currentText()} \t  
+    #                 رنگ: {self.CarColorComb.currentText()}''',
+    #             f'''تاریخ ثبت: {self.DateTxt.text()} \t 
+    #                 مدل: {self.TypeTxt.toPlainText()} \t 
+    #                 کارکرد: {self.UseTxt.toPlainText()}''',
+    #             f'''پلاک: {self.ThirdPart_id_2.toPlainText()}/{self.FourthPart_id.toPlainText()}{self.secoundPart_id.toPlainText()}{self.firstPart_id.toPlainText()}''',
+    #             f'''مالک: {self.CarOwnerTxt.toPlainText()} \t 
+    #                 تلفن: {self.PhoneTxt.toPlainText()}''',
+    #             f'وضعیت رنگ بدنه: {self.CarColorCondTxt.toPlainText()}',
+    #             f'وضعیت موتور و گیربکس: {self.GirboxCondTxt.toPlainText()}',
+    #             f'وضعیت آپشن ها: {self.OptionTxt.toPlainText()}',
+    #             f'وضعیت شاسی: {self.ShasiCondTxt.toPlainText()}',
+    #             f'توضیحات: {self.InfTxt.toPlainText()}'
+    #     ]
 
-        # Set the width of the page
-        page_width = pdf.w - 2 * pdf.l_margin
+    #     # Set the width of the page
+    #     page_width = pdf.w - 2 * pdf.l_margin
 
-        for line in lines:
-            # Use MultiCell for better RTL handling
-            pdf.multi_cell(page_width, 10, txt=CustomePdf.process_rtl_text(line), align='R', ln=True)
+    #     for line in lines:
+    #         # Use MultiCell for better RTL handling
+    #         pdf.multi_cell(page_width, 10, txt=CustomePdf.process_rtl_text(line), align='R', ln=True)
 
-        pdf_output = io.BytesIO()
-        pdf.output(pdf_output)
-        pdf_output.seek(0)
+    #     pdf_output = io.BytesIO()
+    #     pdf.output(pdf_output)
+    #     pdf_output.seek(0)
     
-        return pdf_output
+    #     return pdf_output
     
     def Printer(self):
-        CustomePdf.show_preview(self.create_pdf())
+        # CustomePdf.show_preview(self.create_pdf())
+        PrintManager.Create_html('blueprint.html', 'output.html', self.DateTxt.text(), 
+                                 f'''{self.ThirdPart_id_2.toPlainText()}/{self.FourthPart_id.toPlainText()}{self.secoundPart_id.toPlainText()}{self.firstPart_id.toPlainText()}''',
+                                 self.ShasiTxt.toPlainText(), '', self.CarTypeComb.currentText(), self.CarColorComb.currentText(),
+                                 self.CarOwnerTxt.toPlainText(), 
+                                 f'''1-{self.CarColorCondTxt.toPlainText()}
+2-{self.GirboxCondTxt.toPlainText()}
+3-{self.OptionTxt.toPlainText()}
+4-{self.ShasiCondTxt.toPlainText()}'''
+                                 , self.InfTxt.toPlainText())
+        PrintManager.Show_in_browser('output.html')
+        # PrintManager.Delete_html('output.html')
     
     def add_To_Car_Type(self, FromsMethodInstance):
         self.MainWindow = QtWidgets.QMainWindow()

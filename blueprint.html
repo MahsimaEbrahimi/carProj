@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 14px;
+            direction: rtl;
+        }
+
+        body {
+            width: 210mm;
+            height: 297mm;
+            margin: auto;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .main {
+            padding-top: 4cm;
+            padding-bottom: 3cm;
+        }
+
+        .seperator {
+            margin: 0 1.5rem;
+            border-bottom: 1px solid black;
+        }
+
+        form {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        span {
+            display: flex;
+            flex-direction: row;
+            margin: 1rem;
+        }
+
+        label {
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        input, textarea {
+            border: none;
+            display: inline-block;
+            resize: none;
+        }
+
+        .bold {
+            font-weight: bold;
+            ;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        @media print {
+            button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <div>
+                <form>
+                    <span>
+                        <label name="dateinput" class="bold">تاریخ: </label>
+                        <input for="dateinput" value="{{date}}" readonly />
+                    </span>
+                    <span>
+                        <label name="caridinput" class="bold">پلاک: </label>
+                        <input for="caridinput" value="{{carid}}" readonly />
+                    </span>
+                    <span>
+                        <label name="shasinumberinput" class="bold">شماره شاسی: </label>
+                        <input for="shasinumberinput" value="{{shasinumber}}" readonly />
+                    </span>
+                    <span>
+                        <label name="timeinput" class="bold">ساعت: </label>
+                        <input for="timeinput" value="{{time}}" readonly />
+                    </span>
+                    <span>
+                        <label name="cartypeinput" class="bold">نوع خودرو: </label>
+                        <input for="cartypeinput" value="{{cartype}}" readonly />
+                    </span>
+                    <span>
+                        <label name="colorinput" class="bold">رنگ خوودرو: </label>
+                        <input for="colorinput" value="{{color}}" readonly />
+                    </span>
+                    <span>
+                        <label name="carownerinput" class="bold">خانم / آقای: </label>
+                        <input for="carownerinput" value="{{name}}" readonly />
+                    </span>
+                </form>
+            </div>
+            <div class="seperator"></div>
+            <div>
+                <form>
+                    <span>
+                        <label for="conditioninput" class="bold">شرح: </label>
+                        <textarea id="conditioninput" name="conditioninput" rows="8" cols="95" readonly>{{condition}}</textarea>
+                    </span>
+                </form>
+            </div>
+            <div class="seperator"></div>
+            <div>
+                <form>
+                    <span>
+                        <label for="explainationinput" class="bold">توضیحات: </label>
+                        <textarea id="explainationinput" name="explainationinput" rows="8" cols="92" readonly>{{explaination}}</textarea>
+                    </span>
+                </form>
+            </div>
+            <div class="seperator"></div>
+            <div>
+                <span>
+                    <label name="conditioninput">گریسی و سر قلم دارد&emsp;/ آفتاب سوختگی&emsp;/ تگرگ خودرگی&emsp;/ اسید
+                        پاشی&emsp;/</label>
+                </span>
+            </div>
+            <div class="seperator"></div>
+        </div>
+        <button onclick="window.print()">چاپ صفحه</button>
+    </div>
+</body>
+
+</html>
