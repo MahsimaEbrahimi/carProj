@@ -31,11 +31,14 @@ class FormMethod:
         self.type_instance=Type_Class(self.res)
 
     def SaveMethod(self):
-        carId = BaseUi.format_car_id(self.Mainobj.firstPart_id.toPlainText().strip()+
-                self.Mainobj.secoundPart_id.toPlainText().strip()+
-                self.Mainobj.ThirdPart_id_2.toPlainText().strip()+
-                "-"+                                         
-                self.Mainobj.FourthPart_id.toPlainText().strip())
+        firstp = self.Mainobj.firstPart_id.toPlainText().strip()
+        secondp = self.Mainobj.secoundPart_id.toPlainText().strip()
+        thirdp = self.Mainobj.ThirdPart_id_2.toPlainText().strip()
+        fourthp = self.Mainobj.FourthPart_id.toPlainText().strip()
+        if (firstp == '' or secondp == '' or thirdp == '' or fourthp == ''):
+            carId = ''
+        else:
+            carId = BaseUi.format_car_id(firstp+secondp+thirdp+"-"+fourthp)
         
         FormsMethodCarclass_Obj=FormsMethodCarclass()
         CarModelInstance=CarModel(ShasiNum=self.Mainobj.ShasiTxt.toPlainText(),
