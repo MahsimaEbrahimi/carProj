@@ -12,7 +12,7 @@
         }
 
         html {
-            font-size: 14px;
+            font-size: 15px;
             direction: rtl;
         }
 
@@ -34,13 +34,24 @@
 
         .main {
             padding-top: 2.5cm;
-            /* padding-bottom: 2.5cm; */
             border: 1px solid rgb(97, 97, 97);
         }
 
         .seperator {
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+            height: 5px;
+            position: relative;
             margin: 0 1.5rem;
-            border-bottom: 1px solid black;
+        }
+        
+        .seperator::before {
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: 0;
+            right: 0;
+            border-top: 3px solid black;
         }
 
         form {
@@ -52,7 +63,7 @@
         span {
             display: flex;
             flex-direction: row;
-            margin: 1rem;
+            margin: 0.5rem 1rem;
         }
 
         label {
@@ -143,9 +154,39 @@
             <div>
                 <form>
                     <span>
-                        <label for="conditioninput" class="bold">شرح: </label>
-                        <textarea id="conditioninput" name="conditioninput" rows="8" cols="95"
-                            readonly>{{condition}}</textarea>
+                        <label for="conditioninput" class="bold">رنگ و بدنه: </label>
+                        <textarea id="conditioninput" name="conditioninput" rows="4" cols="90"
+                            readonly>{{colorandbody}}</textarea>
+                    </span>
+                </form>
+            </div>
+            <div class="seperator"></div>
+            <div>
+                <form>
+                    <span>
+                        <label for="conditioninput" class="bold">شاسی و سینی ها: </label>
+                        <textarea id="conditioninput" name="conditioninput" rows="3" cols="90"
+                            readonly>{{shasiandsini}}</textarea>
+                    </span>
+                </form>
+            </div>
+            <div class="seperator"></div>
+            <div>
+                <form>
+                    <span>
+                        <label for="conditioninput" class="bold">موتور و گیربکس: </label>
+                        <textarea id="conditioninput" name="conditioninput" rows="3" cols="90"
+                            readonly>{{motorandgirbox}}</textarea>
+                    </span>
+                </form>
+            </div>
+            <div class="seperator"></div>
+            <div>
+                <form>
+                    <span>
+                        <label for="conditioninput" class="bold">آپشن ها: </label>
+                        <textarea id="conditioninput" name="conditioninput" rows="3" cols="95"
+                            readonly>{{options}}</textarea>
                     </span>
                 </form>
             </div>
@@ -154,7 +195,7 @@
                 <form>
                     <span>
                         <label for="explainationinput" class="bold">توضیحات: </label>
-                        <textarea id="explainationinput" name="explainationinput" rows="4" cols="92"
+                        <textarea id="explainationinput" name="explainationinput" rows="3" cols="92"
                             readonly>{{explaination}}</textarea>
                     </span>
                 </form>
@@ -162,7 +203,7 @@
             <div class="seperator"></div>
             <div>
                 <span>
-                    <label name="conditioninput">گریسی و سر قلم دارد&emsp;/ آفتاب سوختگی&emsp;/ تگرگ خودرگی&emsp;/ اسید
+                    <label name="conditioninput">گریسی و سر قلم&emsp;&emsp;/ آفتاب سوختگی&emsp;&emsp;/ تگرگ خوردگي&emsp;&emsp;/ اسید
                         پاشی&emsp;/</label>
                 </span>
             </div>

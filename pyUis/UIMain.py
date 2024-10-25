@@ -64,7 +64,7 @@ class Ui_MainWindow(object):
  
              i.clear()
              if i==self.ShasiCondTxt:
-                i.setText("شاسی های عقب و جلو سالم است")
+                i.setText("شاسی و سینی های عقب و جلو سالم است")
              if i==self.OptionTxt:
                 i.setText("تمام آپشن ها فعال میباشد")
              if i==self.GirboxCondTxt:
@@ -116,12 +116,9 @@ class Ui_MainWindow(object):
         PrintManager.Create_html('blueprint.html', 'output.html', self.DateTxt.text(), 
                                  f'''{self.ThirdPart_id_2.toPlainText()}/{self.FourthPart_id.toPlainText()}{self.secoundPart_id.toPlainText()}{self.firstPart_id.toPlainText()}''',
                                  self.ShasiTxt.toPlainText(), self.CarTypeComb.currentText(), self.CarColorComb.currentText(),
-                                 self.CarOwnerTxt.toPlainText(), 
-                                 f'''1-{self.CarColorCondTxt.toPlainText()}
-2-{self.GirboxCondTxt.toPlainText()}
-3-{self.OptionTxt.toPlainText()}
-4-{self.ShasiCondTxt.toPlainText()}'''
-                                 , self.InfTxt.toPlainText())
+                                 self.CarOwnerTxt.toPlainText(), self.CarColorCondTxt.toPlainText(),
+                                 self.ShasiCondTxt.toPlainText(), self.GirboxCondTxt.toPlainText(),
+                                 self.OptionTxt.toPlainText(), self.InfTxt.toPlainText())
         PrintManager.Show_in_browser('output.html')
         # PrintManager.Delete_html('output.html')
     
@@ -696,7 +693,7 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.UseTxt.setPlaceholderText(_translate("MainWindow", "كاركرد"))
-        self.label_13.setText(_translate("MainWindow", "وضعيت رنگ بدنه:"))
+        self.label_13.setText(_translate("MainWindow", "وضعيت رنگ و بدنه:"))
         self.OptionTxt.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -707,7 +704,7 @@ class Ui_MainWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">شاسی های عقب و جلو سالم است</p></body></html>"))
+"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">شاسی و سینی های عقب و جلو سالم است</p></body></html>"))
         self.RemoveOptionBtn.setText(_translate("MainWindow", "پاك كردن"))
         self.RemoveShasiCondBtn.setText(_translate("MainWindow", "پاك كردن"))
         self.CarColorCondTxt.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -724,7 +721,7 @@ class Ui_MainWindow(object):
         self.RemoveInfBtn.setText(_translate("MainWindow", "پاك كردن"))
         self.RemoveGirboxCondBtn.setText(_translate("MainWindow", "پاك كردن"))
         self.label_17.setText(_translate("MainWindow", "توضيحات:"))
-        self.label_16.setText(_translate("MainWindow", "وضعيت شاسي:"))
+        self.label_16.setText(_translate("MainWindow", "وضعيت شاسی و سینی ها:"))
         self.label_14.setText(_translate("MainWindow", "وضعيت موتور و گيربكس:"))
         self.InfTxt.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

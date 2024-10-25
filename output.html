@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فرم</title>
+    <title>نامه کارشناسی خودرو</title>
     <style>
         * {
             margin: 0;
@@ -12,14 +12,17 @@
         }
 
         html {
-            font-size: 14px;
+            font-size: 15px;
             direction: rtl;
         }
 
         body {
-            width: 210mm;
-            height: 297mm;
+            width: 205mm;
+            /* height: 290mm;
+            max-width: 205mm;
+            max-height: 290mm; */
             margin: auto;
+            /* overflow: hidden; */
         }
 
         .container {
@@ -30,8 +33,9 @@
         }
 
         .main {
-            padding-top: 4cm;
-            padding-bottom: 3cm;
+            padding-top: 2.5cm;
+            /* padding-bottom: 2.5cm; */
+            border: 1px solid rgb(97, 97, 97);
         }
 
         .seperator {
@@ -56,10 +60,15 @@
             margin-left: 0.5rem;
         }
 
-        input, textarea {
+        input,
+        textarea {
             border: none;
             display: inline-block;
             resize: none;
+        }
+
+        .short-input {
+            width: 9rem;
         }
 
         .bold {
@@ -69,11 +78,31 @@
 
         button {
             cursor: pointer;
+            margin: 1rem 0;
+        }
+
+        img {
+            /* display: block; */
+            width: 90%;
+            margin: auto;
         }
 
         @media print {
             button {
                 display: none;
+            }
+
+            .main {
+                border: none;
+            }
+
+            img {
+                margin-right: -4rem;
+                margin-top: 1px;
+            }
+
+            .seperator {
+                margin-left: 5rem;
             }
         }
     </style>
@@ -86,31 +115,27 @@
                 <form>
                     <span>
                         <label name="dateinput" class="bold">تاریخ: </label>
-                        <input for="dateinput" value="1403/06/20" readonly />
+                        <input class="short-input" for="dateinput" value="1403/05/30" readonly />
                     </span>
                     <span>
                         <label name="caridinput" class="bold">پلاک: </label>
-                        <input for="caridinput" value="/" readonly />
+                        <input class="short-input" for="caridinput" value="345/67ی12" readonly />
                     </span>
                     <span>
                         <label name="shasinumberinput" class="bold">شماره شاسی: </label>
-                        <input for="shasinumberinput" value="" readonly />
-                    </span>
-                    <span>
-                        <label name="timeinput" class="bold">ساعت: </label>
-                        <input for="timeinput" value="" readonly />
+                        <input class="short-input" for="shasinumberinput" value="dcfghbj" readonly />
                     </span>
                     <span>
                         <label name="cartypeinput" class="bold">نوع خودرو: </label>
-                        <input for="cartypeinput" value="پراید" readonly />
+                        <input class="short-input" for="cartypeinput" value="کوییک" readonly />
                     </span>
                     <span>
                         <label name="colorinput" class="bold">رنگ خوودرو: </label>
-                        <input for="colorinput" value="سفید" readonly />
+                        <input class="short-input" for="colorinput" value="سفید" readonly />
                     </span>
                     <span>
                         <label name="carownerinput" class="bold">خانم / آقای: </label>
-                        <input for="carownerinput" value="" readonly />
+                        <input class="short-input" for="carownerinput" value="علی 2" readonly />
                     </span>
                 </form>
             </div>
@@ -118,11 +143,39 @@
             <div>
                 <form>
                     <span>
-                        <label for="conditioninput" class="bold">شرح: </label>
-                        <textarea id="conditioninput" name="conditioninput" rows="8" cols="95" readonly>1-اتوموبیل فاقد رنگ شدگی میباشد
-2-موتور و گیربکس پلمپ میباشد
-3-تمام آپشن ها فعال میباشد
-4-شاسی های عقب و جلو سالم است</textarea>
+                        <label for="conditioninput" class="bold">رنگ و بدنه: </label>
+                        <textarea id="conditioninput" name="conditioninput" rows="4" cols="90"
+                            readonly>اتوموبیل فاقد رنگ شدگی میباشدااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااااا</textarea>
+                    </span>
+                </form>
+            </div>
+            <div class="seperator"></div>
+            <div>
+                <form>
+                    <span>
+                        <label for="conditioninput" class="bold">شاسی و سینی ها: </label>
+                        <textarea id="conditioninput" name="conditioninput" rows="3" cols="90"
+                            readonly>شاسی های عقب و جلو سالم استبببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببببب</textarea>
+                    </span>
+                </form>
+            </div>
+            <div class="seperator"></div>
+            <div>
+                <form>
+                    <span>
+                        <label for="conditioninput" class="bold">موتور و گیربکس: </label>
+                        <textarea id="conditioninput" name="conditioninput" rows="3" cols="90"
+                            readonly>موتور و گیربکس پلمپ میباشدذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذذ</textarea>
+                    </span>
+                </form>
+            </div>
+            <div class="seperator"></div>
+            <div>
+                <form>
+                    <span>
+                        <label for="conditioninput" class="bold">آپشن ها: </label>
+                        <textarea id="conditioninput" name="conditioninput" rows="3" cols="95"
+                            readonly>تمام آپشن ها فعال میباشدیییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییییی</textarea>
                     </span>
                 </form>
             </div>
@@ -131,18 +184,22 @@
                 <form>
                     <span>
                         <label for="explainationinput" class="bold">توضیحات: </label>
-                        <textarea id="explainationinput" name="explainationinput" rows="8" cols="92" readonly></textarea>
+                        <textarea id="explainationinput" name="explainationinput" rows="3" cols="92"
+                            readonly>ررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررررر</textarea>
                     </span>
                 </form>
             </div>
             <div class="seperator"></div>
             <div>
                 <span>
-                    <label name="conditioninput">گریسی و سر قلم دارد&emsp;/ آفتاب سوختگی&emsp;/ تگرگ خودرگی&emsp;/ اسید
+                    <label name="conditioninput">گریسی و سر قلم&emsp;&emsp;/ آفتاب سوختگی&emsp;&emsp;/ تگرگ خودرگی&emsp;&emsp;/ اسید
                         پاشی&emsp;/</label>
                 </span>
             </div>
             <div class="seperator"></div>
+            <div>
+                <img src="blueprintPic.png" />
+            </div>
         </div>
         <button onclick="window.print()">چاپ صفحه</button>
     </div>
